@@ -1,0 +1,178 @@
+/* Define estilos padrão para todos os elementos */
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif; 
+}
+
+/* Estilos para a navegação */
+nav {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Estilos para o logotipo */
+.logo {
+    width: 210px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+/* Estilos para a lista de navegação */
+nav ul {
+    background: #000;
+    width: 100%;
+    margin-top: 10px;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 20px 30px;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilos para o corpo da página */
+body {
+    background-image:linear-gradient(rgba(10, 10, 10, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/imgs/yin-e-yang.jpg);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Estilos para o formulário */
+.form {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    padding: 4rem;
+    border: 5px solid #48048c;
+}
+
+.form h1 {
+    color: #fff;
+}
+
+/* Estilos para o cabeçalho do formulário */
+.form-header h1::after {
+    content: '';
+    display: block;
+    width: 5rem;
+    height: 0.3rem;
+    background: linear-gradient(45deg, #48048c, #060126);
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 10px;
+}
+
+/* Estilos para grupos de entrada de dados */
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+/* Estilos para caixas de entrada de dados */
+.input-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+}
+
+.input-box input {
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+    font-size: 0.8rem;
+}
+
+.input-box input:hover {
+    background-color: #eeeeee75;
+}
+
+.input-box input:focus-visible {
+    outline: 1px solid #0F5959;
+}
+
+.input-box label,
+.gender-title h6 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.input-box input::placeholder {
+    color: #000000be;
+}
+/* Fim dos estilos para caixas de entrada de dados */
+
+/* Estilos para grupos de gênero */
+.gender-group {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 0.62rem;
+    padding: 0 .5rem;
+}
+
+/* Estilos para entrada de gênero */
+.gender-input {
+    display: flex;
+    align-items: center;
+}
+
+.gender-input input {
+    margin-right: 0.35rem;
+}
+
+.gender-input label {
+    font-size: 0.81rem;
+    font-weight: 600;
+    color: #fff;
+}
+/* Fim dos estilos para entrada de gênero */
+
+/* Estilos gerais para botões */
+button {
+    margin-top: 2rem;
+    padding: 0.4rem;
+    width: 100%;
+    background: linear-gradient(to left, #48048c, #060126);
+    cursor: pointer;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 300;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+
+/* Estilos para a barra de rolagem */
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Estilos para a parte de fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+/* Estilos para o indicador da barra de rolagem */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#48048c, #060126);
+    border-radius: 10px;
+}
