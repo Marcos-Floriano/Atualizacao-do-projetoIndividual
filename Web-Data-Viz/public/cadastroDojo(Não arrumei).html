@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Cadastro.css">
+    <link rel="icon" href="assets/imgs/ideia_2-removebg-preview.png">
+    <title>Cadastro Dojo</title>
+</head>
+
+<body>
+    <div class="mensagem_erro">
+
+        <div class="pag">
+            <nav>
+
+                <div class="logo">
+                    <a href=""><img src="assets/imgs/ideia_2-removebg-preview.png" alt=""></a>
+                    <span></span>
+                </div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sobremim.html">Meets us</a></li>
+                    <li><a href="login-cadastro.html">Login</a></li>
+                </ul>
+            </nav>
+
+            <div class="container">
+                <div class="form-image">
+                    <img src="assets/imgs/ideia_2-removebg-preview.png" alt="">
+                </div>
+                <div class="form">
+
+                    <div class="form-header">
+                        <div class="title">
+                            <h1>Cadastre seu dojo</h1>
+                        </div>
+                        <!-- <div class="espaço"></div>
+                        <div class="login-button">
+                            <button><a href="login.html">Entrar</a></button>
+                        </div> -->
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-box">
+                            <label for="firstname">Nome do Dojo</label>
+                            <input id="input_nome" type="text" placeholder="Insira o nome do dojo" required>
+                        </div>
+
+                        <div class="input-box">
+                            <label for="lastname">Localização</label>
+                            <input id="input_localização" type="text" placeholder="insira a localização do dojo"
+                                required>
+                        </div>
+                        <div class="input-box">
+                            <label for="email">Id do aluno que indicou o site (se tiver)</label>
+                            <input id="input_IDaluno" type="number" placeholder="insira o id do aluno" required>
+                        </div>
+
+                        <div class="input-box">
+                            <label for="number">Mestre</label>
+                            <input id="input_Mestre" type="text" placeholder="Insira o nome do mestre" required>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="continue-button">
+                        <button onclick="cadastrarDojo()">Continuar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    function cadastrarDojo() {
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeDVar = input_nome.value;
+        var localizaçãoVar = input_localização.value;
+        // var IDVar = Number(input_IDaluno.value);
+        var MestreVar = input_Mestre.value;
+
+        fetch("/dojo/cadastrarDojo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeDServer: nomeDVar,
+                localizaçãoServer: localizaçãoVar,
+                // IDServer: IDVar,
+                MestreServer: MestreVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                alert("Cadastro realizado com sucesso!");
+
+                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                // setTimeout(() => {
+                //     window.location = "login.html";
+                // }, "2000")
+
+                // limparFormulario();
+
+            } else {
+                alert ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+        // Enviando o valor da nova input
+</script>

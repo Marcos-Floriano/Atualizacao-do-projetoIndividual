@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/1ab94d0eba.js" crossorigin="anonymous"></script>
+    <title>Login</title>
+    <link rel="icon" href="assets/imgs/ideia_2-removebg-preview.png">
+    <link rel="stylesheet" href="css/login(Refeito).css">
+    <script src="js/funcoes.js"></script>
+</head>
+<body>
+
+  
+    <body>
+
+        <!-- Início do conteúdo principal -->
+        <main class="container">
+            
+                <!-- Div para exibir erros de prenchemento do login -->
+            <div class="alerta-erro">
+                <div class="card-erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
+            </div>
+
+             <!-- Início do Login -->
+            <h2>Login</h2>
+    
+            <!-- Campo de entrada para o email -->
+            <div class="input-field">
+                <input type="text"  id="email_input"
+                    placeholder=" Enter Your Email">
+                <div class="underline"></div>
+            </div>
+    
+            <!-- Campo de entrada para a senha -->
+            <div class="input-field">
+                <input type="password"  id="senha_input"
+                    placeholder=" Enter Your Password" required>
+                <div class="underline"></div>
+            </div>
+    
+            <!-- Div para exibir um indicador de carregamento (loading) -->
+            <div id="div_aguardar" class="loading-div"></div>
+    
+            <!-- Botão para executar a função "entrar()" -->
+            <button onclick="entrar()">Continue</button>
+    
+            <br><br>
+    
+            <!-- Mensagem para criar uma conta -->
+            <span>Não tem conta</span><br><a href="cadastro.html">Click aqui</a>
+    
+            <!-- Div para exibir erros de login -->
+            <div id="div_erros_login"></div>
+        </main>
+        <!-- Fim do conteúdo principal -->
+    
+    </body>
+    
+</html>
+<script>
+    // Função chamada quando o botão "Continue" é clicado
+    function entrar() {
+        // Chama a função "aguardar" para exibir algum tipo de indicador de carregamento
+
+        aguardar();
+
+        // Obtém os valores dos campos de entrada de email e senha
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        // Verifica se algum dos campos está em branco
+        if (emailVar == "" || senhaVar == "") {
+            // Se um dos campos estiver em branco, exibe uma mensagem de erro
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        } else {
+            // Define um intervalo para ocultar a mensagem de erro após 5 segundos
+            setInterval(sumirMensagem, 5000);
+        }
+
+        // Exibe no console os valores do email e senha digitados
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        // Realiza uma requisição POST para autenticar o usuário
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                // Se a resposta da requisição for bem-sucedida, trata os dados
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    // Armazena algumas informações do usuário na sessão
+                    sessionStorage.EMAIL_USUARIO = json.Email;
+                    sessionStorage.NOME_USUARIO = json.Nome;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+
+                    // Redireciona para a página "User.html" após 1 segundo 
+                    setTimeout(function () {
+                        window.location = "User.html";
+                    }, 1000);// apenas para exibir o login
+                });
+
+            } else {
+                // Se houver um erro na resposta da requisição, exibe uma mensagem de erro
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+        }).catch(function (erro) {
+            // Trata erros que ocorrerem durante a requisição
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    // Função para ocultar a mensagem de erro
+    function sumirMensagem() {
+        cardErro.style.display = "none";
+    }
+</script>

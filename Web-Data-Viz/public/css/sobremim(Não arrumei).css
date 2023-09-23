@@ -1,0 +1,169 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+nav {
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+    transition: background 1s;
+    margin-bottom: 39px;
+}
+
+nav .logo {
+
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    font-weight: 600;
+    counter-reset: #fff;
+
+}
+
+nav .logo span {
+
+    color: #474747;
+
+}
+
+nav .logo img {
+
+    width: 80px;
+    margin-right: 10px;
+
+}
+
+nav ul li {
+
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+
+}
+
+nav ul li a {
+
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+
+}
+
+nav:hover {
+
+    background: #fff;
+
+}
+
+nav:hover .logo {
+
+    color: #333;
+
+}
+
+nav:hover ul li a {
+
+    color: #333;
+
+}
+
+body {
+
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(20, 20, 20, 0.5), rgba(20, 20, 20, 0.5)), url(../assets/imgs/download\ \(6\).jpeg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+
+.pag{
+
+    height: 132%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.txt {
+
+    width: auto;
+    border: 20px solid #fff;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 700px;
+
+}
+
+.blog{
+
+margin-bottom: 20px;
+
+}
+
+.tema{
+
+color: #fff;
+letter-spacing: 0.2rem;
+text-transform: uppercase;
+font-weight: 600;
+
+}
+.paragrafo{
+
+border-left: 5px solid #fff;
+padding-left: 5px;
+color: #fff;
+}
+
+h2{
+
+font-size: 2.0rem;
+color: #fff;
+
+}
+
+hr{
+border: 0;
+height: 0;
+border-top: 1px solid #fff;
+border-bottom: 1px solid #fff;
+
+}
+
+p{
+
+color: #fff;
+font-weight: 600;
+
+}
+
+/* barra de rolagem */
+
+::-webkit-scrollbar {
+
+    width: 15px;
+
+}
+
+::-webkit-scrollbar-track {
+
+    background: #333;
+
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: linear-gradient(#0A3A40, #1D7373);
+    border-radius: 10px;
+
+
+}

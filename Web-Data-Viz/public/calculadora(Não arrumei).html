@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="css/calculadora.css">
+    <link rel="icon" href="assets/imgs/ideia_2-removebg-preview.png">
+</head>
+
+<body>
+    <div class="body">
+        <nav>
+            <div class="logo">
+                <a href=""><img src="assets/imgs/ideia_2-removebg-preview.png" alt=""></a>
+                <span></span>
+            </div>
+            <ul>
+                <li><a href="User.html">Voltar</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sobremim.html">Meets us</a></li>             
+            </ul>
+        </nav>
+
+        <ul class="accordion">
+
+            <li>
+
+                <input type="radio" name="accordion" id="first" checked>
+
+                <label for="first">
+                    <h4>Perda de peso</h4>
+                </label>
+
+                <div class="content">
+
+
+                    <h3>informe seu peso:</h3>
+                    <input type="number" id="input_peso_atual">
+                    <br><br>
+
+                    <h3>informe o peso que quer ter:</h3>
+                    <input type="number" id="input_peso_desejavel">
+                    <br><br>
+
+                    <h3>informe o tempo desejavel (meses):</h3>
+                    <input type="number" id="input_tempo">
+                    <br><br>
+
+                    <button onclick="calcular()" class="btn">calcular</button>
+
+                    <p id="final"></p>
+
+
+                </div>
+
+            </li>
+
+        </ul>
+
+        <ul class="accordion">
+
+            <li>
+
+                <input type="radio" name="accordion" id="secund" checked>
+
+                <label for="secund">
+                    <h4>Grade de treino</h4>
+                </label>
+
+                <div class="content">
+
+                    <h4>Insira quandos dias você pode treinar</h4>
+                    <input type="number" id="ipt_dias"><br>
+                    <button onclick="exibir()" class="btn">Exibir rotina mensal</button>
+                    <div id="div_msg"></div>
+
+                </div>
+
+            </li>
+
+        </ul>
+
+        <ul class="accordion">
+
+            <li>
+
+                <input type="radio" name="accordion" id="three" checked>
+
+                <label for="three">
+                    <h4>Dicas na dieta</h4>
+                </label>
+
+                <div class="content">
+
+                    <h4>Inicie as refeições pela salada</h4>
+
+                    <p>“Consumir a salada antes do prato principal contribui para a saciedade, fazendo com que você coma
+                        menos e se sinta saciado mais rapidamente”, explica a especialista. Então, pode caprichar
+                        naquela salada bem colorida e começar por ela. Lembre-se ainda de escolher alimentos integrais
+                        para serem consumidos nas outras refeições, afinal, além de auxiliarem para o bom funcionamento
+                        do intestino, também aumentam a sensação de saciedade.</p><br>
+
+                    <hr><br>
+                    <h4>Mantenha-se hidratado</h4>
+
+                    <p>
+                        Além de ser importante para manter o organismo em pleno funcionamento, manter o corpo hidratado combate a formação de celulite e ajuda a controlar a fome.
+
+                    </p>
+
+
+
+
+                </div>
+
+            </li>
+
+        </ul>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    function calcular() {
+
+        var PesoAtu = Number(input_peso_atual.value)
+        var PesoDese = Number(input_peso_desejavel.value)
+        var Tempo = Number(input_tempo.value)
+        var semana = Tempo * 4
+        var perda = PesoAtu - PesoDese
+        var resultado = perda / semana
+        var porcentagem = (resultado * 100) / perda
+        var litrosdeagua = PesoAtu * 50
+
+        final.innerHTML = `Você terá que perder ${perda}kg em ${Tempo} meses ou ${resultado.toFixed(2)}kg por semana que da ${porcentagem.toFixed(1)}% de perda de peso`
+
+    }
+
+    function exibir() {
+        var dias = Number(ipt_dias.value);
+        var contador = 1;
+
+        while (contador <= 11) {
+            if (contador == 1) {
+                div_msg.innerHTML += `${contador}- Treino<br>`;
+                contador += 1;
+            }
+            else if ((contador - 1) % dias == 0) {
+                div_msg.innerHTML += `${contador}- Treino<br>`;
+                contador += 1;
+            }
+            else {
+                div_msg.innerHTML += `${contador}- Ocupado <br>`;
+                contador += 1;
+            }
+        }
+    }
+
+</script>

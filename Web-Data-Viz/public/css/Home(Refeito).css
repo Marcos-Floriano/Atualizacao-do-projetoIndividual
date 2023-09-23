@@ -1,0 +1,269 @@
+/* Define estilos padrão para todos os elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', 'sans-serif';
+}
+
+/* Estilos para a classe .fundo */
+.fundo {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(10, 9, 15, 0.5), rgba(72, 13, 128, 0.692)), url(../assets/imgs/jiu.jpeg);
+    background-position: center;
+    background-size: cover;
+}
+
+/* Estilos para a navegação */
+nav {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Estilos para o logotipo */
+.logo {
+    width: 210px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+/* Estilos para a lista de navegação */
+nav ul {
+    background: #000;
+    width: 100%;
+    margin-top: 10px;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 20px 30px;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilos para o título do site */
+.nome-site {
+    text-align: center;
+}
+
+.nome-site h1 {
+    font-size: 160px;
+    color: #000;
+    font-weight: 600;
+}
+
+.nome-site a {
+    text-decoration: none;
+    display: inline-block;
+    color: #000;
+    font-size: 24px;
+    border: 5px solid #000;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+    font-family: monospace;
+}
+
+/* Estilos para a segunda parte */
+.part2 {
+    background: linear-gradient(rgb(0, 0, 0), rgba(69, 11, 136, 0.829));
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Estilos para as colunas na segunda parte */
+.coluna-1 {
+    border: solid #000000 5px;
+    flex-basis: 43%;
+    flex-grow: 1;
+    background-image: linear-gradient(rgba(10, 10, 10, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/imgs/3q5X.gif);
+    background-size: cover;
+    background-position: center;
+}
+
+.coluna-2 {
+    border: solid #000000 5px;
+    flex-basis: 57%;
+    flex-grow: 1;
+}
+
+/* Estilos para o texto na segunda parte */
+.texto {
+    width: 70%;
+    height: 90;
+    margin-top: 160px;
+    margin: 180px auto 0;
+    cursor: pointer;
+}
+
+.texto h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #460273;
+    font-size: 50px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.texto p {
+    font-size: 40px;
+    margin-bottom: 30px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilos para a terceira parte */
+.part3 {
+    background-image: url(../assets/imgs/Capturar5.PNG);
+    height: 40vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #0f0f0f;
+    color: #ffffff;
+    border: 5px solid #000;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Estilos para o texto na terceira parte */
+.texto2 h2 {
+    color: #ffffff;
+}
+
+.texto2 h2:hover {
+    color: #6E43B9;
+    transition-duration: 0.6s;
+}
+
+.texto2 {
+    padding: 1.0em;
+    text-align: center;
+    height: 20vh;
+    font-size: 25px;
+    position: relative;
+    bottom: 6vh;
+}
+
+/* Estilos para a seção de valores */
+.valores {
+    height: 30vh;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Estilos para o rodapé */
+footer {
+    background: #111111;
+    height: 100%;
+    width: auto;
+    font-family: "Open Sans";
+    padding-top: 40px;
+    color: #fff;
+}
+
+/* Estilos para a div do rodapé */
+.rodape {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Estilos para o título do rodapé */
+.rodape h3 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 3rem;
+}
+
+/* Estilos para o texto do rodapé */
+.rodape p {
+    max-width: 500px;
+    margin: 10px auto;
+    line-height: 28px;
+    font-size: 14px;
+}
+
+/* Estilos para a lista de redes sociais no rodapé */
+.redes-sociais {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;
+}
+
+/* Estilos para os itens da lista de redes sociais */
+.redes-sociais li {
+    margin: 0 10px;
+}
+
+/* Estilos para os links da lista de redes sociais */
+.redes-sociais a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Estilos para os ícones na lista de redes sociais */
+.redes-sociais a i {
+    font-size: 1.1rem;
+    transition: color .4s ease;
+}
+
+/* Estilos para a cor do ícone ao passar o mouse */
+.redes-sociais a:hover i {
+    color: #48048c;
+}
+
+/* Estilos para a seção final */
+.final {
+    background: #000;
+    width: auto;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Estilos para o texto na seção final */
+.final p {
+    font-size: 14px;
+    word-spacing: 2px;
+    text-transform: capitalize;
+}
+
+/* Estilos para a transformação do texto na seção final */
+.final span {
+    text-transform: uppercase;
+    opacity: .4;
+}
+
+/* Estilos para a barra de rolagem */
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Estilos para a parte de fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+/* Estilos para o indicador da barra de rolagem */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#48048c, #060126);
+    border-radius: 10px;
+}

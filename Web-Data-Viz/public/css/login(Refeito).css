@@ -1,0 +1,130 @@
+/* Importa a fonte "Poppins" do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+/* Define estilos globais para todos os elementos */
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif; /* Define a fonte padrão para o documento */
+}
+
+/* Estilos para o corpo (body) da página */
+body {
+    background: url(../assets/imgs/yin-e-yang.jpg);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Estilos para a seção principal (main.container) */
+main.container {
+    background: black;
+    min-width: 320px;
+    min-height: 40vh;
+    padding: 2rem;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: #48048c solid 2px;
+}
+
+/* Estilos para o título dentro da seção principal */
+main h2 {
+    color: #8404d9;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+/* Estilos para a linha abaixo do título */
+main h2::before {
+    content: '';
+    position: absolute;
+    height: 4px;
+    width: 25px;
+    bottom: 3px;
+    left: 0;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #48048c, #060126);
+}
+
+/* Estilos para o formulário */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos para os campos de entrada de texto */
+.input-field {
+    position: relative;
+}
+
+/* Margem inferior para o primeiro campo de entrada */
+form .input-field:first-child {
+    margin-bottom: 1.5rem;
+}
+
+/* Estilos para a linha abaixo do campo de entrada */
+.input-field .underline::before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    bottom: -5px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para a linha de foco abaixo do campo de entrada */
+.input-field .underline::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    bottom: -5px;
+    left: 0;
+    background: linear-gradient(45deg, #0a0a0a,);
+    transform: scaleX(0);
+    transition: all .3s ease-in-out;
+    transform-origin: left;
+}
+
+/* Efeito de expansão da linha quando o campo de entrada recebe foco */
+.input-field input:focus ~ .underline::after {
+    transform: scaleX(1);
+}
+
+/* Estilos para os campos de entrada de texto */
+.input-field input {
+    outline: none;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    border-radius: 20px;
+}
+
+/* Estilos para o texto do espaço reservado nos campos de entrada */
+.input-field input::placeholder {
+    color: rgba(10, 10, 10, 0.5);
+}
+
+/* Estilos para o botão */
+button {
+    margin-top: 2rem;
+    padding: 0.4rem;
+    width: 100%;
+    background: linear-gradient(to left, #48048c, #060126);
+    cursor: pointer;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 300;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+

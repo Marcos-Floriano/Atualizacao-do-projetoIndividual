@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dashboards.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="pag">
+        <nav>
+            <div class="logo">
+                <a href="../index.html"><img src="../assets/imgs/ideia_2-removebg-preview.png" alt=""></a>
+                <span>Fight is life-Dev</span>
+            </div>
+        </nav>
+
+        <!-- <div class="clearfix"></div>
+
+
+        <div class="clearfix"></div>
+        <br> -->
+
+        <!-- <div class="col-div-3">
+            <div class="box">
+                <p><span id="qtd_cadastro">67</span><br><span>Total de cadastros</span></p>
+                <i class="fa fa-users box-icon"></i>
+            </div>
+        </div> -->
+        <!-- <div class="col-div-3">
+            <div class="box">
+                <p><span id="qutd_homens">88</span><br><span>Homens</span></p>
+                <i class="fa fa-list box-icon"></i>
+            </div>
+        </div>
+        <div class="col-div-3">
+            <div class="box">
+                <p><span id="qtd_mulher">99</span><br><span>Mulheres</span></p>
+                <img src="" alt="" class="fa fa-shopping-bag box-icon">
+            </div>
+        </div> -->
+
+    </div>
+    <div class="clearfix"></div>
+    <br><br>
+    <div class="col-div-8">
+        <div class="box-8">
+            <div>
+                <canvas id="myChart"></canvas>
+              </div>
+        </div>
+    </div>
+
+    <!-- <div class="col-div-4">
+        <div class="box-4">
+            <div class="content-box">
+                <p>experiencia</p>
+
+                <div class="circle-wrap">
+                    <div class="circle">
+                        <div class="mask full">
+                            <div class="fill"></div>
+                        </div>
+                        <div class="mask half">
+                            <div class="fill"></div>
+                        </div>
+                        <div class="inside-circle"><span id="porcentagem_experiencia">70%</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="clearfix"></div>
+    </div>
+</body>
+
+</html>
+
+<script>
+   let proximaAtualizacao;
+
+window.onload = obterDadosGraficos();
+
+function obterDadosGraficos() {
+    obterDadosGrafico(1)
+}
+
+function obterDadosGrafico(experiencia) {
+
+    // alterarTitulo(experiencia)
+
+
+    if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/medidas/ultimas/${experiencia}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse();
+
+                plotarGrafico(resposta, experiencia);
+
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+}
+
+function plotarGrafico(resposta, experiencia) {
+
+console.log('iniciando plotagem do gráfico...');
+
+// Criando estrutura para plotar gráfico - labels
+let labels = [];
+
+// Criando estrutura para plotar gráfico - dados
+let dados = {
+    labels: labels,
+    datasets: [{
+        label: 'Usuarios',
+        data: [],
+        fill: false,
+        borderColor: 'rgb(29, 115, 115)',
+        backgroundColor : 'rgb(16, 115, 97)',
+        borderWidth: 5,
+        tension: 0.5
+        
+    },
+]
+};
+
+console.log('----------------------------------------------')
+console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+console.log(resposta)
+
+// Inserindo valores recebidos em estrutura para plotar o gráfico
+for (i = 0; i < resposta.length; i++) {
+    var registro = resposta[i];
+    labels.push(registro.experiencia);
+    dados.datasets[0].data.push(registro.Usuarios);
+}
+
+console.log('----------------------------------------------')
+console.log('O gráfico será plotado com os respectivos valores:')
+console.log('Labels:')
+console.log(labels)
+console.log('Dados:')
+console.log(dados.datasets)
+console.log('----------------------------------------------')
+
+// Criando estrutura para plotar gráfico - config
+const config = {
+    type: 'bar',
+    data: dados,
+};
+
+// Adicionando gráfico criado em div na tela
+let myChart = new Chart(
+    document.getElementById(`myChart`),
+    config
+);
+
+setTimeout(() => atualizarGrafico(experiencia, dados, myChart), 2000);
+}
+
+
+// Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+// buscando a última medida inserida em tabela contendo as capturas, 
+
+//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+//     Para ajustar o "select", ajuste o comando sql em src/models
+function atualizarGrafico(experiencia, dados, myChart) {
+
+
+
+fetch(`/medidas/tempo-real/${experiencia}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (novoRegistro) {
+
+            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+            console.log(`Dados atuais do gráfico:`);
+            console.log(dados);
+
+            let avisoCaptura = document.getElementById(`avisoCaptura${experiencia}`)
+            avisoCaptura.innerHTML = ""
+
+
+            if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                console.log("---------------------------------------------------------------")
+                console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                console.log("Horário do novo dado capturado:")
+                console.log(novoRegistro[0].momento_grafico)
+                console.log("Horário do último dado capturado:")
+                console.log(dados.labels[dados.labels.length - 1])
+                console.log("---------------------------------------------------------------")
+            } else {
+                // tirando e colocando valores no gráfico
+                dados.labels.shift(); // apagar o primeiro
+                dados.labels.push(novoRegistro[0].experiencia_grafico); // incluir um novo momento
+
+                myChart.update();
+            }
+
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(experiencia, dados, myChart), 2000);
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(experiencia, dados, myChart), 2000);
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+
+}
+</script>

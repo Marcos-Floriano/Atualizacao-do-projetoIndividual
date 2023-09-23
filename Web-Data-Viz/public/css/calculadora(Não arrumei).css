@@ -1,0 +1,224 @@
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+
+}
+
+
+nav {
+
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+    transition: background 1s;
+
+}
+
+nav .logo {
+
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    font-weight: 600;
+    counter-reset: #fff;
+
+}
+
+nav .logo span {
+
+    color: #474747;
+
+}
+
+nav .logo img {
+
+    width: 90px;
+    height: 90px;
+    margin-right: 10px;
+
+}
+
+nav ul li {
+
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+
+}
+
+nav ul li a {
+
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+
+}
+
+nav:hover {
+
+    background: #fff;
+
+}
+
+nav:hover .logo {
+
+    color: #333;
+
+}
+
+nav:hover ul li a {
+
+    color: #333;
+
+}
+
+body{
+
+
+    height: 100vh;
+    background-image: url(../assets/imgs/Capturar5.PNG);
+    background-position: center;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+.accordion {
+
+margin: 60px auto;
+width: 600px;
+
+}
+
+.accordion li {
+
+list-style: none;
+width: 100%;
+margin: 20px;
+padding: auto;
+border-radius: 8px;
+background: #0A3A40;
+box-shadow: 6px 6px 10px -1px rgb(0, 0, 0, 0.15 ),
+            -6px -6px 10px -1px rgb(4, 35, 38);
+
+}
+
+.accordion li label {
+
+display: flex;
+align-items: center;
+padding: 10px;
+font-size: 18px;
+font-weight: 500;
+cursor: pointer;
+
+}
+
+label::before {
+
+content: '+';
+margin-right: 10px;
+font-size: 24px;
+font-weight: 600;
+
+}
+
+input[type="number"] {
+
+    height: 23px;
+    border-radius: 10px;
+    
+    }
+
+input[type="radio"] {
+
+display: none;
+
+}
+
+input,
+input::placeholder{ 
+  text-align: center;
+}
+
+.accordion .content {
+
+color: #555;
+padding: 0 10px;
+line-height: 26px;
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.5s, padding 0.5s;
+
+}
+
+.accordion input[type="radio"]:checked + label + .content {
+
+max-height: 400px;
+padding: 10px 10px 20px;
+
+}
+
+ a {
+
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+
+}
+
+img{
+
+    width: 600px;
+    height: 200px;
+
+}
+
+h3, h4{
+color: black;
+
+}
+
+
+.btn{
+
+    width: 80px;
+    height: 35px;
+    background: #1D7373;
+    color: #000000;
+    border-radius: 8px;
+
+}
+
+p, div{
+
+color: #000000;
+
+}
+
+/* barra de rolagem */
+
+::-webkit-scrollbar {
+
+    width: 15px;
+    
+}
+
+::-webkit-scrollbar-track {
+
+    background: #333;
+
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: linear-gradient(#0A3A40, #1D7373);
+    border-radius: 10px;
+
+    
+}

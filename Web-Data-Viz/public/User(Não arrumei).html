@@ -1,0 +1,73 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuario</title>
+    <link rel="icon" href="assets/imgs/ideia_2-removebg-preview.png">
+    <link rel="stylesheet" href="./css/user.css">
+</head>
+
+<body>
+   
+
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="assets/imgs/ideia_2-removebg-preview.png" alt=""></a>
+                <span>Bem Vindo <span id="Nome"> usuario </span> ID:<span id="ID">id</span></span>
+            </div>
+        </nav>
+
+
+    <div class="card">
+        <div class="face front">
+            <img src="assets/imgs/dojo-japones.jpg" alt="">
+            <h3>Dojos</h3>
+        </div>
+        <div class="face back">
+            <h3>Dojos</h3>
+            <a href="https://instagram.com/galpaodaluta?igshid=MzRlODBiNWFlZA==">Galpão da Luta</a>
+            <a href="https://instagram.com/ctf4.zl?igshid=MzRlODBiNWFlZA==">F4</a>
+            <a href="https://instagram.com/cobrakaiseries?igshid=MzRlODBiNWFlZA==">Cobra Kai</a>  
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="face front">
+            <img src="assets/imgs/logo2.png" alt="">
+            <h3>Notas</h3>
+        </div>
+        <div class="face back">
+            <h3>Notas</h3>
+           <p class="notes" contenteditable="true"></p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="face front">
+            <img src="assets/imgs/tela1.jpg" alt="">
+            <h3>Bonús</h3>
+        </div>
+        <div class="face back">
+            <h3>Bonús</h3>
+
+            <a href="calculadora.html">Calculadora</a>
+           <a href="assets/imgs/tela1.jpg">Plano de fundo1</a>
+           <a href="assets/imgs/ideia_2-removebg-preview.png">Plano de fundo2</a>
+       
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
+
+<script>
+
+Nome.innerHTML = sessionStorage.NOME_USUARIO;
+ID.innerHTML = sessionStorage.ID_USUARIO;
+
+</script>
