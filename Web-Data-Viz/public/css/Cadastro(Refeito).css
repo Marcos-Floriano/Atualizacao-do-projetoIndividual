@@ -50,7 +50,7 @@ body {
 }
 
 /* Estilos para o formulário */
-.form {
+.formulario {
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -61,12 +61,12 @@ body {
     border: 5px solid #48048c;
 }
 
-.form h1 {
+.formulario h1 {
     color: #fff;
 }
 
 /* Estilos para o cabeçalho do formulário */
-.form-header h1::after {
+.formulario-fundo h1::after {
     content: '';
     display: block;
     width: 5rem;
@@ -78,7 +78,7 @@ body {
 }
 
 /* Estilos para grupos de entrada de dados */
-.input-group {
+.grupos {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -92,7 +92,7 @@ body {
     margin-bottom: 1.1rem;
 }
 
-.input-box input {
+.input input {
     margin: 0.6rem 0;
     padding: 0.8rem 1.2rem;
     border: none;
@@ -101,22 +101,18 @@ body {
     font-size: 0.8rem;
 }
 
-.input-box input:hover {
+.input input:hover {
     background-color: #eeeeee75;
 }
 
-.input-box input:focus-visible {
-    outline: 1px solid #0F5959;
-}
-
-.input-box label,
-.gender-title h6 {
+.input label,
+.check-titulo h6 {
     font-size: 0.75rem;
     font-weight: 600;
     color: #fff;
 }
 
-.input-box input::placeholder {
+.input input::placeholder {
     color: #000000be;
 }
 /* Fim dos estilos para caixas de entrada de dados */

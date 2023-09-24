@@ -29,13 +29,13 @@
             </nav>
 
             <!-- Formulário de cadastro -->
-            <div class="form">
+            <div class="formulario">
 
                 <!-- Cabeçalho do formulário -->
-                <div class="form-header">
+                <div class="formulario-fundo">
 
                     <!-- Título do formulário -->
-                    <div class="title">
+                    <div>
 
                         <h1>Cadastre-se</h1>
 
@@ -44,10 +44,10 @@
                 </div>
 
                 <!-- Grupo de entrada de dados -->
-                <div class="input-group">
+                <div class="grupos">
 
                     <!-- Caixa de entrada de dados -->
-                    <div class="input-box">
+                    <div class="input">
 
                         <!-- Rótulo para o campo "Primeiro Nome" -->
                         <label for="firstname">Primeiro Nome</label>
@@ -59,7 +59,7 @@
 
                     <!-- Outras caixas de entrada de dados para sobrenome, email, data de nascimento, senha, confirmação de senha -->
 
-                    <div class="input-box">
+                    <div class="input">
 
                         <label for="lastname">Sobrenome</label>
 
@@ -68,7 +68,7 @@
 
                     </div>
 
-                    <div class="input-box">
+                    <div class="input">
 
                         <label for="email">E-mail</label>
 
@@ -76,7 +76,7 @@
 
                     </div>
 
-                    <div class="input-box">
+                    <div class="input">
 
                         <label for="number">Data de nacimento</label>
 
@@ -84,7 +84,7 @@
 
                     </div>
 
-                    <div class="input-box">
+                    <div class="input">
 
                         <label for="password">Senha</label>
 
@@ -94,7 +94,7 @@
                     </div>
 
 
-                    <div class="input-box">
+                    <div class="input">
 
                         <label for="confirmPassword">Confirme sua Senha</label>
 
@@ -106,10 +106,10 @@
                 </div>
 
                 <!-- Grupo de entrada para gênero -->
-                <div class="gender-inputs">
+                <div class="check-box">
 
                     <!-- Título do grupo de entrada de gênero -->
-                    <div class="gender-title">
+                    <div class="check-titulo">
 
                         <h6>Gênero</h6>
 
@@ -128,12 +128,15 @@
 
                         </div>
 
+                        <!-- Opção de gênero "Masculino" -->
                         <div class="gender-input">
-                            <!-- Opção de gênero "Masculino" -->
-                            <input id="input_genero2" type="radio" name="gender" value="m">
+
                             <!-- Botão de rádio para "Masculino" -->
-                            <label for="male">Masculino</label>
+                            <input id="input_genero2" type="radio" name="gender" value="m">
+
                             <!-- Rótulo para "Masculino" -->
+                            <label for="male">Masculino</label>
+
                         </div>
 
 
@@ -144,10 +147,10 @@
 
                 <br><br>
 
-                <!-- Pergunta sobre a prática de artes marciais com caixas de seleção condicionais para informações adicionais -->
-                <div class="gender-inputs">
+                <!-- Pergunta sobre a prática de artes marciais com caixas de seleção condicionais para informações adicionais coso a resposta for sim(s) -->
+                <div class="check-box">
 
-                    <div class="gender-title">
+                    <div class="check-titulo">
 
                         <h6>Já praticou alguma arte marcial ?</h6>
 
@@ -173,19 +176,19 @@
 
                         <br><br>
 
-                        <div class="input-box">
+                        <div class="input">
 
-                            <div class="input2">
+                      
 
                                 <label id="nome1" style="display: none;">Qual arte marcial?</label>
 
-                                <input id="input_exp" type="text" style="display: none;">
+                                <input id="input_exp" type="text" style="display: none;"  placeholder="Digite o nome de arte marcial">
 
                                 <label id="nome2" style="display: none;">Por quanto tempo?</label>
 
-                                <input id="input_tempo" type="text" style="display: none;">
+                                <input id="input_tempo" type="text" style="display: none;" placeholder="Digite por quanto tempo praticou">
 
-                            </div>
+                           
 
                         </div>
 
@@ -194,7 +197,7 @@
                 </div>
 
                 <!-- Botão "Continuar" -->
-                <div class="continue-button">
+                <div>
 
                     <!-- O botão chama a função "cadastrar()" ao ser clicado -->
                     <button onclick="cadastrar()">Continuar</button>
