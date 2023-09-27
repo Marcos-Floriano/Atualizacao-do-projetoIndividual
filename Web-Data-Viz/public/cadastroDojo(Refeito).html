@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/Cadastro.css">
+    <link rel="stylesheet" href="css/Cadastro(Refeito).css">
     <link rel="icon" href="assets/imgs/ideia_2-removebg-preview.png">
     <title>Cadastro Dojo</title>
 </head>
@@ -13,53 +13,44 @@
 <body>
     <div class="mensagem_erro">
 
-        <div class="pag">
-            <nav>
+            <div class="pag">
+                <!-- Barra de navegação -->
+                <nav>
+                    <!-- Logotipo da página -->
+                    <img src="../public/assets/icon/logo-sem-o-fundo.png" class="logo">
+    
+                    <!-- Lista de itens de menu -->
+                    <ul>
+                        <li>Home</li>
+    
+                    </ul>
+                </nav>
 
-                <div class="logo">
-                    <a href=""><img src="assets/imgs/ideia_2-removebg-preview.png" alt=""></a>
-                    <span></span>
-                </div>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="sobremim.html">Meets us</a></li>
-                    <li><a href="login-cadastro.html">Login</a></li>
-                </ul>
-            </nav>
+                <div class="formulario">
 
-            <div class="container">
-                <div class="form-image">
-                    <img src="assets/imgs/ideia_2-removebg-preview.png" alt="">
-                </div>
-                <div class="form">
-
-                    <div class="form-header">
-                        <div class="title">
+                    <div class="formulario-fundo">
+                    
                             <h1>Cadastre seu dojo</h1>
-                        </div>
-                        <!-- <div class="espaço"></div>
-                        <div class="login-button">
-                            <button><a href="login.html">Entrar</a></button>
-                        </div> -->
+                       
                     </div>
 
-                    <div class="input-group">
-                        <div class="input-box">
+                    <div class="grupos">
+                        <div class="input">
                             <label for="firstname">Nome do Dojo</label>
                             <input id="input_nome" type="text" placeholder="Insira o nome do dojo" required>
                         </div>
 
-                        <div class="input-box">
+                        <div class="input">
                             <label for="lastname">Localização</label>
                             <input id="input_localização" type="text" placeholder="insira a localização do dojo"
                                 required>
                         </div>
-                        <div class="input-box">
+                        <div class="input">
                             <label for="email">Id do aluno que indicou o site (se tiver)</label>
                             <input id="input_IDaluno" type="number" placeholder="insira o id do aluno" required>
                         </div>
 
-                        <div class="input-box">
+                        <div class="input">
                             <label for="number">Mestre</label>
                             <input id="input_Mestre" type="text" placeholder="Insira o nome do mestre" required>
                         </div>
@@ -68,11 +59,11 @@
 
 
 
-                    <div class="continue-button">
+                    <div>
                         <button onclick="cadastrarDojo()">Continuar</button>
                     </div>
                 </div>
-            </div>
+           
         </div>
     </div>
 </body>
