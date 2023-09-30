@@ -10,6 +10,7 @@
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/funcoes.js"></script>
     <title>Document</title>
 </head>
 
@@ -36,14 +37,14 @@
     <div class="col-div-8">
         <div class="box-8">
             <div>
-                <canvas id="myChart"></canvas>
+                <canvas id="myChart_SN"></canvas>
               </div>
         </div>
     </div>
     <div class="col-div-8">
         <div class="box-8">
             <div>
-                <canvas id="myChart"></canvas>
+                <canvas id="myChart_MF"></canvas>
               </div>
         </div>
     </div>
@@ -51,35 +52,43 @@
 
     <div class="clearfix"></div>
     </div>
+
+    <!-- Div para exibir erros de login -->
+    <div id="div_erros_login"></div>
+    <!-- Div para exibir um indicador de carregamento (loading) -->
+    <div id="div_aguardar" class="loading-div"></div>
 </body>
 
 </html>
 
 <script>
-   let proximaAtualizacao;
+   let proximaAtualizacao_SN;
+   let proximaAtualizacao_MF;
 
-window.onload = obterDadosGraficos();
+window.onload = obterDadosGraficos_SN();
+window.onload = contar_Usuarios();
 
-function obterDadosGraficos() {
-    obterDadosGrafico(1)
+
+function obterDadosGraficos_SN() {
+    obterDadosGrafico_SN(1)
 }
 
-function obterDadosGrafico(experiencia) {
+function obterDadosGrafico_SN(experiencia) {
 
     // alterarTitulo(experiencia)
 
 
-    if (proximaAtualizacao != undefined) {
-        clearTimeout(proximaAtualizacao);
+    if (proximaAtualizacao_SN != undefined) {
+        clearTimeout(proximaAtualizacao_SN);
     }
 
-    fetch(`/medidas/ultimas/${experiencia}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/medidas/ultimas_SN/${experiencia}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 resposta.reverse();
 
-                plotarGrafico(resposta, experiencia);
+                plotarGrafico_SN(resposta, experiencia);
 
             });
         } else {
@@ -91,7 +100,7 @@ function obterDadosGrafico(experiencia) {
         });
 }
 
-function plotarGrafico(resposta, experiencia) {
+function plotarGrafico_SN(resposta, experiencia) {
 
 console.log('iniciando plotagem do gráfico...');
 
@@ -140,12 +149,12 @@ const config = {
 };
 
 // Adicionando gráfico criado em div na tela
-let myChart = new Chart(
-    document.getElementById(`myChart`),
+let myChart_SN = new Chart(
+    document.getElementById(`myChart_SN`),
     config
 );
 
-setTimeout(() => atualizarGrafico(experiencia, dados, myChart), 2000);
+setTimeout(() => atualizarGrafico_SN(experiencia, dados, myChart_SN), 2000);
 }
 
 
@@ -154,11 +163,11 @@ setTimeout(() => atualizarGrafico(experiencia, dados, myChart), 2000);
 
 //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
 //     Para ajustar o "select", ajuste o comando sql em src/models
-function atualizarGrafico(experiencia, dados, myChart) {
+function atualizarGrafico_SN(experiencia, dados, myChart_SN) {
 
 
 
-fetch(`/medidas/tempo-real/${experiencia}`, { cache: 'no-store' }).then(function (response) {
+fetch(`/medidas/tempo-real_SN/${experiencia}`, { cache: 'no-store' }).then(function (response) {
     if (response.ok) {
         response.json().then(function (novoRegistro) {
 
@@ -184,16 +193,16 @@ fetch(`/medidas/tempo-real/${experiencia}`, { cache: 'no-store' }).then(function
                 dados.labels.shift(); // apagar o primeiro
                 dados.labels.push(novoRegistro[0].experiencia_grafico); // incluir um novo momento
 
-                myChart.update();
+                myChart_SN.update();
             }
 
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(experiencia, dados, myChart), 2000);
+            proximaAtualizacao_SN = setTimeout(() => atualizarGrafico_SN(experiencia, dados, myChart_SN), 2000);
         });
     } else {
         console.error('Nenhum dado encontrado ou erro na API');
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => atualizarGrafico(experiencia, dados, myChart), 2000);
+        proximaAtualizacao_SN = setTimeout(() => atualizarGrafico_SN(experiencia, dados, myChart_SN), 2000);
     }
 })
     .catch(function (error) {
@@ -201,4 +210,196 @@ fetch(`/medidas/tempo-real/${experiencia}`, { cache: 'no-store' }).then(function
     });
 
 }
+
+window.onload = obterDadosGraficos_MF();
+
+function obterDadosGraficos_MF() {
+    obterDadosGrafico_MF(1)
+}
+
+function obterDadosGrafico_MF(experiencia) {
+
+    // alterarTitulo(experiencia)
+
+
+    if (proximaAtualizacao_MF != undefined) {
+        clearTimeout(proximaAtualizacao_MF);
+    }
+
+    fetch(`/medidas/ultimas_MF/${experiencia}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse();
+
+                plotarGrafico_MF(resposta, experiencia);
+
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+}
+
+function plotarGrafico_MF(resposta, experiencia) {
+
+console.log('iniciando plotagem do gráfico...');
+
+// Criando estrutura para plotar gráfico - labels
+let labels = [];
+
+// Criando estrutura para plotar gráfico - dados
+let dados = {
+    labels: labels,
+    datasets: [{
+        label: 'Usuarios',
+        data: [],
+        fill: false,
+        borderColor: 'rgb(29, 115, 115)',
+        backgroundColor : 'rgb(16, 115, 97)',
+        borderWidth: 5,
+        tension: 0.5
+        
+    },
+]
+};
+
+console.log('----------------------------------------------')
+console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+console.log(resposta)
+
+// Inserindo valores recebidos em estrutura para plotar o gráfico
+for (i = 0; i < resposta.length; i++) {
+    var registro = resposta[i];
+    labels.push(registro.Sexo);
+    dados.datasets[0].data.push(registro.Usuarios);
+}
+
+console.log('----------------------------------------------')
+console.log('O gráfico será plotado com os respectivos valores:')
+console.log('Labels:')
+console.log(labels)
+console.log('Dados:')
+console.log(dados.datasets)
+console.log('----------------------------------------------')
+
+// Criando estrutura para plotar gráfico - config
+const config = {
+    type: 'bar',
+    data: dados,
+};
+
+// Adicionando gráfico criado em div na tela
+let myChart_MF = new Chart(
+    document.getElementById(`myChart_MF`),
+    config
+);
+
+setTimeout(() => atualizarGrafico_MF(experiencia, dados, myChart_MF), 2000);
+}
+
+
+// Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+// buscando a última medida inserida em tabela contendo as capturas, 
+
+//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+//     Para ajustar o "select", ajuste o comando sql em src/models
+function atualizarGrafico_MF(experiencia, dados, myChart_MF) {
+
+fetch(`/medidas/tempo-real_MF/${experiencia}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (novoRegistro) {
+
+            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+            console.log(`Dados atuais do gráfico:`);
+            console.log(dados);
+
+            let avisoCaptura = document.getElementById(`avisoCaptura${experiencia}`)
+            avisoCaptura.innerHTML = ""
+
+
+            if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                console.log("---------------------------------------------------------------")
+                console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                console.log("Horário do novo dado capturado:")
+                console.log(novoRegistro[0].momento_grafico)
+                console.log("Horário do último dado capturado:")
+                console.log(dados.labels[dados.labels.length - 1])
+                console.log("---------------------------------------------------------------")
+            } else {
+                // tirando e colocando valores no gráfico
+                dados.labels.shift(); // apagar o primeiro
+                dados.labels.push(novoRegistro[0].experiencia_grafico); // incluir um novo momento
+
+                myChart_MF.update();
+            }
+
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacao_MF = setTimeout(() => atualizarGrafico_MF(experiencia, dados, myChart_MF), 2000);
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao_MF = setTimeout(() => atualizarGrafico_MF(experiencia, dados, myChart_MF), 2000);
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+
+}
+
+function contar_Usuarios() {
+    aguardar();
+
+    fetch("/medidas/contar_usuarios", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+            if (resposta.status == 204) {
+                    var feed = document.getElementById("qtd_cadastro");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                var feed = document.getElementById("qtd_cadastro");
+                feed.innerHTML = "";
+                for (let Contador_dojos = 0; Contador_dojos < resposta.length; Contador_dojos++) {
+                    var publicacao = resposta[Contador_dojos];
+                    // criando e manipulando elementos do HTML via JavaScript
+
+                    feed.innerHTML = publicacao.usuarios;
+
+                }
+
+                finalizarAguardar();
+            });
+        } else {
+            throw ("Houve um erro ao tentar realizar A pesquisa!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+    });
+
+    return false;
+}
+
+
 </script>

@@ -1,11 +1,12 @@
+
+-- Exclui o banco de dados "Recuperacao"
+drop database Recuperacao;
+
 -- Criação do banco de dados "Recuperacao"
 create database Recuperacao;
 
 -- Seleciona o banco de dados "Recuperacao"
 use Recuperacao;
-
--- Exclui o banco de dados "Recuperacao"
-drop database Recuperacao;
 
 -- Criação da tabela "Usuario"
 create table Usuario (
@@ -30,13 +31,15 @@ create table Dojo (
     idDojo int primary key auto_increment, -- configurando o id da tabela
     fkUsuario int, -- configurando a chave estrangeira que ira estabelecer uma relação entre a tabela Dojo e outra tabela que seria a Usuario
     NomeDojo varchar(45), -- configurando o campo nome do dojo na tabela
-    Localização varchar(45), -- configurando o compo aonde sera inserido a locolização do dojo na tabela
+    Localizacao varchar(45), -- configurando o compo aonde sera inserido a locolização do dojo na tabela
     Mestre varchar(45), --  configurando o compo aonde sera inserido o nome do Mestre do dojo na tabela
     constraint fkUsuario foreign key (fkUsuario) references Usuario(idUsuario) -- configurando arestrição de chave estrangeira para que ela consiga referenciar a tabela Usuario através do id dela 
 );
 
+SELECT NomeDojo,Localizacao,Mestre FROM Dojo;
+
 -- Seleciona todos os registros da tabela "Dojo"
-select * from dojo;
+select * from Dojo;
 
 -- Seleciona todos os registros da tabela "Usuario"
 select * from Usuario;
@@ -61,7 +64,7 @@ insert into Usuario (idUsuario, nome, Sobrenome, dtNasc, Email, senha, Sexo, exp
 (null, 'Rafael', 'Atlas', '2006-12-03', 'rafael.atlas@sptech.school', '123456', 'm', 'n');
 
 -- Inserção de registros na tabela "Dojo"
-insert into dojo values
+insert into Dojo values
 (null, 1, 'FK', 'Tatuapé', 'Fluido'),
 (null, null, 'D+Fit', 'Carrão', 'Thiago'),
 (null, 2, 'Myagi-do', 'Paulista', 'Larruso'),
@@ -71,19 +74,19 @@ insert into dojo values
 
 -- Atualização de registros na tabela "Usuario" e "Dojo"
 update Usuario set Email = 'Thomas23@gmail.com' where idUsuario = 3;
-update dojo set Nome = 'Cobra Kai' where idDojo = 4;
-update dojo set fkUsuario = 3 where idDojo = 3;
+update Dojo set NomeDojo = 'Cobra Kai' where idDojo = 4;
+update Dojo set fkUsuario = 3 where idDojo = 3;
 
 --  Criação das views
 
 -- Criação da view "Nome_do_aluno_do_dojo"
 create view Nome_do_aluno_do_dojo as
-select nome, experiencia, NomedaArte from Usuario JOIN dojo
+select nome, experiencia, NomedaArte from Usuario JOIN Dojo
 ON idUsuario = fkUsuario;
 
 -- Criação da view "Todas_as_tabelas"
 create view Todas_as_tabelas as
-select * from Usuario JOIN dojo ON idUsuario = fkUsuario;
+select * from Usuario JOIN Dojo ON idUsuario = fkUsuario;
 
 -- Seleciona todos os registros da view "Nome_do_aluno_do_dojo"
 select * from Nome_do_aluno_do_dojo;

@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuario</title>
     <link rel="icon" href="assets/imgs/ideia_2-removebg-preview.png">
-    <link rel="stylesheet" href="./css/user.css">
+    <script src="js/funcoes.js"></script>
+    <link rel="stylesheet" href="css/user(Não arrumei).css">
 </head>
 
-<body>
-   
-
+<body onload="atualizarFeed_Dojos()">
         <nav>
             <div class="logo">
                 <a href="index.html"><img src="assets/imgs/ideia_2-removebg-preview.png" alt=""></a>
@@ -27,9 +26,9 @@
         </div>
         <div class="face back">
             <h3>Dojos</h3>
-            <a href="https://instagram.com/galpaodaluta?igshid=MzRlODBiNWFlZA==">Galpão da Luta</a>
-            <a href="https://instagram.com/ctf4.zl?igshid=MzRlODBiNWFlZA==">F4</a>
-            <a href="https://instagram.com/cobrakaiseries?igshid=MzRlODBiNWFlZA==">Cobra Kai</a>  
+            <ul id="lista_dojos">
+
+            </ul>
         </div>
     </div>
 
@@ -53,13 +52,17 @@
             <h3>Bonús</h3>
 
             <a href="calculadora.html">Calculadora</a>
-           <a href="assets/imgs/tela1.jpg">Plano de fundo1</a>
-           <a href="assets/imgs/ideia_2-removebg-preview.png">Plano de fundo2</a>
-       
+            <a href="assets/imgs/tela1.jpg">Plano de fundo</a>
+            <a href="assets/imgs/ideia_2-removebg-preview.png">Plano de fundo</a>
+            <a href="dashboard(Em andamento)/dashboard.html">Dashboard</a>
         </div>
     </div>
 
+    <!-- Div para exibir erros de login -->
+    <div id="div_erros_login"></div>
 
+    <!-- Div para exibir um indicador de carregamento (loading) -->
+    <div id="div_aguardar" class="loading-div"></div>
 
 </body>
 
@@ -69,5 +72,55 @@
 
 Nome.innerHTML = sessionStorage.NOME_USUARIO;
 ID.innerHTML = sessionStorage.ID_USUARIO;
+
+function atualizarFeed_Dojos() {
+    aguardar();
+
+    fetch("/usuarios/listar_dojos", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+            if (resposta.status == 204) {
+                    var feed = document.getElementById("lista_dojos");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                var feed = document.getElementById("lista_dojos");
+                feed.innerHTML = "";
+                for (let Contador_dojos = 0; Contador_dojos < resposta.length; Contador_dojos++) {
+                    var publicacao = resposta[Contador_dojos];
+                    // criando e manipulando elementos do HTML via JavaScript
+                    var usuario = document.createElement("li");
+
+                    usuario.innerHTML = publicacao.NomeDojo + " | " + publicacao.Localizacao + " | " + publicacao.Mestre;
+
+                    feed.appendChild(usuario);
+                }
+
+                finalizarAguardar();
+            });
+        } else {
+            throw ("Houve um erro ao tentar realizar A pesquisa!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+    });
+
+    return false;
+}
 
 </script>
