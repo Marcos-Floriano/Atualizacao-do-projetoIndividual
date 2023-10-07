@@ -28,13 +28,14 @@ function entrar(email, senha) {
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
-function cadastrarRespostaSim(nome,sobrenome,nacimento,email,senha,genero,experiencia,exp,tempo) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarRespostaSim():", nome,sobrenome,nacimento,email,senha,genero,experiencia,exp,tempo);
+function cadastrarRespostaSim(nome,sobrenome,nacimento,email,senha,genero,experiencia,exp,tempo,grau) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarRespostaSim():", nome,sobrenome,nacimento,email,senha,genero,experiencia,exp,tempo,grau);
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO usuario (Nome,sobrenome,dtNasc,Email,senha, Sexo, experiencia,NomedaArte,Tempo) VALUES ('${nome}','${sobrenome}','${nacimento}', '${email}', '${senha}', '${genero}', '${experiencia}','${exp}','${tempo}');
+        INSERT INTO usuario (Nome,sobrenome,dtNasc,Email,senha, Sexo, experiencia,NomedaArte,Tempo) VALUES ('${nome}','${sobrenome}','${nacimento}', '${email}', '${senha}', '${genero}', '${experiencia}');
+        INSERT INTO Experiente (NomedaArte,tempo,Grau) VALUES ('${exp}','${tempo}','${grau}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -53,13 +54,14 @@ function cadastrarRespostaNao(nome,sobrenome,nacimento,email,senha,genero,experi
     return database.executar(instrucao);
 }
 
-function cadastrarDojoRespostaNao(nomeD,localização,Mestre,ID) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarRespostaSim():", ID,nomeD,localização,Mestre);
+function cadastrarDojoRespostaNao(nomeD,localização,Mestre,ID,bairro,rua,numero) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarRespostaSim():", ID,nomeD,localização,Mestre,bairro,rua,numero);
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO Dojo (fkUsuario,Nome,Localização,Mestre) VALUES (${ID},'${nomeD}','${localização}', '${Mestre}');
+        INSERT INTO Dojo (fkUsuario,Nome,Mestre) VALUES (${ID},'${nomeD}','${localização}', '${Mestre}');
+        INSERT INTO Localizacao (Bairro,Rua,Numero) VALUES (${bairro},'${rua}','${numero}',);
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

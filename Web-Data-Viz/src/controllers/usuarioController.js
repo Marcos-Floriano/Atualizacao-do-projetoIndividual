@@ -88,6 +88,7 @@ function cadastrarRespostaSim(req, res) {
     var experiencia = req.body.experienciaServer;
     var exp = req.body.expServer;
     var tempo = req.body.tempoServer;
+    var grau =  req.body.grauServer;
     ;
 
     // Faça as validações dos valores
@@ -109,10 +110,12 @@ function cadastrarRespostaSim(req, res) {
         res.status(400).send("Sua senha está undefined!");
     }else if (tempo == undefined) {
         res.status(400).send("Sua senha está undefined!");
+    }else if (grau == undefined) {
+        res.status(400).send("Sua senha está undefined!");
     }else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarRespostaSim(nome,sobrenome,nacimento,email,senha, genero, experiencia,exp,tempo)
+        usuarioModel.cadastrarRespostaSim(nome,sobrenome,nacimento,email,senha, genero, experiencia,exp,tempo,grau)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -179,20 +182,27 @@ function cadastrarRespostaNao(req, res) {
 function cadastrarDojoRespostaNao(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nomeD = req.body.nomeDServer;
-    var localização = req.body.localizaçãoServer;
+    var bairro = req.body.bairroServer;
+    var rua = req.body.ruaServer;
+    var numero = req.body.numeroServer;
     var Mestre = req.body.MestreServer;
     var ID = req.body.IDServer;
     ;
     // Faça as validações dos valores
     if (nomeD == undefined) {
         res.status(400).send("Seu nome está undefined!");
-    } else if (localização == undefined) {
+    } else if (bairro == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (rua == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (numero == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (Mestre == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else if (ID == undefined) {
         res.status(400).send("Sua senha está undefined!");
-
+    }
+        else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         dojoModel.cadastrarRespostaNao(nomeD,localização,Mestre,ID)

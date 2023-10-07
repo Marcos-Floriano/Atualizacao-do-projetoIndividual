@@ -178,17 +178,22 @@
 
                         <div class="input">
 
-                      
 
-                                <label id="nome1" style="display: none;">Qual arte marcial?</label>
 
-                                <input id="input_exp" type="text" style="display: none;"  placeholder="Digite o nome de arte marcial">
+                            <label id="nome1" style="display: none;">Qual arte marcial?</label>
 
-                                <label id="nome2" style="display: none;">Por quanto tempo?</label>
+                            <input id="input_exp" type="text" style="display: none;"
+                                placeholder="Digite o nome de arte marcial">
 
-                                <input id="input_tempo" type="text" style="display: none;" placeholder="Digite por quanto tempo praticou">
+                            <label id="nome2" style="display: none;">Por quanto tempo?</label>
 
-                           
+                            <input id="input_tempo" type="text" style="display: none;"
+                                placeholder="Digite por quanto tempo praticou">
+
+                            <label id="nome3" style="display: none;">Qual o seu grau na arte marcial?</label>
+
+                            <input id="input_grau" type="text" style="display: none;"
+                                placeholder="Digite qual o seu grau na arte marcial praticada">
 
                         </div>
 
@@ -221,14 +226,18 @@
 
             nome1.style.display = 'block'
             nome2.style.display = 'block'
+            nome3.style.display = 'block'
             input_tempo.style.display = 'block'
             input_exp.style.display = 'block'
+            input_grau.style.display = 'block'
         } else {
 
             nome1.style.display = 'none'
             nome2.style.display = 'none'
+            nome3.style.display = 'block'
             input_tempo.style.display = 'none'
             input_exp.style.display = 'none'
+            input_grau.style.display = 'block'
         }
 
     }
@@ -248,6 +257,7 @@
         var senhaVar = input_password.value;
         var expVar = input_exp.value;
         var tempoVar = input_tempo.value;
+        var grauVar = input_grau.value;
 
         console.log(input_genero1.checked)
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || nacimentoVar == "" || sobrenomeVar == "" || generoVar == "" || experienciaVar == "") {
@@ -274,7 +284,8 @@
                         generoServer: generoVar,
                         experienciaServer: experienciaVar,
                         expServer: expVar,
-                        tempoServer: tempoVar
+                        tempoServer: tempoVar,
+                        grauServer: grauVar
                     })
                 }).then(function (resposta) {
 
@@ -327,7 +338,7 @@
                         // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                         setTimeout(() => {
-                            window.location = "login.html";
+                            window.location = "login(Refeito).html";
                         }, "2000")
 
                         limparFormulario();

@@ -41,12 +41,25 @@
                         </div>
 
                         <div class="input">
-                            <label for="lastname">Localização</label>
-                            <input id="input_localização" type="text" placeholder="insira a localização do dojo"
+                            <label for="lastname">Bairro</label>
+                            <input id="input_bairro" type ="text" placeholder="insira a Bairro do dojo"
                                 required>
                         </div>
+
                         <div class="input">
-                            <label for="email">Id do aluno que indicou o site (se tiver)</label>
+                            <label for="lastname">rua</label>
+                            <input id="input_rua" type="text" placeholder="insira a rua do dojo"
+                                required>
+                        </div>
+
+                        <div class="input">
+                            <label for="lastname">Numero</label>
+                            <input id="input_numero" type="text" placeholder="insira a Numero da localização do dojo"
+                                required>
+                        </div>
+
+                        <div class="input">
+                            <label for="email">Id do aluno que indicou o site</label>
                             <input id="input_IDaluno" type="number" placeholder="insira o id do aluno" required>
                         </div>
 
@@ -77,7 +90,9 @@
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var nomeDVar = input_nome.value;
-        var localizaçãoVar = input_localização.value;
+        var BairroVar = input_bairro.value;
+        var RuaVar = input_rua.value;
+        var NumeroVar = input_numero.value;
         // var IDVar = Number(input_IDaluno.value);
         var MestreVar = input_Mestre.value;
 
@@ -90,7 +105,9 @@
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
                 nomeDServer: nomeDVar,
-                localizaçãoServer: localizaçãoVar,
+                bairroServer: BairroVar,
+                ruaServer: RuaVar,
+                numeroServer: NumeroVar,
                 // IDServer: IDVar,
                 MestreServer: MestreVar
             })

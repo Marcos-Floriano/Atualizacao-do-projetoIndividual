@@ -60,52 +60,27 @@ function entrar(req, res) {
 
 }
 
-function cadastrarRespostaSim(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var nomeD = req.body.nomeDServer;
-    var localização = req.body.localizaçãoServer;
-    var Mestre = req.body.MestreServer;
-    ;
-
-    // Faça as validações dos valores
-    if (nomeD == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    } else if (localização == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (Mestre == undefined) {
-        res.status(400).send("Seu senha está undefined!");
-        
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        dojoModel.cadastrarRespostaSim(nomeD,localização,Mestre)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
-}
-
 function cadastrarDojo(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nomeD = req.body.nomeDServer;
-    var localização = req.body.localizaçãoServer;
+    var bairro = req.body.bairroServer;
+    var rua = req.body.ruaServer;
+    var numero = req.body.numeroServer;
     var Mestre = req.body.MestreServer;
-
+    var ID = req.body.IDServer;
+    ;
     // Faça as validações dos valores
     if (nomeD == undefined) {
         res.status(400).send("Seu nome está undefined!");
-    } else if (localização == undefined) {
+    } else if (bairro == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (rua == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (numero == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (Mestre == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else if (ID == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else {
         
