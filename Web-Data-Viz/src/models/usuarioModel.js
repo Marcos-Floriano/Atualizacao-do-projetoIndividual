@@ -60,7 +60,7 @@ function cadastrarDojoRespostaNao(nomeD,localização,Mestre,ID,bairro,rua,numer
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO Dojo (fkUsuario,Nome,Mestre) VALUES (${ID},'${nomeD}','${localização}', '${Mestre}');
+        INSERT INTO Dojo (fkUsuario,Nome,Mestre) VALUES (${ID},'${nomeD}','${Mestre}');
         INSERT INTO Localizacao (Bairro,Rua,Numero) VALUES (${bairro},'${rua}','${numero}',);
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);

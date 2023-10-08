@@ -6,83 +6,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
-    <link rel="stylesheet" href="css/calculadora.css">
+    <link rel="stylesheet" href="css/calculadora(Não arrumei).css">
     <link rel="icon" href="assets/imgs/ideia_2-removebg-preview.png">
 </head>
 
 <body>
-    <div class="body">
+
         <nav>
-            <div class="logo">
-                <a href=""><img src="assets/imgs/ideia_2-removebg-preview.png" alt=""></a>
-                <span></span>
-            </div>
+            <img src="../public/assets/icon/logo-sem-o-fundo.png" class="logo">
             <ul>
-                <li><a href="User.html">Voltar</a></li>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="sobremim.html">Meets us</a></li>             
+                <li><a href="User(Não arrumei).html">Voltar</a></li>
             </ul>
         </nav>
+        <br><br><br><br>
+    
+        <div class="caixa">
 
-        <ul class="accordion">
+            <div class="conteudo">
 
-            <li>
-
-                <input type="radio" name="accordion" id="first" checked>
-
-                <label for="first">
+                <label>
                     <h4>Perda de peso</h4>
                 </label>
 
-                <div class="content">
+                <div class="inputs">
 
 
-                    <h3>informe seu peso:</h3>
+                    <h3>informe seu peso:</h3><br>
                     <input type="number" id="input_peso_atual">
                     <br><br>
 
-                    <h3>informe o peso que quer ter:</h3>
+                    <h3>informe o peso que quer ter:</h3><br>
                     <input type="number" id="input_peso_desejavel">
                     <br><br>
 
-                    <h3>informe o tempo desejavel (meses):</h3>
+                    <h3>informe o tempo desejavel (meses):</h3><br>
                     <input type="number" id="input_tempo">
                     <br><br>
 
-                    <button onclick="calcular()" class="btn">calcular</button>
+                    <button onclick="calcular()" class="btn">calcular</button><br>
 
                     <p id="final"></p>
 
 
                 </div>
 
-            </li>
+            </div>
 
-        </ul>
+        </div>
 
-        <ul class="accordion">
+        <div class="caixa">
+            <div class="conteudo">
 
-            <li>
-
-                <input type="radio" name="accordion" id="secund" checked>
-
-                <label for="secund">
+                <label>
                     <h4>Grade de treino</h4>
                 </label>
 
-                <div class="content">
+                <div class="inputs">
 
-                    <h4>Insira quandos dias você pode treinar</h4>
-                    <input type="number" id="ipt_dias"><br>
-                    <button onclick="exibir()" class="btn">Exibir rotina mensal</button>
+                    <h4>Insira quandos dias você pode treinar</h4><br>
+                    <input type="number" id="ipt_dias"><br><br>
+                    <button onclick="exibir()" class="btn">Exibir rotina mensal</button><br>
                     <div id="div_msg"></div>
 
                 </div>
+            </div>
 
-            </li>
+        </div>
 
-        </ul>
-    </div>
 </body>
 
 </html>
