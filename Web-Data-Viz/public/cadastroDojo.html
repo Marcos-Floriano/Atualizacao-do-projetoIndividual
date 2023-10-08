@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/Cadastro(Refeito).css">
-    <link rel="icon" href="assets/imgs/ideia_2-removebg-preview.png">
+    <link rel="stylesheet" href="css/Cadastro.css">
+    <link rel="icon" href="assets/icon/logo-sem-o-fundo.png">
     <title>Cadastro Dojo</title>
 </head>
 
@@ -21,7 +21,7 @@
     
                     <!-- Lista de itens de menu -->
                     <ul>
-                        <li><a href="User(Não arrumei).html">Voltar</a></li>
+                        <li><a href="User.html">Voltar</a></li>
     
                     </ul>
                 </nav>
@@ -119,16 +119,16 @@
 
                 alert("Cadastro realizado com sucesso!");
 
-                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                mensagem_erro.innerHTML = "Cadastro dojo realizado com sucesso! Redirecionando para tela de Usuario...";
 
-                // setTimeout(() => {
-                //     window.location = "login.html";
-                // }, "2000")
+                setTimeout(() => {
+                    window.location = "User.html";
+                }, "2000")
 
-                // limparFormulario();
+                limparFormulario();
 
             } else {
-                alert ("Houve um erro ao tentar realizar o cadastro!");
+                alert ("Houve um erro ao tentar realizar o cadastro do dojo!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
