@@ -139,6 +139,18 @@
 
                         </div>
 
+                      
+                         <div class="gender-input">
+
+                        
+                            <input id="input_genero3" type="radio" name="gender" value="o">
+
+
+                            <label for="other">Outros</label>
+
+                        </div>
+
+
 
 
                     </div>
@@ -181,9 +193,9 @@
 
 
                             <label id="nome1" style="display: none;">Qual arte marcial?</label>
-
-                            <input id="input_exp" type="text" style="display: none;"
-                                placeholder="Digite o nome de arte marcial">
+                            <select id="input_exp" name="select" style="display: none;">
+                                
+                            </select>
 
                             <label id="nome2" style="display: none;">Por quanto tempo?</label>
 
@@ -220,6 +232,61 @@
 
 <script>
 
+    window.onload = atualizarFeed_Artes();
+
+    var lista_artes = [];
+
+    function atualizarFeed_Artes() {
+    
+        fetch("/usuarios/listar_artes", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+    
+            console.log("resposta: ", resposta);
+    
+            if (resposta.ok) {
+    
+                if (resposta.status == 204) {
+                        var feed = document.getElementById("input_exp");
+                        var mensagem = document.createElement("span");
+                        mensagem.innerHTML = "Nenhum resultado encontrado."
+                        feed.appendChild(mensagem);
+                        throw "Nenhum resultado encontrado!!";
+                    }
+    
+                    resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("input_exp");
+    
+                    for (let Contador_artes = 0; Contador_artes < resposta.length; Contador_artes++) {
+                        var publicacao = resposta[Contador_artes];
+                        // criando e manipulando elementos do HTML via JavaScript
+
+                        lista_artes.push({"IDArte ":publicacao.idArtemarcial, "NomeArte ":publicacao.nome})
+
+                        var opt = document.createElement("option");
+                        opt.value = publicacao.idArtemarcial;
+                        opt.innerHTML = publicacao.nome;
+                    
+                        feed.appendChild(opt)
+
+                    }
+
+                });
+            } else {
+                throw ("Houve um erro ao tentar realizar A pesquisa!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    
+        return false;
+    }
+
     function input(resp) {
 
         if (resp == "s") {
@@ -248,7 +315,10 @@
         var experienciaVar = 'n'
         if (input_genero1.checked) {
             generoVar = 'f'
-        }
+    }else if(input_genero3.checked){
+        generoVar = 'o'
+    }
+    
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var nomeVar = input_nome.value;

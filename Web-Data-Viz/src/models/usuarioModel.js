@@ -27,6 +27,15 @@ function listar_dojos() {
     return database.executar(instrucao);
 }
 
+function listar_artes() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+        SELECT * FROM artemarcial;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function entrar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
@@ -76,6 +85,7 @@ function cadastrarDojoRespostaNao(nomeD,localização,Mestre,ID,bairro,rua,numer
     return database.executar(instrucao);
 }
 
+
 module.exports = {
     entrar,
     cadastrarRespostaSim,
@@ -83,5 +93,7 @@ module.exports = {
     cadastrarDojoRespostaNao,
     listar,
     listar_dojos,
-    buscarIDusuario
+    buscarIDusuario,
+    listar_artes
 };
+
