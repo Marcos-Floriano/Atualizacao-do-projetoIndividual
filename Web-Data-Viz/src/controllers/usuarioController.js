@@ -132,17 +132,10 @@ function cadastrarRespostaSim(req, res) {
     }else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarRespostaSim(nome,sobrenome,nacimento,email,senha, genero, experiencia)
+        usuarioModel.cadastrarRespostaSim(nome,sobrenome,nacimento,email,senha, genero, experiencia,exp,tempo,grau)
             .then(
                 function (resultado) {
                     res.json(resultado);
-                    
-                    usuarioModel.buscarIDusuario(email,senha).then(
-                        function (resultado) {
-                            res.json(resultado);
-                        }
-                    )
-
                 }
             ).catch(
                 function (erro) {
