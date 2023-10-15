@@ -59,11 +59,6 @@
                         </div>
 
                         <div class="input">
-                            <label for="email">Id do aluno que indicou o site</label>
-                            <input id="input_IDaluno" type="number" placeholder="insira o id do aluno" required>
-                        </div>
-
-                        <div class="input">
                             <label for="number">Mestre</label>
                             <input id="input_Mestre" type="text" placeholder="Insira o nome do mestre" required>
                         </div>
@@ -93,7 +88,6 @@
         var BairroVar = input_bairro.value;
         var RuaVar = input_rua.value;
         var NumeroVar = input_numero.value;
-        // var IDVar = Number(input_IDaluno.value);
         var MestreVar = input_Mestre.value;
 
         fetch("/dojo/cadastrarDojo", {
@@ -108,7 +102,6 @@
                 bairroServer: BairroVar,
                 ruaServer: RuaVar,
                 numeroServer: NumeroVar,
-                // IDServer: IDVar,
                 MestreServer: MestreVar
             })
         }).then(function (resposta) {
@@ -117,12 +110,8 @@
 
             if (resposta.ok) {
 
-                alert("Cadastro realizado com sucesso!");
-
-                mensagem_erro.innerHTML = "Cadastro dojo realizado com sucesso! Redirecionando para tela de Usuario...";
-
                 setTimeout(() => {
-                    window.location = "User.html";
+                    window.location.href("User.html")
                 }, "2000")
 
                 limparFormulario();

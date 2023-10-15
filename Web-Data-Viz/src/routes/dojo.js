@@ -16,4 +16,5 @@ router.post("/cadastrarDojo", function (req, res) {
     dojoController.cadastrarDojo(req, res);
 });
 
+
 module.exports = router;

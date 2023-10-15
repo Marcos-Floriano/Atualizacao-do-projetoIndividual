@@ -24,51 +24,15 @@ function listar(req, res) {
         );
 }
 
-function entrar(req, res) {
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
-
-    if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
-    } else {
-        
-        usuarioModel.entrar(email, senha)
-            .then(
-                function (resultado) {
-                    console.log(`\nResultados encontrados: ${resultado.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
-
-                    if (resultado.length == 1) {
-                        console.log(resultado);
-                        res.json(resultado[0]);
-                    } else if (resultado.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                    }
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
-
-}
-
 function cadastrarDojo(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nomeD = req.body.nomeDServer;
+    var Mestre = req.body.MestreServer;
+
     var bairro = req.body.bairroServer;
     var rua = req.body.ruaServer;
     var numero = req.body.numeroServer;
-    var Mestre = req.body.MestreServer;
-    var ID = req.body.IDServer;
-    ;
+
     // Faça as validações dos valores
     if (nomeD == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -80,15 +44,16 @@ function cadastrarDojo(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (Mestre == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else if (ID == undefined) {
-        res.status(400).send("Sua senha está undefined!");
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        dojoModel.cadastrarDojo(nomeD,localização,Mestre)
+        dojoModel.cadastrarDojo(nomeD,Mestre)
             .then(
                 function (resultado) {
                     res.json(resultado);
+
+                    cadastrarloc(nomeD,bairro,rua,numero,Mestre)
+
                 }
             ).catch(
                 function (erro) {
@@ -101,6 +66,24 @@ function cadastrarDojo(req, res) {
                 }
             );
     }
+}
+
+function cadastrarloc(nomeD,bairro,rua,numero,Mestre){
+    
+    dojoModel.buscarid(nomeD,Mestre).then(
+        function (resultado){
+
+            var idDojo = resultado[0].idDojo;
+
+            dojoModel.cadastrarLoc(bairro,rua,numero,idDojo).then(
+                function (resultado){
+                    
+                }
+            )
+
+        }
+    )
+
 }
 
 module.exports = {

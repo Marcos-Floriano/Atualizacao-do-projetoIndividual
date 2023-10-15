@@ -7,14 +7,14 @@
     <title>Usuario</title>
     <link rel="icon" href="assets/icon/logo-sem-o-fundo.png">
     <script src="js/funcoes.js"></script>
-    <link rel="stylesheet" href="css/user(Não arrumei).css">
+    <link rel="stylesheet" href="css/user.css">
 </head>
 
-<body onload="atualizarFeed_Dojos()">
+<body>
         <nav>
             <div class="logo">
                 <a href="index.html"><img src="assets/icon/logo-sem-o-fundo.png" alt=""></a>
-                <span>Bem Vindo <span id="Nome"> usuario </span> ID:<span id="ID">id</span></span>
+                <span>Bem Vindo <span id="Nome"> usuario </span></span>
             </div>
         </nav>
 
@@ -28,7 +28,7 @@
 
             </ul>
 
-            <a href="cadastroDojo(Refeito).html">Quer cadastrar o seu dojo? </a>
+            <a href="cadastroDojo.html">Quer cadastrar o seu dojo? </a>
         </div>
     </div>
 
@@ -56,12 +56,13 @@
 <script>
 
 Nome.innerHTML = sessionStorage.NOME_USUARIO;
-ID.innerHTML = sessionStorage.ID_USUARIO;
+
+window.onload = atualizarFeed_Dojos();
 
 function atualizarFeed_Dojos() {
     aguardar();
 
-    fetch("/usuarios/listar_dojos", {
+    fetch("/dojo/listar", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -90,7 +91,7 @@ function atualizarFeed_Dojos() {
                     // criando e manipulando elementos do HTML via JavaScript
                     var usuario = document.createElement("li");
 
-                    usuario.innerHTML = publicacao.NomeDojo + " | " + publicacao.Localizacao + " | " + publicacao.Mestre;
+                    usuario.innerHTML = publicacao.NomeDojo + " | " + publicacao.Mestre + " | " + publicacao.Bairro;
 
                     feed.appendChild(usuario);
                 }
