@@ -1,11 +1,12 @@
+
+-- Exclui o banco de dados "Recuperacao"
+drop database IF EXISTS Recuperacao;
+
 -- Criação do banco de dados "Recuperacao"
-create database Recuperacao;
+create database IF NOT EXISTS Recuperacao;
 
 -- Seleciona o banco de dados "Recuperacao"
 use Recuperacao;
-
--- Exclui o banco de dados "Recuperacao"
--- drop database Recuperacao;
 
 -- Criação da tabela "Usuario"
 create table Usuario (
@@ -16,41 +17,53 @@ create table Usuario (
     Email varchar(45),  -- configurando o campo email da tabela
     senha varchar(45),  -- configurando o campo senha da tabela
     Sexo char(1),  -- configurando o campo sexo da tabela
-    experiencia char(1),  -- configurando o campo experiencia da tabela  
-    constraint chkSexo check (Sexo IN ('m', 'f')),  -- configurando o campo sexo da tabela para aceitar somente os valores m e f da tabela
+    experiencia char(1),  -- configurando o campo experiencia da tabela
+    FKDojo INT,
+    constraint chkSexo check (Sexo IN ('m', 'f','o')),  -- configurando o campo sexo da tabela para aceitar somente os valores m e f da tabela
     constraint chkExp check (experiencia IN ('s', 'n'))  -- configurando o campo experiencia da tabela para aceitar somente os valores s e n da tabela
 );
 
 -- Criação da tabela "Experiente"
-create table Experiente(
-   fkUsuario1 int, -- configurando a chave estrangeira que ira estabelecer uma relação entre a tabela Dojo e outra tabela que seria a Usuario
-   NomedaArte varchar(45),  -- configurando o compo aonde o usuario ira inserir o nome da arte marcial que pratica
-    -- somente se estiver prenchido com s o campo de experincia da tabela Usuario
+create table Experiencia(
+   idExperiente int primary key auto_increment,
+   fkUsuario int, -- configurando a chave estrangeira que ira estabelecer uma relação entre a tabela Dojo e outra tabela que seria a Usuario
     tempo varchar(45), -- configurando o compo aonde o usuario ira inserir o tempo que praticou a arte marcial
     -- somente se estiver prenchido com s o campo de experincia da tabela Usuario
      Grau varchar(45), --  configurando o compo aonde o usuario ira inserir o grau da faixa da arte marcial que pratica
     -- somente se estiver prenchido com s o campo de experincia da tabela Usuario
-     constraint fkUsuario1 foreign key (fkUsuario1) references Usuario(idUsuario) -- configurando arestrição de chave estrangeira para que ela consiga referenciar a tabela Usuario através do id dela 
+     constraint fkUsuario foreign key (fkUsuario) references Usuario(idUsuario) -- configurando arestrição de chave estrangeira para que ela consiga referenciar a tabela Usuario através do id dela 
 
 );
 
 -- Criação da tabela "Dojo"
-create table Dojo (
+create table dojo (
     idDojo int primary key auto_increment, -- configurando o id da tabela
-    fkUsuario int, -- configurando a chave estrangeira que ira estabelecer uma relação entre a tabela Dojo e outra tabela que seria a Usuario
     NomeDojo varchar(45), -- configurando o campo nome do dojo na tabela
-    Localização varchar(45), -- configurando o compo aonde sera inserido a locolização do dojo na tabela
-    Mestre varchar(45), --  configurando o compo aonde sera inserido o nome do Mestre do dojo na tabela
-    constraint fkUsuario foreign key (fkUsuario) references Usuario(idUsuario) -- configurando arestrição de chave estrangeira para que ela consiga referenciar a tabela Usuario através do id dela 
+    Mestre varchar(45) --  configurando o compo aonde sera inserido o nome do Mestre do dojo na tabela
 );
 
--- Criação da tabela "Dojo"
+-- Criação da tabela "Localizacao"
 create table Localizacao (
-fkDojo int, -- configurando a chave estrangeira que ira estabelecer uma relação entre a tabela Localizacao e outra tabela que seria a Dojo
+idlocalizacao int primary key auto_increment, -- configurando a chave estrangeira que ira estabelecer uma relação entre a tabela Localizacao e outra tabela que seria a Dojo
 Bairro varchar(45),-- configurando o campo Bairro da tabela Localizacao
 Rua varchar(45), -- configurando o campo Rua da tabela Localizacao
 Numero varchar(3), -- configurando o campo Numero da tabela Localizacao
-constraint fkDojo foreign key (fkDojo) references Dojo(idDojo) -- configurando arestrição de chave estrangeira para que ela consiga referenciar a tabela Dojo através do id dela
+fkDojo int, -- configurando a chave estrangeira que ira estabelecer uma relação entre a tabela Dojo e outra tabela que seria a Usuario
+constraint fkDojo foreign key (fkDojo) references dojo(idDojo) -- configurando arestrição de chave estrangeira para que ela consiga referenciar a tabela Usuario através do id dela 
+);
+
+create table artemarcial(
+idArtemarcial int primary key auto_increment,
+nome varchar(45)
+);
+
+create table lutador(
+idLutador int auto_increment,
+fkArtemarcial int,
+fkExperiencia int,
+constraint fkArtemarcial foreign key (fkArtemarcial) references artemarcial(idArtemarcial),
+constraint fkExperiencia foreign key (fkExperiencia ) references Experiencia(idExperiente),
+constraint PK_Lutador_Artemarcial_Experiencia PRIMARY KEY (idLutador,fkArtemarcial,fkExperiencia)
 );
 
 -- Seleciona todos os registros da tabela "Dojo"
@@ -79,34 +92,76 @@ insert into Usuario (idUsuario, nome, Sobrenome, dtNasc, Email, senha, Sexo, exp
 (null, 'Rafael', 'Atlas', '2006-12-03', 'rafael.atlas@sptech.school', '123456', 'm', 'n');
 
 -- Inserção de registros na tabela "Dojo"
+
 insert into dojo values
-(null, 1, 'FK', 'Tatuapé', 'Fluido'),
-(null, null, 'D+Fit', 'Carrão', 'Thiago'),
-(null, 2, 'Myagi-do', 'Paulista', 'Larruso'),
-(null, null, 'Galpão da Luta', 'Mogi', 'Debora');
+(null, 'FK', 'Fluido'),
+(null, 'D+Fit', 'Thiago'),
+(null, 'Myagi-do', 'Larruso'),
+(null, 'Galpão da Luta', 'Debora');
+
+insert into Localizacao value
+(null,'Vila yolanda II','Rua das palmeiras', '8', 1),
+(null,'Barro Branco','Rua das palmas', '18', 2),
+(null,'Cidade Tiradentes','Rua das rosas', '28', 3),
+(null,'Jardim vitoria','Rua das lirios', '38', 4);
+
+insert into artemarcial values
+(null,'taekwondo'),
+(null,'jiu-jitsu'),
+(null,'muay thai'),
+(null,'capoeira');
 
 --  Criação dos updates
 
 -- Atualização de registros na tabela "Usuario" e "Dojo"
+/*
 update Usuario set Email = 'Thomas23@gmail.com' where idUsuario = 3;
 update dojo set Nome = 'Cobra Kai' where idDojo = 4;
 update dojo set fkUsuario = 3 where idDojo = 3;
-
+*/
 --  Criação das views
 
 -- Criação da view "Nome_do_aluno_do_dojo"
-create view Nome_do_aluno_do_dojo as
+/*create view Nome_do_aluno_do_dojo as
 select nome, experiencia, NomedaArte from Usuario JOIN dojo
 ON idUsuario = fkUsuario;
 
 -- Criação da view "Todas_as_tabelas"
 create view Todas_as_tabelas as
-select * from Usuario JOIN dojo ON idUsuario = fkUsuario;
+select * from Usuario JOIN Dojo ON idDojo = FKDojo;
 
 -- Seleciona todos os registros da view "Nome_do_aluno_do_dojo"
 select * from Nome_do_aluno_do_dojo;
 
 -- Seleciona todos os registros da view "Todas_as_tabelas"
-select * from Todas_as_tabelas;
+SELECT * FROM Todas_as_tabelas;
 
 select*from Usuario where idUsuario = 3;
+*/
+
+
+CREATE VIEW Listar_dojos AS 
+	SELECT * 
+		FROM 
+        dojo JOIN Localizacao
+			ON idDojo = fkDojo;
+            
+SELECT * FROM Listar_dojos;
+
+
+/*
+CREATE VIEW Pegar_usuario AS 
+SELECT Usuario.nome AS "Usuario"
+		,Experiencia.Grau
+        ,artemarcial.nome AS "Arte Marcial" 
+	FROM 
+	Usuario JOIN Experiencia 
+		ON Experiencia.fkUsuario = Usuario.idUsuario
+	JOIN lutador
+		ON lutador.fkExperiencia = Experiencia.idExperiente
+	JOIN artemarcial
+		ON lutador.fkArtemarcial = artemarcial.idArtemarcial;
+        
+SELECT * FROM Pegar_usuario;
+
+*/

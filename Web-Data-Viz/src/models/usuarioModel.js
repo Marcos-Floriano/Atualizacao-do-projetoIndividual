@@ -109,7 +109,7 @@ function cadastrarRespostaNao(nome,sobrenome,nacimento,email,senha,genero,experi
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO usuario (Nome,sobrenome,dtNasc,Email,senha, Sexo, experiencia) VALUES ('${nome}','${sobrenome}','${nacimento}', '${email}', '${senha}', '${genero}', '${experiencia}');
+        INSERT INTO Usuario (Nome,sobrenome,dtNasc,Email,senha, Sexo, experiencia) VALUES ('${nome}','${sobrenome}','${nacimento}', '${email}', '${senha}', '${genero}', '${experiencia}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
