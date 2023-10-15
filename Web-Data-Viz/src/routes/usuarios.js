@@ -36,4 +36,24 @@ router.post("/cadastrarDojoRespostaNao", function (req, res){
     usuarioController.cadastrarDojoRespostaNao(req, res);
 })
 
+router.post("/cadastrarExperiencia" , function (req, res){
+    usuarioController.cadastrarExperiencia(req,res);
+})
+
+router.post("/pegaridExperiencia" , function (req, res){
+    usuarioController.pegaridExperiencia(req,res);
+})
+
+router.post("/pegaridArte" , function (req, res){
+    usuarioController.pegaridArte(req,res);
+})
+
+router.post("/cadastrarLutador" , function (req, res){
+    usuarioController.cadastrarLutador(req,res);
+})
+
+router.post("/buscarid" , function (req, res){
+    usuarioController.buscarid(req,res);
+})
+
 module.exports = router;

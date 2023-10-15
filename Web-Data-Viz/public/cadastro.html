@@ -234,7 +234,7 @@
 
     window.onload = atualizarFeed_Artes();
 
-    var lista_artes = [];
+
 
     function atualizarFeed_Artes() {
     
@@ -261,17 +261,23 @@
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
                     var feed = document.getElementById("input_exp");
+                    var lista_artes = [];
     
                     for (let Contador_artes = 0; Contador_artes < resposta.length; Contador_artes++) {
                         var publicacao = resposta[Contador_artes];
                         // criando e manipulando elementos do HTML via JavaScript
 
-                        lista_artes.push({"IDArte ":publicacao.idArtemarcial, "NomeArte ":publicacao.nome})
+                        lista_artes.push({"IDArte":publicacao.idArtemarcial, "NomeArte":publicacao.nome})
+
+                    }
+
+                    for (let contador2 = 0;contador2 < lista_artes.length; contador2++){
+                        var valores = lista_artes[contador2];
 
                         var opt = document.createElement("option");
-                        opt.value = publicacao.idArtemarcial;
-                        opt.innerHTML = publicacao.nome;
-                    
+                        opt.value = valores.IDArte;
+                        opt.innerHTML = valores.NomeArte;
+
                         feed.appendChild(opt)
 
                     }

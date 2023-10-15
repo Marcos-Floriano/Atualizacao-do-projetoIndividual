@@ -1,6 +1,7 @@
 var usuarioModel = require("../models/usuarioModel");
 
 var sessoes = [];
+var idUsuario = 0;
 
 function testar(req, res) {
     console.log("ENTRAMOS NA usuarioController");
@@ -106,7 +107,6 @@ function cadastrarRespostaSim(req, res) {
     var exp = req.body.expServer;
     var tempo = req.body.tempoServer;
     var grau =  req.body.grauServer;
-    ;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -132,10 +132,13 @@ function cadastrarRespostaSim(req, res) {
     }else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarRespostaSim(nome,sobrenome,nacimento,email,senha, genero, experiencia,exp,tempo,grau)
+        usuarioModel.cadastrarRespostaSim(nome,sobrenome,nacimento,email,senha, genero, experiencia)
             .then(
                 function (resultado) {
                     res.json(resultado);
+
+                    buscarid(email,senha,tempo,grau,exp)
+
                 }
             ).catch(
                 function (erro) {
@@ -148,6 +151,47 @@ function cadastrarRespostaSim(req, res) {
                 }
             );
     }
+}
+
+function buscarid(email,senha,tempo,grau,exp){
+    usuarioModel.buscarid(email,senha).then(
+        function (resultado) {
+            
+            idUsuario = resultado[0].idUsuario;
+            cadastrarexperiencia(tempo,grau,exp)
+
+        }
+    )
+}
+
+function cadastrarexperiencia(tempo,grau,exp){
+    
+    usuarioModel.cadastrarExperiencia(idUsuario,tempo,grau).then(
+    function (resultado) {
+
+        usuarioModel.pegaridExperiencia(idUsuario,tempo,grau).then(
+            function (resultado){
+
+                var idExp = resultado[0].idExperiente;
+
+                usuarioModel.pegaridArte(exp).then(
+                    function (resultado){
+        
+
+                        var idArte = resultado[0].idArtemarcial;
+
+                        usuarioModel.cadastrarLutador(idArte,idExp)
+
+                    }
+                )
+
+            }
+        )
+
+        
+
+    }
+)
 }
 
 function cadastrarRespostaNao(req, res) {
@@ -248,5 +292,7 @@ module.exports = {
     listar,
     testar,
     listar_dojos,
-    listar_artes
+    listar_artes,
+    buscarid,
+    cadastrarexperiencia
 }
