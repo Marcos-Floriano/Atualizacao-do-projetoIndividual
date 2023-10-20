@@ -141,7 +141,7 @@ select*from Usuario where idUsuario = 3;
 
 
 CREATE VIEW Listar_dojos AS 
-	SELECT * 
+	SELECT NomeDojo,Mestre,Bairro 
 		FROM 
         dojo JOIN Localizacao
 			ON idDojo = fkDojo;

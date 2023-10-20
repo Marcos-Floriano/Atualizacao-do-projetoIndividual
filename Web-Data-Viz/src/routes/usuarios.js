@@ -32,6 +32,10 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+router.post("/atualizarGenero", function (req, res) {
+    usuarioController.atualizarGenero(req, res);
+});
+
 router.post("/cadastrarDojoRespostaNao", function (req, res){
     usuarioController.cadastrarDojoRespostaNao(req, res);
 })

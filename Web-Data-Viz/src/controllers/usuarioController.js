@@ -95,6 +95,37 @@ function entrar(req, res) {
 
 }
 
+function atualizarGenero(req, res) {
+
+    var genero = req.body.generoServer;
+    var idUsuario = req.body.idUsuarioServer;
+
+    if (genero == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (idUsuario == undefined) {
+        res.status(400).send("Sua senha está indefinida!");
+    } else {
+        
+        usuarioModel.atualizarGenero(genero, idUsuario)
+            .then(
+                function (resultado) {
+                    console.log(`\nResultados encontrados: ${resultado.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
+
+
+
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
 function cadastrarRespostaSim(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
@@ -187,8 +218,6 @@ function cadastrarexperiencia(tempo,grau,exp){
 
             }
         )
-
-        
 
     }
 )
@@ -294,5 +323,6 @@ module.exports = {
     listar_dojos,
     listar_artes,
     buscarid,
-    cadastrarexperiencia
+    cadastrarexperiencia,
+    atualizarGenero
 }

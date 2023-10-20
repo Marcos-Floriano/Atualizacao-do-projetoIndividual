@@ -26,9 +26,18 @@
 
         <div class="qtdUsuarios">
             <div class="caixa">
-                <p><span id="qtd_cadastro">67</span><br><span>Total de cadastros</span></p>
+                <p><span id="qtd_cadastro"></span><br><span>Total de cadastros</span></p>
             </div>
         </div>
+
+        <button onclick="mostrarSelect()">Atualizar Genero</button>
+        <select name="generos" id="generos" style="display: none;">
+            <option value="none">Selecione um genero</option>
+            <option value="f">Feminino</option>
+            <option value="m">Masculino</option>
+            <option value="o">Outro</option>
+        </select>
+        <button id="button_salvar" onclick="update()" style="display: none;">Salvar</button>
 
     </div>
     <div class="alinhar"></div>
@@ -391,6 +400,53 @@ function contar_Usuarios() {
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
         finalizarAguardar();
+    });
+
+    return false;
+}
+
+function mostrarSelect(){
+
+    var genero = document.getElementById("generos");
+    genero.style.display = "block";
+
+    var buton = document.getElementById("button_salvar");
+    buton.style.display = "block";
+
+
+}
+
+function update(){
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var idUsuarioVar = sessionStorage.ID_USUARIO;
+    var generoVar = generos.value;
+
+    fetch("/usuarios/atualizarGenero", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            generoServer: generoVar,
+            idUsuarioServer: idUsuarioVar
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+            console.log("Update feito")
+
+        } else {
+            alert ("Houve um erro ao tentar realizar o cadastro do dojo!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
     });
 
     return false;
