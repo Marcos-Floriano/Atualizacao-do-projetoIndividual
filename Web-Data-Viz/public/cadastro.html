@@ -11,15 +11,15 @@
 </head>
 
 <body>
-    <!-- Esta div é usada para exibir mensagens de erro -->
-    <div class="mensagem_erro">
 
-        <!-- Início da seção principal da página -->
-        <div class="pag">
+    <div class="mensagem_erro"> <!-- Div ue eu criei para mostrar os erros -->
+
+  
+        <div class="pag"> <!-- Div que eu criei para mexer melhor na pagina-->
             <!-- Barra de navegação -->
             <nav>
                 <!-- Logotipo da página -->
-                <img src="../public/assets/icon/logo-sem-o-fundo.png" class="logo">
+                <img src="assets/icon/logo-sem-o-fundo.png" class="logo">
 
                 <!-- Lista de itens de menu -->
                 <ul>
@@ -232,12 +232,13 @@
 
 <script>
 
-    window.onload = atualizarFeed_Artes();
+    window.onload = atualizarFeed_Artes();// Chama a função atualizarFeed_Artes quando a janela é carregada
 
 
 
-    function atualizarFeed_Artes() {
-    
+    function atualizarFeed_Artes() {// Função para atualizar o feed de Artes
+
+        // Lida com a resposta da solicitação fetch
         fetch("/usuarios/listar_artes", {
             method: "GET",
             headers: {
@@ -247,86 +248,89 @@
     
             console.log("resposta: ", resposta);
     
-            if (resposta.ok) {
+            if (resposta.ok) { // Verifica se a resposta está OK
     
-                if (resposta.status == 204) {
-                        var feed = document.getElementById("input_exp");
-                        var mensagem = document.createElement("span");
-                        mensagem.innerHTML = "Nenhum resultado encontrado."
-                        feed.appendChild(mensagem);
-                        throw "Nenhum resultado encontrado!!";
-                    }
-    
-                    resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-
-                    var feed = document.getElementById("input_exp");
-                    var lista_artes = [];
-    
-                    for (let Contador_artes = 0; Contador_artes < resposta.length; Contador_artes++) {
-                        var publicacao = resposta[Contador_artes];
-                        // criando e manipulando elementos do HTML via JavaScript
-
-                        lista_artes.push({"IDArte":publicacao.idArtemarcial, "NomeArte":publicacao.nome})
-
+                if (resposta.status == 204) { // Verifica se o status é 204 (Nenhum conteúdo) 
+                        var feed = document.getElementById("input_exp");// Variavel para obter o elemento de feed
+                        var mensagem = document.createElement("span"); // Variavel para criar um novo elemento de mensagem
+                        mensagem.innerHTML = "Nenhum resultado encontrado." // Define o conteúdo da mensagem
+                        feed.appendChild(mensagem); // Adiciona a mensagem ao feed
+                        throw "Nenhum resultado encontrado!!"; //avisa que nenhum resultado foi encontrado
                     }
 
-                    for (let contador2 = 0;contador2 < lista_artes.length; contador2++){
-                        var valores = lista_artes[contador2];
+                    // caso tenha um conteúdo
+                    resposta.json().then(function (resposta) { // Lida com a resposta JSON
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));// Exibe os dados recebidos no console
 
-                        var opt = document.createElement("option");
-                        opt.value = valores.IDArte;
-                        opt.innerHTML = valores.NomeArte;
+                    var feed = document.getElementById("input_exp"); //Variavel para obter o elemento de feed
+                    var lista_artes = [];//Variavel para inicializa uma lista vazia para as artes
+    
+                    for (let Contador_artes = 0; Contador_artes < resposta.length; Contador_artes++) {// Inicializa o contador Contador_artes como 0; o loop continua enquanto Contador_artes for menor que o comprimento da resposta; incrementa Contador_artes a cada iteração
+                        var publicacao = resposta[Contador_artes]; //Variavel para obter cada publicação individualment
 
-                        feed.appendChild(opt)
+                        lista_artes.push({"IDArte":publicacao.idArtemarcial, "NomeArte":publicacao.nome}) // Adiciona os elementos da arte marcial na lista de artes
+
+                    }
+
+                    for (let contador2 = 0;contador2 < lista_artes.length; contador2++){// Inicializa o contador contador2 como 0; o loop continua enquanto contador2 for menor que o comprimento da lista de artes; incrementa contador2 a cada iteração
+                        var valores = lista_artes[contador2];// Obtém os valores da lista de artes
+
+                        var opt = document.createElement("option");// Variavel que cria um novo elemento de opção
+                        opt.value = valores.IDArte;// Define o valor da opção como o ID da Arte
+                        opt.innerHTML = valores.NomeArte; // Define o conteúdo da opção como o nome da Arte
+
+                        feed.appendChild(opt) // Adiciona a opção ao feed
 
                     }
 
                 });
-            } else {
-                throw ("Houve um erro ao tentar realizar A pesquisa!");
+            } else {// Caso a resposta não esteja ok
+                throw ("Houve um erro ao tentar realizar A pesquisa!"); // avisa que houve um erro durante a pesquisa
             }
         }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
+            console.log(`#ERRO: ${resposta}`); // Lida com erros e exibe mensagens de erro no console
         });
     
-        return false;
+        return false; // Retorna falso
     }
 
-    function input(resp) {
+    function input(resp) { // Função para manipular as inputs
 
-        if (resp == "s") {
+        if (resp == "s") {// Verifica se o usuario marcou 's' na experiencia
 
-            nome1.style.display = 'block'
-            nome2.style.display = 'block'
-            nome3.style.display = 'block'
-            input_tempo.style.display = 'block'
-            input_exp.style.display = 'block'
-            input_grau.style.display = 'block'
+        nome1.style.display = 'block'; // Define o estilo de exibição para 'nome1' como 'block'
+        nome2.style.display = 'block'; // Define o estilo de exibição para 'nome2' como 'block'
+        nome3.style.display = 'block'; // Define o estilo de exibição para 'nome3' como 'block'
+        input_tempo.style.display = 'block'; // Define o estilo de exibição para 'input_tempo' como 'block'
+        input_exp.style.display = 'block'; // Define o estilo de exibição para 'input_exp' como 'block'
+        input_grau.style.display = 'block'; // Define o estilo de exibição para 'input_grau' como 'block'
             
-        } else {
+        } else { // Caso contrário
 
-            nome1.style.display = 'none'
-            nome2.style.display = 'none'
-            nome3.style.display = 'block'
-            input_tempo.style.display = 'none'
-            input_exp.style.display = 'none'
-            input_grau.style.display = 'block'
+        nome1.style.display = 'none'; // Define o estilo de exibição para 'nome1' como 'none'
+        nome2.style.display = 'none'; // Define o estilo de exibição para 'nome2' como 'none'
+        nome3.style.display = 'none'; // Define o estilo de exibição para 'nome3' como 'none'
+        input_tempo.style.display = 'none'; // Define o estilo de exibição para 'input_tempo' como 'none'
+        input_exp.style.display = 'none'; // Define o estilo de exibição para 'input_exp' como 'none'
+        input_grau.style.display = 'none'; // Define o estilo de exibição para 'input_grau' como 'none'
         }
 
     }
 
-    function cadastrar() {
-        var generoVar = 'm'
-        var experienciaVar = 'n'
-        if (input_genero1.checked) {
-            generoVar = 'f'
+    function cadastrar() {// Função para lidar com o cadastro
+        var generoVar = 'm' //Variavel que define o gênero como masculino por padrão
+        var experienciaVar = 'n'// Variavel que define a experiência como 'n' por padrão
+
+        if (input_genero1.checked) {  // Verifica o valor do gênero
+            generoVar = 'f' // Define o gênero como feminino se o input_genero1 estiver marcado
     }else if(input_genero3.checked){
-        generoVar = 'o'
+        generoVar = 'o'// Define o gênero como outro se o input_genero3 estiver marcado
     }
     
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
+
+        //Recuperando o valor das inpts
         var nomeVar = input_nome.value;
         var sobrenomeVar = input_sobrenome.value;
         var emailVar = input_email.value;
@@ -336,23 +340,27 @@
         var tempoVar = input_tempo.value;
         var grauVar = input_grau.value;
 
-        console.log(input_genero1.checked)
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || nacimentoVar == "" || sobrenomeVar == "" || generoVar == "" || experienciaVar == "") {
+        console.log(input_genero1.checked)// Exibe no console se o input_genero1 está marcado
 
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            return false;
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || nacimentoVar == "" || sobrenomeVar == "" || generoVar == "" || experienciaVar == "") {// Verifica se algum dos campos obrigatórios está vazio
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)"; // mostra a mensagem de erro
+            return false; // Retorna falso
         }
-        else {
-            if (input_experiencia1.checked) {
-                experienciaVar = 's'
-                fetch("/usuarios/cadastrarRespostaSim", {
+        else {// Caso contrário
+            if (input_experiencia1.checked) { // Verifica se a opção de experiência 1 está marcada
+                experienciaVar = 's'// Define a experiência como 's'
+
+                fetch("/usuarios/cadastrarRespostaSim", {// Lida com a resposta da solicitação
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
+
                     body: JSON.stringify({
                         // crie um atributo que recebe o valor recuperado aqui
                         // Agora vá para o arquivo routes/usuario.js
+
+                        //criando atributos para recuperar valor
                         nomeServer: nomeVar,
                         emailServer: emailVar,
                         senhaServer: senhaVar,
@@ -364,38 +372,40 @@
                         tempoServer: tempoVar,
                         grauServer: grauVar
                     })
-                }).then(function (resposta) {
+                }).then(function (resposta) { // Lida com a resposta
 
-                    console.log("resposta: ", resposta);
+                    console.log("resposta: ", resposta); // Mostra a resposta no console
 
-                    if (resposta.ok) {
-                        alert("Cadastro realizado com sucesso!");
+                    if (resposta.ok) {// verifica se a resposta esta ok
+                        alert("Cadastro realizado com sucesso!");// mostra um alerta de que o cadastro foi realizado com sucesso
 
-                        // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                        setTimeout(() => {
+                        setTimeout(() => { // Redireciona para a página de login
                             window.location = "login.html";
                         }, "2000")
 
-                        limparFormulario();
+                        limparFormulario(); // Limpa o formulário
 
-                    } else {
-                        throw ("Houve um erro ao tentar realizar o cadastro!");
+                    } else {// Caso a resposta não for ok
+                        throw ("Houve um erro ao tentar realizar o cadastro!");// mostra um erro indicando que houve um erro ao tentar realizar o cadastro
                     }
                 }).catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
+                    console.log(`#ERRO: ${resposta}`);// Lida com erros e mostra mensagens de erro no console
                 });
 
-                return false;
-            } else {
-                fetch("/usuarios/cadastrarRespostaNao", {
+                return false; // Retorna falso
+            } else { //Caso o usuario tenha prenchido com não na área de experiência
+
+                fetch("/usuarios/cadastrarRespostaNao", {  // Lida com a resposta
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
+
                     body: JSON.stringify({
                         // crie um atributo que recebe o valor recuperado aqui
                         // Agora vá para o arquivo routes/usuario.js
+
+                        //criando atributos para recuperar valor caso a resposta do usuario em experiência for não
                         nomeServer: nomeVar,
                         emailServer: emailVar,
                         senhaServer: senhaVar,
@@ -404,30 +414,29 @@
                         generoServer: generoVar,
                         experienciaServer: experienciaVar
                     })
-                }).then(function (resposta) {
+                }).then(function (resposta) { // Lida com a resposta da solicitação
+
 
                     console.log("resposta: ", resposta);
 
-                    if (resposta.ok) {
+                    if (resposta.ok) {// verifica se a resposta esta ok
 
-                        alert("Cadastro realizado com sucesso!");
-
-                        // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                        alert("Cadastro realizado com sucesso!");// mostra um alerta de que o cadastro foi realizado com sucesso
 
                         setTimeout(() => {
-                            window.location = "login.html";
+                            window.location = "login.html";// Redireciona para a página de login
                         }, "2000")
 
-                        limparFormulario();
+                        limparFormulario();// Limpa o formulário
 
-                    } else {
-                        throw ("Houve um erro ao tentar realizar o cadastro!");
+                    } else {// Caso a resposta não for ok
+                        throw ("Houve um erro ao tentar realizar o cadastro!");// mostra um erro indicando que houve um erro ao tentar realizar o cadastro
                     }
                 }).catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
+                    console.log(`#ERRO: ${resposta}`);// Lida com erros e mostra mensagens de erro no console
                 });
 
-                return false;
+                return false; // Retorna falso
             }
             // Enviando o valor da nova input
         }

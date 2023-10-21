@@ -147,19 +147,19 @@ function cadastrarRespostaSim(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else if (nacimento == undefined) {
-        res.status(400).send("Sua senha está undefined!");
+        res.status(400).send("Sua nacimento está undefined!");
     } else if (sobrenome == undefined) {
-        res.status(400).send("Sua senha está undefined!");
+        res.status(400).send("Sua sobrenome está undefined!");
     } else if (genero == undefined) {
-        res.status(400).send("Sua senha está undefined!");
+        res.status(400).send("Sua genero está undefined!");
     } else if (experiencia == undefined) {
-        res.status(400).send("Sua senha está undefined!");
+        res.status(400).send("Sua experiencia está undefined!");
     }else if (exp == undefined) {
-        res.status(400).send("Sua senha está undefined!");
+        res.status(400).send("Sua exp está undefined!");
     }else if (tempo == undefined) {
-        res.status(400).send("Sua senha está undefined!");
+        res.status(400).send("Sua tempo está undefined!");
     }else if (grau == undefined) {
-        res.status(400).send("Sua senha está undefined!");
+        res.status(400).send("Sua grau está undefined!");
     }else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
@@ -241,13 +241,13 @@ function cadastrarRespostaNao(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else if (nacimento == undefined) {
-        res.status(400).send("Sua senha está undefined!");
+        res.status(400).send("Sua nacimento está undefined!");
     } else if (sobrenome == undefined) {
-        res.status(400).send("Sua senha está undefined!");
+        res.status(400).send("Sua sobrenome está undefined!");
     } else if (genero == undefined) {
-        res.status(400).send("Sua senha está undefined!");
+        res.status(400).send("Sua genero está undefined!");
     } else if (experiencia == undefined) {
-        res.status(400).send("Sua senha está undefined!");
+        res.status(400).send("Sua experiencia está undefined!");
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
@@ -269,55 +269,11 @@ function cadastrarRespostaNao(req, res) {
     }
 }
 
-function cadastrarDojoRespostaNao(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var nomeD = req.body.nomeDServer;
-    var bairro = req.body.bairroServer;
-    var rua = req.body.ruaServer;
-    var numero = req.body.numeroServer;
-    var Mestre = req.body.MestreServer;
-    var ID = req.body.IDServer;
-    ;
-    // Faça as validações dos valores
-    if (nomeD == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    } else if (bairro == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (rua == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (numero == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (Mestre == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    } else if (ID == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    }
-        else {
-        
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        dojoModel.cadastrarRespostaNao(nomeD,localização,Mestre,ID)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
-}
 
 module.exports = {
     entrar,
     cadastrarRespostaSim,
     cadastrarRespostaNao,
-    cadastrarDojoRespostaNao,
     listar,
     testar,
     listar_dojos,

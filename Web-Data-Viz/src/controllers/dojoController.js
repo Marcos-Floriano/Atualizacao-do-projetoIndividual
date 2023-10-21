@@ -28,7 +28,6 @@ function cadastrarDojo(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nomeD = req.body.nomeDServer;
     var Mestre = req.body.MestreServer;
-
     var bairro = req.body.bairroServer;
     var rua = req.body.ruaServer;
     var numero = req.body.numeroServer;
@@ -39,11 +38,11 @@ function cadastrarDojo(req, res) {
     } else if (bairro == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (rua == undefined) {
-        res.status(400).send("Seu email está undefined!");
+        res.status(400).send("Seu rua está undefined!");
     } else if (numero == undefined) {
-        res.status(400).send("Seu email está undefined!");
+        res.status(400).send("Seu numero está undefined!");
     } else if (Mestre == undefined) {
-        res.status(400).send("Sua senha está undefined!");
+        res.status(400).send("Sua Mestre está undefined!");
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js

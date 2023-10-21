@@ -12,66 +12,78 @@
 
 <body>
 
-        <nav>
-            <img src="../public/assets/icon/logo-sem-o-fundo.png" class="logo">
-            <ul>
-                <li><a href="User.html">Voltar</a></li>
-            </ul>
-        </nav>
-        <br><br><br><br>
+    <!-- Inicio da pagina -->
+
+    <!-- Navegação -->
+        <nav><!-- Barra de navegação -->
+            <img src="assets/icon/logo-sem-o-fundo.png" class="logo"><!-- Aqui eu estou colocando a logo do site na barra de navegação -->
+            <ul><!-- Aqui eu estou qriando uma lista para colocar os items da navbar -->
+                <li><a href="User.html">Voltar</a></li><!-- Aqui eu estou qriando os items da navbar e colocando links para acessar outras paginas -->
+            </ul><!-- Aqui termina a lista para colocar os items da navbar -->
+        </nav><!--  Aqui termina barra de navegação -->
+        
     
-        <div class="caixa">
+        <div class="caixa"> <!-- Aqui eu qrio uma div para mexer nas caixas que ficara as tags-->
 
-            <div class="conteudo">
+            <div class="conteudo"><!-- Aqui eu qrio uma div para mexer nos conteudos das caixas-->
 
-                <label>
-                    <h4>Perda de peso</h4>
-                </label>
+                <label><!-- Aqui eu uso a tag label para especificar o titulo da primeira caixa-->
+                    <h4>Perda de peso</h4><!--Titulo da primeira caixa-->
+                </label> <!-- Aqui termina a tag label-->
 
-                <div class="inputs">
-
-
-                    <h3>informe seu peso:</h3><br>
-                    <input type="number" id="input_peso_atual">
-                    <br><br>
-
-                    <h3>informe o peso que quer ter:</h3><br>
-                    <input type="number" id="input_peso_desejavel">
-                    <br><br>
-
-                    <h3>informe o tempo desejavel (meses):</h3><br>
-                    <input type="number" id="input_tempo">
-                    <br><br>
-
-                    <button onclick="calcular()" class="btn">calcular</button><br>
-
-                    <p id="final"></p>
+                <div class="inputs"><!-- Aqui eu qrio uma div para mexer nas inputs das caixas -->
 
 
-                </div>
+                    <h3>informe seu peso:</h3><br><!--Titulo da primeira input-->
+                    <input type="number" id="input_peso_atual"><!-- Input para inserir o peso atual da pessoa  -->
+                    <br><br><!--espaço entre as inputs-->
 
-            </div>
+                    <h3>informe o peso que quer ter:</h3><br><!--Titulo da segunda input-->
+                    <input type="number" id="input_peso_desejavel"><!-- Input para inserir o peso desejavel da pessoa  -->
+                    <br><br><!--espaço entre as inputs-->
 
-        </div>
+                    <h3>informe o tempo desejavel (meses):</h3><br><!--Titulo da terceira input-->
+                    <input type="number" id="input_tempo"><!-- Input para inserir o tempo que a pessoa quer alcançar esse peso em meses  -->
+                    <br><br><!--espaço entre o button-->
 
-        <div class="caixa">
-            <div class="conteudo">
+                    <button onclick="calcular()" class="btn">calcular</button><!-- Botão para calcular a perda de peso -->
+                    <br><!--espaço entre o button e a resposta-->
 
-                <label>
-                    <h4>Grade de treino</h4>
-                </label>
+                    <p id="final"></p><!-- Parágrafo para exibir o resultado do cálculo -->
 
-                <div class="inputs">
 
-                    <h4>Insira quandos dias você pode treinar</h4><br>
-                    <input type="number" id="ipt_dias"><br><br>
-                    <button onclick="exibir()" class="btn">Exibir rotina mensal</button><br>
-                    <div id="div_msg"></div>
+                </div><!-- Fim da div para mexer nas inputs das caixas -->
 
-                </div>
-            </div>
 
-        </div>
+            </div><!-- Fim da div para mexer nos conteudos das caixas-->
+
+        </div><!-- Fim da div para mexer na primeira caixas que ficara as tags-->
+
+        <div class="caixa"><!-- Aqui eu qrio outra div para mexer nas caixas que ficara as tags-->
+
+            <div class="conteudo"><!-- Aqui eu qrio outra div para mexer nos conteudos das caixas-->
+
+                <label><!-- Aqui eu uso a tag label para especificar o titulo da segunda caixa-->
+                    <h4>Grade de treino</h4><!--Titulo da segunda caixa-->
+                </label><!-- Aqui termina a tag label-->
+
+                <div class="inputs"><!-- Aqui eu qrio outra div para mexer nas inputs das caixas -->
+
+                    <h4>Insira quandos dias você pode treinar</h4><!--Titulo da input-->
+                    <br><!--espaço entre o titulo ea input -->
+
+                    <input type="number" id="ipt_dias"><!-- Input para inserir a quantidade de dias livres para treinar  -->
+                    <br><br><!--espaço entre a input eo button-->
+
+                    <button onclick="exibir()" class="btn">Exibir rotina mensal</button><!-- Botão para exibir a rotina de treino mensal -->
+                    <br>
+
+                    <p id="p_msg"></p><!-- Parágrafo para exibir a mensagem da rotina de treino -->
+
+                </div><!-- Fim da div para mexer nas inputs da segunda caixa -->
+            </div><!-- Fim da div para mexer nos conteudos da segunda caixa-->
+
+        </div><!-- Fim da div para mexer na segunda caixa que ficara as tags-->
 
 </body>
 
@@ -79,39 +91,48 @@
 
 <script>
 
-    function calcular() {
 
-        var PesoAtu = Number(input_peso_atual.value)
-        var PesoDese = Number(input_peso_desejavel.value)
-        var Tempo = Number(input_tempo.value)
-        var semana = Tempo * 4
-        var perda = PesoAtu - PesoDese
-        var resultado = perda / semana
-        var porcentagem = (resultado * 100) / perda
-        var litrosdeagua = PesoAtu * 50
+    function calcular() {// Função para calcular a perda de peso
 
-        final.innerHTML = `Você terá que perder ${perda}kg em ${Tempo} meses ou ${resultado.toFixed(2)}kg por semana que da ${porcentagem.toFixed(1)}% de perda de peso`
+        // Variaveis para obter os valores dos campos de entrada de peso atual, peso desejado e tempo desejado
+        var PesoAtu = Number(input_peso_atual.value) // Obtém peso atual em forma de texto e converte para numero
+        var PesoDese = Number(input_peso_desejavel.value)// Obtém peso desejado em forma de texto e converte para numero
+        var Tempo = Number(input_tempo.value)//Obtém tempo desejado em meses em forma de texto e converte para numero
 
-    }
+        var semana = Tempo * 4 // Pega o valor convertido do tempo em número e calcula o número de semanas com base no tempo informado em meses
+        var perda = PesoAtu - PesoDese// Pega o valor convertido do peso atual e do peso desejado em número e calcula a quantidade de peso a ser perdida
+        var resultado = perda / semana // Calcula a quantidade de peso a ser perdida por semana
+        var porcentagem = (resultado * 100) / perda// Calcula a porcentagem de perda de peso em relação à perda total
+        var litrosdeagua = PesoAtu * 50 // Calcula a quantidade recomendada de água com base no peso atual
 
-    function exibir() {
-        var dias = Number(ipt_dias.value);
-        var contador = 1;
+        final.innerHTML = `Você terá que perder ${perda}kg em ${Tempo} meses ou ${resultado.toFixed(2)}kg por semana que da ${porcentagem.toFixed(1)}% de perda de peso corporal<br>
+        É recomendamos que beba ${litrosdeagua} litros de água` // Exibe a mensagem final com o resultado dos calculos
 
-        while (contador <= 11) {
-            if (contador == 1) {
-                div_msg.innerHTML += `${contador}- Treino<br>`;
-                contador += 1;
+    }// Fim da função para calcular a perda de peso
+
+
+    function exibir() { // Função para exibir a rotina de treino
+        var dias = Number(ipt_dias.value); // Obtém o número de dias inserido pelo usuário em forma de texto e converte para numero
+        var contador = 1;// Inicializa o contador em 1
+
+        // While para realização da grade de trino
+        while (contador <= 11) { // Executa o loop enquanto o contador for menor ou igual a 11
+            if (contador == 1) {// Verifica se o contador é igual a 1
+                p_msg.innerHTML += `${contador}- Treino<br>`;// Adiciona o texto 'Treino' na div com o número do contador
+                contador += 1;// Incrementa o contador
             }
-            else if ((contador - 1) % dias == 0) {
-                div_msg.innerHTML += `${contador}- Treino<br>`;
-                contador += 1;
+            else if ((contador - 1) % dias == 0) { // Verifica se o contador menos 1 é divisível pelo número de dias
+                p_msg.innerHTML += `${contador}- Treino<br>`;// Adiciona o texto 'Treino' na div com o número do contador
+                contador += 1; // Incrementa o contador
             }
-            else {
-                div_msg.innerHTML += `${contador}- Ocupado <br>`;
-                contador += 1;
+            else {// Caso nenhuma das condições anteriores seja satisfeita
+                p_msg.innerHTML += `${contador}- Ocupado <br>`; // Adiciona o texto 'Ocupado' na div com o número do contador
+                contador += 1;// Incrementa o contador
             }
-        }
-    }
+        } 
+     // Fim do while para realização da grade de trino
+ 
+    }// Fim da função para exibir a rotina de treino
+ 
 
 </script>
