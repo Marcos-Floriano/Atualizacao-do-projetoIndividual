@@ -1,115 +1,114 @@
 /* Define estilos padrão para todos os elementos */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'poppins', 'sans-serif';
+    margin: 0; /* Define a margem como zero */
+    padding: 0; /* Define o preenchimento como zero */
+    box-sizing: border-box; /* Define o modelo de caixa como border-box */
+    font-family: 'poppins', 'sans-serif'; /* Define a fonte como Poppins e sans-serif */
 }
 
 /* Estilos para a classe .comeco */
 .comeco {
-    width: 100%;
-    height: 115vh;
-    background-image: linear-gradient(rgba(10, 9, 15, 0.5), rgba(72, 13, 128, 0.692)), url(../assets/imgs/dojo-japones.jpg);
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-
+    width: 100%; /* Define a largura como 100% */
+    height: 115vh; /* Define a altura como 115vh */
+    background-image: linear-gradient(rgba(10, 9, 15, 0.5), rgba(72, 13, 128, 0.692)), url(../assets/imgs/dojo-japones.jpg); /* Define a imagem de fundo e o gradiente */
+    background-position: center; /* Posiciona o fundo no centro */
+    background-size: cover; /* Ajusta o tamanho do fundo para cobrir */
+    display: flex; /* Exibe como flex */
+    flex-direction: column; /* Define a direção do flex como coluna */
+    justify-content: space-evenly; /* Justifica o conteúdo com espaço uniforme */
 }
 
 /* Estilos para a navegação */
 nav {
-    width: 100%;
-    padding: 20px 0;
-    text-align: center;
+    width: 100%; /* Define a largura como 100% */
+    padding: 20px 0; /* Define o preenchimento superior e inferior como 20px e o preenchimento esquerdo e direito como 0 */
+    text-align: center; /* Alinha o texto ao centro */
 }
 
 /* Estilos para o logotipo */
 .logo {
-    width: 210px;
-    margin: 2px;
-    cursor: pointer;
+    width: 210px; /* Define a largura como 210px */
+    margin: 2px; /* Define a margem como 2px */
+    cursor: pointer; /* Define o cursor como ponteiro */
 }
 
 /* Estilos para a lista de navegação */
 nav ul {
-    background: #000;
-    width: 100%;
-    margin-top: 10px;
+    background: #000; /* Define o fundo como preto (#000) */
+    width: 100%; /* Define a largura como 100% */
+    margin-top: 10px; /* Define a margem superior como 10px */
 }
 
 nav ul li  {
-    display: inline-block;
-    list-style: none;
-    margin: 20px 30px;
-    text-decoration: none;
+    display: inline-block; /* Exibe em linha */
+    list-style: none; /* Remove os marcadores de lista */
+    margin: 20px 30px; /* Define a margem como 20px no topo e na base e 30px nos lados */
+    text-decoration: none; /* Remove a decoração do texto */
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: #fff;
+    text-decoration: none; /* Remove a decoração do texto */
+    color: #fff; /* Define a cor do texto como branco (#fff) */
 }
 
 /* Estilos para o título do site */
 .nome-site {
-    text-align: center;
+    text-align: center; /* Alinha o texto ao centro */
 }
 
 .nome-site h1 {
-    font-size: 160px;
-    color: #000;
-    font-weight: 600;
+    font-size: 160px; /* Define o tamanho da fonte como 160px */
+    color: #000; /* Define a cor do texto como preto */
+    font-weight: 600; /* Define o peso da fonte como 600 */
 }
 
 /* Estilos para a classe .informacoes */
 .informacoes {
-    background-image: linear-gradient(rgba(10, 10, 10, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/imgs/Capturar5.PNG);
-    height: 110vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-size: cover;
-    background-position: center;
-    color: #f7f7f7;
-    border: 5px solid #000;
-    justify-content: space-evenly;
+    background-image: linear-gradient(rgba(10, 10, 10, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/imgs/Capturar5.PNG); /* Define a imagem de fundo e o gradiente */
+    height: 110vh; /* Define a altura como 110vh */
+    width: 100%; /* Define a largura como 100% */
+    display: flex; /* Exibe como flex */
+    flex-direction: column; /* Define a direção do flex como coluna */
+    align-items: center; /* Alinha os itens ao centro verticalmente */
+    background-size: cover; /* Ajusta o tamanho do fundo para cobrir */
+    background-position: center; /* Posiciona o fundo no centro */
+    color: #f7f7f7; /* Define a cor do texto como cinza claro (#f7f7f7) */
+    border: 5px solid #000; /* Define a borda como 5px sólida preta (#000) */
+    justify-content: space-evenly; /* Justifica o conteúdo com espaço uniforme */
 }
 
 /* Estilos para o título dentro da classe .titulo */
 .informacoes .titulo h1 {
-    font-size: 30px;
-    letter-spacing: 2px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    color: #f7f7f7;
+    font-size: 30px; /* Define o tamanho da fonte como 30px */
+    letter-spacing: 2px; /* Define o espaçamento entre letras como 2px */
+    display: flex; /* Exibe como flex */
+    justify-content: center; /* Justifica o conteúdo ao centro */
+    align-content: center; /* Alinha o conteúdo ao centro */
+    color: #f7f7f7; /* Define a cor do texto como cinza claro (#f7f7f7) */
 }
 
 /* Estilos para parágrafos (p) */
 p {
-    width: auto;
-    font-size: 21px;
-    margin-bottom: 30px;
-    color: #fff;
-    margin-bottom: 30px;
-    font-weight: 900;
+    width: auto; /* Define a largura como automática */
+    font-size: 21px; /* Define o tamanho da fonte como 21px */
+    margin-bottom: 30px; /* Define a margem inferior como 30px */
+    color: #fff; /* Define a cor do texto como branco (#fff) */
+    margin-bottom: 30px; /* Define a margem inferior como 30px */
+    font-weight: 900; /* Define o peso da fonte como 900 */
 }
 
 /* Estilos para a barra de rolagem */
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 15px; /* Define a largura como 15px */
 }
 
 /* Estilos para a parte de fundo da barra de rolagem */
 ::-webkit-scrollbar-track {
-    background: #000;
+    background: #000; /* Define o fundo como preto (#000) */
 }
 
 /* Estilos para o indicador da barra de rolagem */
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(#48048c, #060126);
-    border-radius: 10px;
+    background: linear-gradient(#48048c, #060126); /* Define o plano de fundo como um gradiente linear */
+    border-radius: 10px; /* Define o raio da borda como 10px */
 }

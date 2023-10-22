@@ -1,124 +1,106 @@
+/* Define estilos padrão para todos os elementos */
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  padding: 0; /* Define o preenchimento como 0 */
+  margin: 0; /* Define a margem como 0 */
+  box-sizing: border-box; /* Define a modelagem da caixa como border-box */
+  font-family: 'Inter', sans-serif; /* Define a fonte como 'Inter', sans-serif */
 }
 
 nav {
-
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 8%;
-  transition: background 1s;
-  margin-bottom: 39px;
-  background-color: #302e2e;
+  width: 100%; /* Define a largura como 100% */
+  display: flex; /* Define o modelo de exibição como flexível */
+  justify-content: space-between; /* Alinha os itens com espaçamento uniforme entre eles */
+  align-items: center; /* Alinha os itens no centro verticalmente */
+  padding: 18px 8%; /* Define o preenchimento interno como 18px no topo e na base e 8% nos lados */
+  transition: background 1s; /* Define a transição para o plano de fundo em 1 segundo */
+  margin-bottom: 39px; /* Define a margem inferior como 39px */
+  background-color: #302e2e; /* Define a cor de fundo como #302e2e */
 }
 
 nav .logo {
-
-  display: flex;
-  align-items: center;
-  font-size: 26px;
-  font-weight: 600;
-  counter-reset: #fff;
-
+  display: flex; /* Define o modelo de exibição como flexível */
+  align-items: center; /* Alinha os itens no centro verticalmente */
+  font-size: 26px; /* Define o tamanho da fonte como 26px */
+  font-weight: 600; /* Define o peso da fonte como 600 */
+  counter-reset: #fff; /* Reseta o contador para o valor padrão */
 }
 
 nav .logo span {
-
-  color: #474747;
-
+  color: #474747; /* Define a cor do texto como #474747 */
 }
 
 nav .logo img {
-
-  width: 190px;
-  margin-right: 10px;
-
+  width: 190px; /* Define a largura da imagem como 190px */
+  margin-right: 10px; /* Define a margem à direita como 10px */
 }
 
-
 body {
-  background-color: #060126;
-  font-family: system-ui;
-  width: auto;
-  height: auto;
+  background-color: #060126; /* Define a cor de fundo como #060126 */
+  font-family: system-ui; /* Define a fonte do sistema */
+  width: auto; /* Define a largura como automática */
+  height: auto; /* Define a altura como automática */
 }
 
 .alinhar {
-  clear: both;
+  clear: both; /* Limpa ambos os lados */
 }
 
-
 .qtdUsuarios {
-  width: 25%;
-  float: left;
+  width: 25%; /* Define a largura como 25% */
+  float: left; /* Flutua para a esquerda */
 }
 
 .caixa {
-  width: 85%;
-  height: 100px;
-  background-color: #48048c;
-  margin-left: 10px;
-  padding: 10px;
-  border-radius: 10px;
+  width: 85%; /* Define a largura como 85% */
+  height: 100px; /* Define a altura como 100px */
+  background-color: #48048c; /* Define a cor de fundo como #48048c */
+  margin-left: 10px; /* Define a margem à esquerda como 10px */
+  padding: 10px; /* Define o preenchimento como 10px */
+  border-radius: 10px; /* Define o raio da borda como 10px */
 }
 
 .caixa p {
-  font-size: 35px;
-  color: white;
-  font-weight: bold;
-  line-height: 30px;
-  padding-left: 10px;
-  margin-top: 20px;
-  display: inline-block;
+  font-size: 35px; /* Define o tamanho da fonte como 35px */
+  color: white; /* Define a cor do texto como branco */
+  font-weight: bold; /* Define o peso da fonte como negrito */
+  line-height: 30px; /* Define a altura da linha como 30px */
+  padding-left: 10px; /* Define o preenchimento à esquerda como 10px */
+  margin-top: 20px; /* Define a margem superior como 20px */
+  display: inline-block; /* Define o elemento como um bloco em linha */
 }
 
 .caixa p span {
-  font-size: 20px;
-  font-weight: 400;
-  color: #0c0c0c;
+  font-size: 20px; /* Define o tamanho da fonte como 20px */
+  font-weight: 400; /* Define o peso da fonte como 400 */
+  color: #0c0c0c; /* Define a cor do texto como #0c0c0c */
 }
 
 .dash {
-  width: 70%;
-  float: left;
+  width: 70%; /* Define a largura como 70% */
+  float: left; /* Flutua para a esquerda */
 }
 
 .caixa2 {
-  width: 95%;
-  background-color: #48048c;
-  height: auto;
-  border-radius: 10px;
-
+  width: 95%; /* Define a largura como 95% */
+  background-color: #48048c; /* Define a cor de fundo como #48048c */
+  height: auto; /* Define a altura como automática */
+  border-radius: 10px; /* Define o raio da borda como 10px */
+  margin-left: 10px; /* Define a margem à esquerda como 10px */
 }
 
-.caixa2 {
-  margin-left: 10px;
-
-}
-
-/* barra de rolagem */
-
+/* Estilos para a barra de rolagem */
 ::-webkit-scrollbar {
-
-  width: 15px;
-
+  width: 15px; /* Define a largura como 15px */
 }
 
+/* Estilos para a parte de fundo da barra de rolagem */
 ::-webkit-scrollbar-track {
-
-  background: #333;
-
+  background: #000; /* Define o fundo como preto (#000) */
 }
 
+/* Estilos para o indicador da barra de rolagem */
 ::-webkit-scrollbar-thumb {
-
-  background: linear-gradient(#0A3A40, #1D7373);
-  border-radius: 10px;
-
-
+  background: linear-gradient(#48048c, #060126); /* Define o gradiente de fundo */
+  border-radius: 10px; /* Define o raio da borda como 10px */
 }
+

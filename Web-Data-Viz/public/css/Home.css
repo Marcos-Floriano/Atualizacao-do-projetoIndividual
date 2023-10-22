@@ -1,276 +1,276 @@
 /* Define estilos padrão para todos os elementos */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'poppins', 'sans-serif';
+    margin: 0; /* Define a margem como zero */
+    padding: 0; /* Define o preenchimento como zero */
+    box-sizing: border-box; /* Define o modelo de caixa como border-box */
+    font-family: 'poppins', 'sans-serif'; /* Define a fonte como Poppins e sans-serif */
 }
 
 /* Estilos para a classe .fundo */
 .fundo {
-    width: 100%;
-    height: 115vh;
-    background-image: linear-gradient(rgba(10, 9, 15, 0.5), rgba(72, 13, 128, 0.692)), url(../assets/imgs/jiu.jpeg);
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    width: 100%; /* Define a largura como 100% */
+    height: 115vh; /* Define a altura como 115vh */
+    background-image: linear-gradient(rgba(10, 9, 15, 0.5), rgba(72, 13, 128, 0.692)), url(../assets/imgs/jiu.jpeg); /* Define a imagem de fundo e o gradiente */
+    background-position: center; /* Posiciona o fundo no centro */
+    background-size: cover; /* Ajusta o tamanho do fundo para cobrir */
+    display: flex; /* Exibe como flex */
+    flex-direction: column; /* Define a direção do flex como coluna */
+    justify-content: space-evenly; /* Justifica o conteúdo com espaço uniforme */
 }
 
 /* Estilos para a navegação */
 nav {
-    width: 100%;
-    padding: 20px 0;
-    text-align: center;
+    width: 100%; /* Define a largura como 100% */
+    padding: 20px 0; /* Define o preenchimento superior e inferior como 20px e o preenchimento esquerdo e direito como 0 */
+    text-align: center; /* Alinha o texto ao centro */
 }
 
 /* Estilos para o logotipo */
 .logo {
-    width: 210px;
-    margin: 2px;
-    cursor: pointer;
+    width: 210px; /* Define a largura como 210px */
+    margin: 2px; /* Define a margem como 2px */
+    cursor: pointer; /* Define o cursor como ponteiro */
 }
 
 /* Estilos para a lista de navegação */
 nav ul {
-    background: #000;
-    width: 100%;
-    margin-top: 10px;
+    background: #000; /* Define o fundo como preto (#000) */
+    width: 100%; /* Define a largura como 100% */
+    margin-top: 10px; /* Define a margem superior como 10px */
 }
 
 nav ul li  {
-    display: inline-block;
-    list-style: none;
-    margin: 20px 30px;
-    text-decoration: none;
+    display: inline-block; /* Exibe em linha */
+    list-style: none; /* Remove os marcadores de lista */
+    margin: 20px 30px; /* Define a margem como 20px no topo e na base e 30px nos lados */
+    text-decoration: none; /* Remove a decoração do texto */
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: #fff;
+    text-decoration: none; /* Remove a decoração do texto */
+    color: #fff; /* Define a cor do texto como branco (#fff) */
 }
 
 /* Estilos para o título do site */
 .nome-site {
-    text-align: center;
+    text-align: center; /* Alinha o texto ao centro */
 }
 
 .nome-site h1 {
-    font-size: 160px;
-    color: #000;
-    font-weight: 600;
+    font-size: 160px; /* Define o tamanho da fonte como 160px */
+    color: #000; /* Define a cor do texto como preto */
+    font-weight: 600; /* Define o peso da fonte como 600 */
 }
 
 .nome-site a {
-    text-decoration: none;
-    display: inline-block;
-    color: #000;
-    font-size: 24px;
-    border: 5px solid #000;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
-    font-family: monospace;
+    text-decoration: none; /* Remove a decoração do texto */
+    display: inline-block; /* Exibe em linha */
+    color: #000; /* Define a cor do texto como preto */
+    font-size: 24px; /* Define o tamanho da fonte como 24px */
+    border: 5px solid #000; /* Define a borda como 5px sólida preta (#000) */
+    padding: 14px 70px; /* Define o preenchimento como 14px no topo e na base e 70px nos lados */
+    border-radius: 50px; /* Define o raio da borda como 50px */
+    margin-top: 20px; /* Define a margem superior como 20px */
+    font-family: monospace; /* Define a fonte como monospace */
 }
 
 /* Estilos para a segunda parte */
 .part2 {
-    background: linear-gradient(rgb(0, 0, 0), rgba(69, 11, 136, 0.829));
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(rgb(0, 0, 0), rgba(69, 11, 136, 0.829)); /* Define o gradiente de fundo */
+    width: 100%; /* Define a largura como 100% */
+    min-height: 100vh; /* Define a altura mínima como 100vh */
+    display: flex; /* Exibe como flex */
+    flex-wrap: wrap; /* Enrola os itens flexíveis */
+    background-size: cover; /* Ajusta o tamanho do fundo para cobrir */
+    background-position: center; /* Posiciona o fundo no centro */
 }
 
 /* Estilos para as colunas na segunda parte */
 .coluna-1 {
-    border: solid #000000 5px;
-    flex-basis: 43%;
-    flex-grow: 1;
-    background-image: linear-gradient(rgba(10, 10, 10, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/imgs/3q5X.gif);
-    background-size: cover;
-    background-position: center;
+    border: solid #000000 5px; /* Define a borda como 5px sólida preta (#000000) */
+    flex-basis: 43%; /* Define a base flexível como 43% */
+    flex-grow: 1; /* Define o crescimento flexível como 1 */
+    background-image: linear-gradient(rgba(10, 10, 10, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/imgs/3q5X.gif); /* Define a imagem de fundo e o gradiente */
+    background-size: cover; /* Ajusta o tamanho do fundo para cobrir */
+    background-position: center; /* Posiciona o fundo no centro */
 }
 
 .coluna-2 {
-    border: solid #000000 5px;
-    flex-basis: 57%;
-    flex-grow: 1;
+    border: solid #000000 5px; /* Define a borda como 5px sólida preta (#000000) */
+    flex-basis: 57%; /* Define a base flexível como 57% */
+    flex-grow: 1; /* Define o crescimento flexível como 1 */
 }
 
 /* Estilos para o texto na segunda parte */
 .texto {
-    width: 70%;
-    height: 90;
-    margin-top: 160px;
-    margin: 180px auto 0;
-    cursor: pointer;
+    width: 70%; /* Define a largura como 70% */
+    height: 90; /* Define a altura como 90 */
+    margin-top: 160px; /* Define a margem superior como 160px */
+    margin: 180px auto 0; /* Define a margem como 180px no topo, 0 nos lados e 0 na base */
+    cursor: pointer; /* Define o cursor como ponteiro */
 }
 
 .texto h2 {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #460273;
-    font-size: 50px;
-    font-weight: 400;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif; /* Define a fonte como Arial, Helvetica, sans-serif */
+    color: #460273; /* Define a cor do texto como #460273 */
+    font-size: 50px; /* Define o tamanho da fonte como 50px */
+    font-weight: 400; /* Define o peso da fonte como 400 */
+    margin-bottom: 30px; /* Define a margem inferior como 30px */
+    display: flex; /* Exibe como flex */
+    justify-content: center; /* Justifica o conteúdo ao centro */
 }
 
 .texto p {
-    font-size: 40px;
-    margin-bottom: 30px;
-    color: #fff;
-    display: flex;
-    justify-content: center;
+    font-size: 40px; /* Define o tamanho da fonte como 40px */
+    margin-bottom: 30px; /* Define a margem inferior como 30px */
+    color: #fff; /* Define a cor do texto como branco */
+    display: flex; /* Exibe como flex */
+    justify-content: center; /* Justifica o conteúdo ao centro */
 }
 
 /* Estilos para a terceira parte */
 .part3 {
-    background-image: url(../assets/imgs/Capturar5.PNG);
-    height: 40vh;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #0f0f0f;
-    color: #ffffff;
-    border: 5px solid #000;
-    background-position: center;
-    background-size: cover;
+    background-image: url(../assets/imgs/Capturar5.PNG); /* Define a imagem de fundo */
+    height: 40vh; /* Define a altura como 40vh */
+    width: 100%; /* Define a largura como 100% */
+    display: flex; /* Exibe como flex */
+    flex-direction: row; /* Define a direção do flex como linha */
+    align-items: center; /* Alinha os itens ao centro */
+    background-color: #0f0f0f; /* Define a cor de fundo como #0f0f0f */
+    color: #ffffff; /* Define a cor do texto como branco */
+    border: 5px solid #000; /* Define a borda como 5px sólida preta (#000) */
+    background-position: center; /* Posiciona o fundo no centro */
+    background-size: cover; /* Ajusta o tamanho do fundo para cobrir */
 }
 
 /* Estilos para o texto na terceira parte */
 .texto2 h2 {
-    color: #ffffff;
+    color: #ffffff; /* Define a cor do texto como branco */
 }
 
 .texto2 h2:hover {
-    color: #6E43B9;
-    transition-duration: 0.6s;
+    color: #6E43B9; /* Define a cor do texto como #6E43B9 ao passar o mouse */
+    transition-duration: 0.6s; /* Define a duração da transição como 0.6s */
 }
 
 .texto2 {
-    padding: 1.0em;
-    text-align: center;
-    height: 20vh;
-    font-size: 25px;
-    position: relative;
-    bottom: 6vh;
+    padding: 1.0em; /* Define o preenchimento como 1.0em */
+    text-align: center; /* Alinha o texto ao centro */
+    height: 20vh; /* Define a altura como 20vh */
+    font-size: 25px; /* Define o tamanho da fonte como 25px */
+    position: relative; /* Define a posição como relativa */
+    bottom: 6vh; /* Define a posição inferior como 6vh */
 }
 
 /* Estilos para a seção de valores */
 .valores {
-    height: 30vh;
-    width: 100%;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    text-align: center;
+    height: 30vh; /* Define a altura como 30vh */
+    width: 100%; /* Define a largura como 100% */
+    margin: auto; /* Define a margem como automático */
+    display: flex; /* Exibe como flex */
+    justify-content: center; /* Justifica o conteúdo ao centro */
+    text-align: center; /* Alinha o texto ao centro */
 }
 
 /* Estilos para o rodapé */
 footer {
-    background: #111111;
-    height: 100%;
-    width: auto;
-    font-family: "Open Sans";
-    padding-top: 40px;
-    color: #fff;
+    background: #111111; /* Define o fundo como #111111 */
+    height: 100%; /* Define a altura como 100% */
+    width: auto; /* Define a largura como automático */
+    font-family: "Open Sans"; /* Define a fonte como "Open Sans" */
+    padding-top: 40px; /* Define o preenchimento superior como 40px */
+    color: #fff; /* Define a cor do texto como branco */
 }
 
 /* Estilos para a div do rodapé */
 .rodape {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
+    display: flex; /* Exibe como flex */
+    align-items: center; /* Alinha os itens ao centro */
+    justify-content: center; /* Justifica o conteúdo ao centro */
+    flex-direction: column; /* Define a direção do flex como coluna */
+    text-align: center; /* Alinha o texto ao centro */
 }
 
 /* Estilos para o título do rodapé */
 .rodape h3 {
-    font-size: 1.8rem;
-    font-weight: 400;
-    text-transform: capitalize;
-    line-height: 3rem;
+    font-size: 1.8rem; /* Define o tamanho da fonte como 1.8rem */
+    font-weight: 400; /* Define o peso da fonte como 400 */
+    text-transform: capitalize; /* Transforma o texto em maiúsculas */
+    line-height: 3rem; /* Define a altura da linha como 3rem */
 }
 
 /* Estilos para o texto do rodapé */
 .rodape p {
-    max-width: 500px;
-    margin: 10px auto;
-    line-height: 28px;
-    font-size: 14px;
+    max-width: 500px; /* Define a largura máxima como 500px */
+    margin: 10px auto; /* Define a margem como 10px no topo e na base e automático nos lados */
+    line-height: 28px; /* Define a altura da linha como 28px */
+    font-size: 14px; /* Define o tamanho da fonte como 14px */
 }
 
 /* Estilos para a lista de redes sociais no rodapé */
 .redes-sociais {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem 0 3rem 0;
+    list-style: none; /* Remove os marcadores de lista */
+    display: flex; /* Exibe como flex */
+    align-items: center; /* Alinha os itens ao centro */
+    justify-content: center; /* Justifica o conteúdo ao centro */
+    margin: 1rem 0 3rem 0; /* Define a margem como 1rem no topo, 3rem na base e automático nos lados */
 }
 
 /* Estilos para os itens da lista de redes sociais */
 .redes-sociais li {
-    margin: 0 10px;
+    margin: 0 10px; /* Define a margem como 0 no topo e na base e 10px nos lados */
 }
 
 /* Estilos para os links da lista de redes sociais */
 .redes-sociais a {
-    text-decoration: none;
-    color: #fff;
+    text-decoration: none; /* Remove a decoração do texto */
+    color: #fff; /* Define a cor do texto como branco */
 }
 
 /* Estilos para os ícones na lista de redes sociais */
 .redes-sociais a i {
-    font-size: 1.1rem;
-    transition: color .4s ease;
+    font-size: 1.1rem; /* Define o tamanho da fonte como 1.1rem */
+    transition: color .4s ease; /* Define a transição de cor como 0.4s ease */
 }
 
 /* Estilos para a cor do ícone ao passar o mouse */
 .redes-sociais a:hover i {
-    color: #48048c;
+    color: #48048c; /* Define a cor do ícone como #48048c ao passar o mouse */
 }
 
 /* Estilos para a seção final */
 .final {
-    background: #000;
-    width: auto;
-    padding: 20px 0;
-    text-align: center;
+    background: #000; /* Define o fundo como preto (#000) */
+    width: auto; /* Define a largura como automático */
+    padding: 20px 0; /* Define o preenchimento como 20px no topo e na base e 0 nos lados */
+    text-align: center; /* Alinha o texto ao centro */
 }
 
 /* Estilos para o texto na seção final */
 .final p {
-    font-size: 14px;
-    word-spacing: 2px;
-    text-transform: capitalize;
+    font-size: 14px; /* Define o tamanho da fonte como 14px */
+    word-spacing: 2px; /* Define o espaçamento das palavras como 2px */
+    text-transform: capitalize; /* Transforma o texto em maiúsculas */
 }
 
 /* Estilos para a transformação do texto na seção final */
 .final span {
-    text-transform: uppercase;
-    opacity: .4;
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+    opacity: .4; /* Define a opacidade como 0.4 */
 }
 
 /* Estilos para a barra de rolagem */
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 15px; /* Define a largura como 15px */
 }
 
 /* Estilos para a parte de fundo da barra de rolagem */
 ::-webkit-scrollbar-track {
-    background: #000;
+    background: #000; /* Define o fundo como preto (#000) */
 }
 
 /* Estilos para o indicador da barra de rolagem */
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(#48048c, #060126);
-    border-radius: 10px;
+    background: linear-gradient(#48048c, #060126); /* Define o gradiente de fundo */
+    border-radius: 10px; /* Define o raio da borda como 10px */
 }

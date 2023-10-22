@@ -7,6 +7,7 @@ function testar(req, res) {
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
+// faz a mesma coisa que o listar do usuriocontroller so que para o dojo
 function listar(req, res) {
     dojoModel.listar()
         .then(function (resultado) {
@@ -24,6 +25,7 @@ function listar(req, res) {
         );
 }
 
+// faz a mesma coisa que o cadastrarRespostaSim eo cadastrarRespostaNao só que para o cadastro do dojo
 function cadastrarDojo(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nomeD = req.body.nomeDServer;
@@ -67,24 +69,18 @@ function cadastrarDojo(req, res) {
     }
 }
 
-function cadastrarloc(nomeD,bairro,rua,numero,Mestre){
-    
-    dojoModel.buscarid(nomeD,Mestre).then(
-        function (resultado){
+function cadastrarloc(nomeD, bairro, rua, numero, Mestre) { // Função para cadastrar a localização
 
-            var idDojo = resultado[0].idDojo;
+    dojoModel.buscarid(nomeD, Mestre).then(function (resultado) { // Chama a função para buscar o id do dojo com base no nome e no mestre
+        var idDojo = resultado[0].idDojo; // Obtém o id do dojo a partir dos resultados
 
-            dojoModel.cadastrarLoc(bairro,rua,numero,idDojo).then(
-                function (resultado){
-                    
-                }
-            )
-
-        }
-    )
-
+        dojoModel.cadastrarLoc(bairro, rua, numero, idDojo).then(function (resultado) { // Chama a função para cadastrar a localização com os detalhes fornecidos
+        });
+    });
 }
 
+
+//exportando modulos
 module.exports = {
     cadastrarDojo,
     listar

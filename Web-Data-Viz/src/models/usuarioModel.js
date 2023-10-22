@@ -1,14 +1,15 @@
 var database = require("../database/config")
 
-function listar() {
+function listar() {//Função listar
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
         SELECT * FROM usuario;
-    `;
+    `;// Select realizado pela função 
     console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    return database.executar(instrucao);// Retorna o resultado da execução da instrução SQL
 }
 
+// Até o pegaridExperiencia o processo e o mesmo
 function listar_dojos() {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
@@ -64,20 +65,22 @@ function pegaridExperiencia(id,tempo,grau) {
 }
 
 
+//A partir daqui muda
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
-function cadastrarRespostaSim(nome,sobrenome,nacimento,email,senha,genero,experiencia) {
+function cadastrarRespostaSim(nome,sobrenome,nacimento,email,senha,genero,experiencia) { // Função para cadastrar a resposta só se o usuario marcou com sim no cadastro
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarRespostaSim():", nome,sobrenome,nacimento,email,senha,genero,experiencia);
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
         INSERT INTO Usuario (nome,Sobrenome,dtNasc,Email,senha, Sexo, experiencia) VALUES ('${nome}','${sobrenome}','${nacimento}', '${email}', '${senha}', '${genero}', '${experiencia}');
-    `;
+    `;// Select realizado pela função
     console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    return database.executar(instrucao);// Retorna o resultado da execução da instrução SQL
 }
 
+// Até a função cadastrarLutador o processo e o mesmo
 function cadastrarExperiencia(id, tempo, grau) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarRespostaSim():", id, tempo, grau);
     
@@ -102,6 +105,8 @@ function cadastrarLutador(idArte,idExp) {
     return database.executar(instrucao);
 }
 
+//A partir daqui fica um pouco diferente
+// Essa função so tem uma coisa diferente
 function atualizarGenero(genero, idUsuario) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarRespostaSim():", genero, idUsuario);
     
@@ -109,12 +114,13 @@ function atualizarGenero(genero, idUsuario) {
     //  e na ordem de inserção dos dados.
     var instrucao = `
         UPDATE Usuario SET Sexo = '${genero}' WHERE idUsuario = ${idUsuario};
-    `;
+    `;// Pois inves de um select e um update
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
+// Já essa só sera realizada se o usuario marcar com não no campo experiencia do cadastro
 function cadastrarRespostaNao(nome,sobrenome,nacimento,email,senha,genero,experiencia) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarRespostaSim():", nome,sobrenome,nacimento,email,senha,genero,experiencia);
     
@@ -127,25 +133,13 @@ function cadastrarRespostaNao(nome,sobrenome,nacimento,email,senha,genero,experi
     return database.executar(instrucao);
 }
 
-function cadastrarDojoRespostaNao(nomeD,localização,Mestre,ID,bairro,rua,numero) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarRespostaSim():", ID,nomeD,localização,Mestre,bairro,rua,numero);
-    
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
-    var instrucao = `
-        INSERT INTO Dojo (fkUsuario,Nome,Mestre) VALUES (${ID},'${nomeD}','${Mestre}');
-        INSERT INTO Localizacao (Bairro,Rua,Numero) VALUES (${bairro},'${rua}','${numero}',);
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
 
 
+//exportando os modulos
 module.exports = {
     entrar,
     cadastrarRespostaSim,
     cadastrarRespostaNao,
-    cadastrarDojoRespostaNao,
     listar,
     listar_dojos,
     listar_artes,

@@ -1,92 +1,78 @@
+/* Define estilos padrão para todos os elementos */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+    margin: 0; /* Define a margem como 0 */
+    padding: 0; /* Define o preenchimento como 0 */
+    box-sizing: border-box; /* Define a modelagem da caixa como border-box */
+    font-family: sans-serif; /* Define a fonte genérica */
 }
 
 nav {
-
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 8%;
-    transition: background 1s;
-    margin-bottom: 39px;
-    background-color: #000;
+    width: 100%; /* Define a largura como 100% */
+    display: flex; /* Define o modelo de exibição como flexível */
+    justify-content: space-between; /* Alinha os itens com espaçamento uniforme entre eles */
+    align-items: center; /* Alinha os itens no centro verticalmente */
+    padding: 18px 8%; /* Define o preenchimento interno como 18px no topo e na base e 8% nos lados */
+    transition: background 1s; /* Define a transição para o plano de fundo em 1 segundo */
+    margin-bottom: 39px; /* Define a margem inferior como 39px */
+    background-color: #000; /* Define a cor de fundo como preto */
 }
 
 nav .logo {
-
-    display: flex;
-    align-items: center;
-    font-size: 26px;
-    font-weight: 600;
-    counter-reset: #fff;
-
+    display: flex; /* Define o modelo de exibição como flexível */
+    align-items: center; /* Alinha os itens no centro verticalmente */
+    font-size: 26px; /* Define o tamanho da fonte como 26px */
+    font-weight: 600; /* Define o peso da fonte como 600 */
+    counter-reset: #fff; /* Reseta o contador para o valor padrão */
 }
 
 nav .logo span {
-
-    color: #460273;
-
+    color: #460273; /* Define a cor do texto como roxo escuro */
 }
 
 nav .logo img {
-
-    width: 190px;
-    margin-right: 10px;
-
+    width: 190px; /* Define a largura da imagem como 190px */
+    margin-right: 10px; /* Define a margem à direita como 10px */
 }
 
-
-
-
 body {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-image: linear-gradient(rgba(10, 10, 10, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/imgs/mma-wallpaper.jpg);
-    background-position: center;
-    background-size: cover;
+    display: flex; /* Define o modelo de exibição como flexível */
+    flex-wrap: wrap; /* Define o comportamento de quebra de linha para os itens flexíveis */
+    align-items: center; /* Alinha os itens no centro verticalmente */
+    justify-content: center; /* Alinha os itens no centro horizontalmente */
+    min-height: 100vh; /* Define a altura mínima como 100% da altura da visualização */
+    background-image: linear-gradient(rgba(10, 10, 10, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/imgs/mma-wallpaper.jpg); /* Define o plano de fundo como um gradiente linear e uma imagem */
+    background-position: center; /* Centraliza a posição do plano de fundo */
+    background-size: cover; /* Redimensiona a imagem para cobrir todo o elemento */
 }
 
 .caixa {
+    margin: auto; /* Define a margem automática em todos os lados */
+    width: 600px; /* Define a largura como 600px */
+    text-align: center; /* Alinha o texto no centro */
+}
 
-    margin: auto;
-    width: 600px;
-    text-align: center;
+.caixa .conteudo {
+    list-style: none; /* Remove os marcadores de lista */
+    width: 300px; /* Define a largura como 300px */
+    height: 350px; /* Define a altura como 350px */
+    padding: auto; /* Define o preenchimento automático */
+    border-radius: 8px; /* Define o raio da borda como 8px */
+    background: #48048c; /* Define a cor de fundo como roxo escuro */
+    display: inline-block; /* Define o elemento como um bloco em linha */
+    align-items: center; /* Alinha os itens no centro verticalmente */
+}
 
-    }
-    
-    .caixa .conteudo {
-    
-    list-style: none;
-    width: 300px;
-    height: 350px;
-    padding: auto;
-    border-radius: 8px;
-    background: #48048c;
-    display: inline-block;
-    align-items: center;
-
-    
-    }
-
-.caixa .conteudo  a {
-    color: #000;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+.caixa .conteudo a {
+    color: #000; /* Define a cor do texto como preto */
+    display: flex; /* Define o modelo de exibição como flexível */
+    flex-direction: column; /* Define a direção flexível como coluna */
+    text-align: center; /* Alinha o texto no centro */
+    align-items: center; /* Alinha os itens no centro verticalmente */
+    justify-content: center; /* Alinha os itens no centro horizontalmente */
 }
 
 .caixa .conteudo h3 {
-    font-size: 30px;
-    margin-top: 20px;
-    letter-spacing: 2px;
+    font-size: 30px; /* Define o tamanho da fonte como 30px */
+    margin-top: 20px; /* Define a margem superior como 20px */
+    letter-spacing: 2px; /* Define o espaçamento entre caracteres como 2px */
 }

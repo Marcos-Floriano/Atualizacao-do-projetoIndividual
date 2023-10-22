@@ -11,102 +11,102 @@
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/funcoes.js"></script>
-    <title>Document</title>
+    <title>Dashboard</title>
 </head>
 
 <body>
     <div class="pag">
-        <nav>
-            <div class="logo">
-                <a href="../index.html"><img src="../assets/icon/logo-sem-o-fundo.png" alt=""></a>
-                <span>fighter's path-Dev</span>
-            </div>
-        </nav>
+
+     <nav><!-- Barra de navegação -->
+            <div class="logo"><!--Div que eu criei para mexer na logo e na mensagem de bim vindo -->
+                <a href="../index.html"><img src="../assets/icon/logo-sem-o-fundo.png" alt=""></a><!-- Aqui eu estou colocando a logo do site na barra de navegação linkando com a home -->
+                <span>fighter's path-Dev</span><!--Span com a mensagem fighter's path-Dev -->
+            </div><!-- Fim da div para mexer na logo e na mensagem de bim vindo -->
+        </nav><!-- Aqui termina barra de navegação -->
 
 
-        <div class="qtdUsuarios">
-            <div class="caixa">
-                <p><span id="qtd_cadastro"></span><br><span>Total de cadastros</span></p>
-            </div>
-        </div>
+        <div class="qtdUsuarios"><!-- Aqui crio uma div para mexer na caixa que ficara a quantidade de usuarios -->
+            <div class="caixa"><!-- Aqui crio uma div para mexer no  texto caixa que ficara a quantidade de usuarios -->
+                <p><span id="qtd_cadastro"></span><br><span>Total de cadastros</span></p><!-- Aqui eu coloco um span dentro de um paragrafo para mostar a quantidade de usuario(incrementado no javascript) -->
+            </div><!-- Fim da Div para mexer no texto caixa que ficara a quantidade de usuarios -->
+        </div><!-- Fim da Div para mexer no texto caixa que ficara a quantidade de usuarios -->
 
-        <button onclick="mostrarSelect()">Atualizar Genero</button>
-        <select name="generos" id="generos" style="display: none;">
-            <option value="none">Selecione um genero</option>
-            <option value="f">Feminino</option>
-            <option value="m">Masculino</option>
-            <option value="o">Outro</option>
-        </select>
-        <button id="button_salvar" onclick="update()" style="display: none;">Salvar</button>
+        <button onclick="mostrarSelect()">Atualizar Genero</button><!-- Button que ativa função mostrarSelect  -->
+        <select name="generos" id="generos" style="display: none;"><!-- Select com as opções para atualizar o genero -->
+            <option value="none">Selecione um genero</option><!-- opção com o valor padrão -->
+            <option value="f">Feminino</option><!-- opção com o valor feminino -->
+            <option value="m">Masculino</option><!-- opção com o valor masculino -->
+            <option value="o">Outro</option><!-- opção com o valor outro -->
+        </select><!--Fim do select -->
+        <button id="button_salvar" onclick="update()" style="display: none;">Salvar</button><!-- Button que ativa função update  -->
 
     </div>
-    <div class="alinhar"></div>
-    <br><br>
+
+    <div class="alinhar"></div><!-- Div que eu criei para alinhar os elementos(melhor exeplicado no css) -->
+
+    <br><br><!-- espaço entre as coixa e os graficos -->
+
+    <div class="dash"><!-- Div que eu criei para colocar as caixas das dashs -->
+        <div class="caixa2"><!-- Div que eu criei para manipular as dashs -->
+                <canvas id="myChart_SN"></canvas> <!-- Tag canvas com a dash de experiencia --> 
+        </div><!-- Fim da div para manipular as dashs -->
+    </div><!-- Fim da div para manipular as dashs -->
+
+<!-- Dash feita da mesma forma da primeira só que a diferença e que esse e sobre o genero do usuario -->
     <div class="dash">
-        <div class="caixa2">
-            <div>
-                <canvas id="myChart_SN"></canvas>
-              </div>
-        </div>
-    </div>
-    <div class="dash">
-        <div class="caixa2">
-            <div>
+        <div class="caixa2">       
                 <canvas id="myChart_MF"></canvas>
-              </div>
         </div>
     </div>
 
 
-
-    <!-- Div para exibir erros de login -->
-    <div id="div_erros_login"></div>
-    <!-- Div para exibir um indicador de carregamento (loading) -->
-    <div id="div_aguardar" class="loading-div"></div>
+    <div id="div_aguardar" class="loading-div"></div><!-- Div que eu criei para exibir as dashs -->
 </body>
 
 </html>
 
 <script>
+    
+    // Declarando as variáveis para as próximas atualizações
    let proximaAtualizacao_SN;
    let proximaAtualizacao_MF;
 
-window.onload = obterDadosGraficos_SN();
-window.onload = contar_Usuarios();
+window.onload = obterDadosGraficos_SN();// A função obterDadosGraficos_SN() é chamada quando a janela é carregada
+window.onload = contar_Usuarios();// A função contar_Usuarios() é chamada quando a janela é carregada
 
-
-function obterDadosGraficos_SN() {
-    obterDadosGrafico_SN(1)
+// começo dos graficos
+function obterDadosGraficos_SN() {// Função para obter os obterDadosGraficos_SN
+    obterDadosGrafico_SN(1);// Chamando a função obterDadosGrafico_SN com experiência igual a 1
 }
 
-function obterDadosGrafico_SN(experiencia) {
+function obterDadosGrafico_SN(experiencia) {// Função para obter os dados específicos do gráfico de Satisfação do Novo Cliente (sn) com base na experiência
 
-    // alterarTitulo(experiencia)
-
-
+   
+   // Verificando se há uma próxima atualização agendada para o gráfico de sn e se houver cancelando-a
     if (proximaAtualizacao_SN != undefined) {
         clearTimeout(proximaAtualizacao_SN);
     }
 
+     // Fazendo uma solicitação para o servidor para obter os dados do gráfico de sn com base na experiência fornecida
     fetch(`/medidas/ultimas_SN/${experiencia}`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                resposta.reverse();
+        if (response.ok) { // Verificando se a resposta da solicitação está OK
+            response.json().then(function (resposta) { // Transformando a resposta em formato json e lidando com os dados recebidos
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);// Mostrando os dados recebidos no console
+                resposta.reverse();// Revertendo a ordem dos dados recebidos
 
-                plotarGrafico_SN(resposta, experiencia);
+                plotarGrafico_SN(resposta, experiencia);// Chamando a função para plotar o gráfico de sn com os dados recebidos e a experiência fornecida
 
             });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
+        } else { //caso não seja ok
+            console.error('Nenhum dado encontrado ou erro na API'); // mostra um erro caso nenhum dado seja encontrado ou se houver um erro na api
         }
     })
         .catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`); // mostra um erro caso ocorra um erro durante a obtenção dos dados para o gráfico
         });
 }
 
-function plotarGrafico_SN(resposta, experiencia) {
+function plotarGrafico_SN(resposta, experiencia) {// Função para obter os plotarGrafico_SN
 
 console.log('iniciando plotagem do gráfico...');
 
@@ -215,6 +215,8 @@ fetch(`/medidas/tempo-real_SN/${experiencia}`, { cache: 'no-store' }).then(funct
     });
 
 }
+
+// A partir desse ponto começa a plotagem do segundo grafico que foi realizado da mesma forma que o primeiro a diferença e que esse grafico e sobre o genero
 
 window.onload = obterDadosGraficos_MF();
 
@@ -356,10 +358,15 @@ fetch(`/medidas/tempo-real_MF/${experiencia}`, { cache: 'no-store' }).then(funct
     });
 
 }
+// Fim dos graficos
 
-function contar_Usuarios() {
-    aguardar();
+// começo do funçao que exibira a quantidade de usuario
 
+function contar_Usuarios() {// Função contar_Usuarios
+
+    aguardar(); // Chamando a função aguardar
+
+      // Fazendo uma solicitação para contar o número de usuários
     fetch("/medidas/contar_usuarios", {
         method: "GET",
         headers: {
@@ -369,7 +376,7 @@ function contar_Usuarios() {
 
         console.log("resposta: ", resposta);
 
-        if (resposta.ok) {
+        if (resposta.ok) { // Verificando se a resposta está ok como nas outras funções e realiza o mesmo processo até o    feed.innerHTML = ""; apartir dali o processo e diferente e volta a ser igual no else
 
             if (resposta.status == 204) {
                     var feed = document.getElementById("qtd_cadastro");
@@ -384,11 +391,13 @@ function contar_Usuarios() {
 
                 var feed = document.getElementById("qtd_cadastro");
                 feed.innerHTML = "";
-                for (let Contador_dojos = 0; Contador_dojos < resposta.length; Contador_dojos++) {
-                    var publicacao = resposta[Contador_dojos];
-                    // criando e manipulando elementos do HTML via JavaScript
 
-                    feed.innerHTML = publicacao.usuarios;
+                for (let Contador_dojos = 0; Contador_dojos < resposta.length; Contador_dojos++) {// Loop que itera sobre os resultados obtidos
+
+                    var publicacao = resposta[Contador_dojos];// Obtendo a quantidade atual de usuarios
+
+                
+                    feed.innerHTML = publicacao.usuarios;// criando e manipulando elementos do HTML via JavaScript
 
                 }
 
@@ -405,21 +414,20 @@ function contar_Usuarios() {
     return false;
 }
 
-function mostrarSelect(){
+function mostrarSelect(){// Função mostrarSelect
 
-    var genero = document.getElementById("generos");
-    genero.style.display = "block";
+    var genero = document.getElementById("generos");// Variavel que obtém o elemento com id generos
+    genero.style.display = "block";// Define a propriedade de estilo display como block para tornar o elemento visível
 
-    var buton = document.getElementById("button_salvar");
-    buton.style.display = "block";
+    var buton = document.getElementById("button_salvar");//  Variavel que obtém o elemento com id button_salvar
+    buton.style.display = "block"; // Define a propriedade de estilo display como block para tornar o elemento visível
 
 
 }
 
-function update(){
+function update(){// Função update que vai atualizar o valor do grafico generos e ira inserir no banco funciona da mesma forma que uma função para o cadastro 
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
+    //recuperando valor
     var idUsuarioVar = sessionStorage.ID_USUARIO;
     var generoVar = generos.value;
 
@@ -429,8 +437,8 @@ function update(){
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
+           
+            //ciando um atributo
             generoServer: generoVar,
             idUsuarioServer: idUsuarioVar
         })
@@ -443,7 +451,7 @@ function update(){
             console.log("Update feito")
 
         } else {
-            alert ("Houve um erro ao tentar realizar o cadastro do dojo!");
+            alert ("Houve um erro ao tentar realizar a atualizaçao do genero");
         }
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);

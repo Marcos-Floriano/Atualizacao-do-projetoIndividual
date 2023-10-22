@@ -1,186 +1,185 @@
 /* Define estilos padrão para todos os elementos */
 * {
-    margin: 0;
-    border: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    margin: 0; /* Define a margem como zero para todos os elementos */
+    border: 0; /* Define a borda como zero para todos os elementos */
+    padding: 0; /* Define o preenchimento como zero para todos os elementos */
+    box-sizing: border-box; /* Define o box-sizing como border-box para todos os elementos */
+    font-family: "Poppins", sans-serif; /* Define a família da fonte para todos os elementos como Poppins e sans-serif */
 }
 
 /* Estilos para a navegação */
 nav {
-    width: 100%;
-    padding: 20px 0;
-    text-align: center;
+    width: 100%; /* Define a largura como 100% */
+    padding: 20px 0; /* Define o preenchimento superior e inferior como 20px e o preenchimento esquerdo e direito como 0 */
+    text-align: center; /* Alinha o texto ao centro */
 }
 
 /* Estilos para o logotipo */
 .logo {
-    width: 210px;
-    margin: 2px;
-    cursor: pointer;
+    width: 210px; /* Define a largura como 210px */
+    margin: 2px; /* Define a margem como 2px */
+    cursor: pointer; /* Define o cursor como ponteiro */
 }
 
 /* Estilos para a lista de navegação */
 nav ul {
-    background: #000;
-    width: 100%;
-    margin-top: 10px;
+    background: #000; /* Define o fundo como preto (#000) */
+    width: 100%; /* Define a largura como 100% */
+    margin-top: 10px; /* Define a margem superior como 10px */
 }
 
 nav ul li  {
-    display: inline-block;
-    list-style: none;
-    margin: 20px 30px;
-    text-decoration: none;
+    display: inline-block; /* Exibe em linha */
+    list-style: none; /* Remove os marcadores de lista */
+    margin: 20px 30px; /* Define a margem como 20px no topo e na base e 30px nos lados */
+    text-decoration: none; /* Remove a decoração do texto */
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: #fff;
+    text-decoration: none; /* Remove a decoração do texto */
+    color: #fff; /* Define a cor do texto como branco (#fff) */
 }
-
 
 /* Estilos para o corpo da página */
 body {
-    background-image: linear-gradient(rgba(10, 10, 10, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/imgs/yin-e-yang.jpg);
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    min-width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-position: center;
-    background-size: cover;
+    background-image: linear-gradient(rgba(10, 10, 10, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/imgs/yin-e-yang.jpg); /* Define a imagem de fundo com uma sobreposição de gradiente linear e uma imagem */
+    background-repeat: no-repeat; /* Não repete o fundo */
+    width: 100%; /* Define a largura como 100% */
+    height: 115vh; /* Define a altura como 115vh (viewport height) */
+    display: flex; /* Exibe como flex */
+    align-items: center; /* Alinha os itens ao centro verticalmente */
+    justify-content: center; /* Alinha os itens ao centro horizontalmente */
+    background-position: center; /* Posiciona o fundo no centro */
+    background-size: cover; /* Ajusta o tamanho do fundo para cobrir */
 }
 
 /* Estilos para o formulário */
 .formulario {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #000;
-    padding: 4rem;
-    border: 5px solid #48048c;
+    width: 90%; /* Define a largura como 90% */
+    display: flex; /* Exibe como flex */
+    flex-direction: column; /* Define a direção do flex como coluna */
+    justify-content: center; /* Alinha os itens ao centro verticalmente */
+    align-items: center; /* Alinha os itens ao centro horizontalmente */
+    background-color: #000; /* Define a cor de fundo como preto (#000) */
+    padding: 4rem; /* Define o preenchimento como 4rem */
+    border: 5px solid #48048c; /* Define a borda como 5px sólida com a cor #48048c */
 }
 
 .formulario h1 {
-    color: #fff;
+    color: #fff; /* Define a cor do texto como branco (#fff) */
 }
 
 /* Estilos para o cabeçalho do formulário */
-.formulario-fundo h1::after {
-    content: '';
-    display: block;
-    width: 5rem;
-    height: 0.3rem;
-    background: linear-gradient(45deg, #48048c, #060126);
-    margin: 0 auto;
-    position: absolute;
-    border-radius: 10px;
+.formulario-nome h1::after {
+    content: ''; /* Adiciona um conteúdo vazio */
+    display: block; /* Exibe como bloco */
+    width: 5rem; /* Define a largura como 5rem */
+    height: 0.3rem; /* Define a altura como 0.3rem */
+    background: linear-gradient(45deg, #48048c, #060126); /* Define o plano de fundo como um gradiente linear */
+    margin: 0 auto; /* Define a margem como 0 e alinha automaticamente */
+    position: absolute; /* Define a posição como absoluta */
+    border-radius: 10px; /* Define o raio da borda como 10px */
 }
 
 /* Estilos para grupos de entrada de dados */
 .grupos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 1rem 0;
+    display: flex; /* Exibe como flex */
+    flex-wrap: wrap; /* Permite que os itens sejam flexíveis e quebrem a linha, se necessário */
+    justify-content: space-between; /* Distribui o espaço entre os itens */
+    padding: 1rem 0; /* Define o preenchimento como 1rem no topo e na base e 0 nos lados */
 }
 
 /* Estilos para caixas de entrada de dados */
 .input-box {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.1rem;
+    display: flex; /* Exibe como flex */
+    flex-direction: column; /* Define a direção do flex como coluna */
+    margin-bottom: 1.1rem; /* Define a margem inferior como 1.1rem */
 }
 
 .input input {
-    margin: 0.6rem 0;
-    padding: 0.8rem 1.2rem;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 1px 1px 6px #0000001c;
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-position: center;
-    background-size: cover;
+    margin: 0.6rem 0; /* Define a margem como 0.6rem no topo e na base e 0 nos lados */
+    padding: 0.8rem 1.2rem; /* Define o preenchimento como 0.8rem no topo e na base e 1.2rem nos lados */
+    border: none; /* Remove a borda */
+    border-radius: 10px; /* Define o raio da borda como 10px */
+    box-shadow: 1px 1px 6px #0000001c; /* Define uma sombra */
+    font-size: 0.8rem; /* Define o tamanho da fonte como 0.8rem */
+    display: flex; /* Exibe como flex */
+    align-items: center; /* Alinha os itens ao centro verticalmente */
+    flex-direction: column; /* Define a direção do flex como coluna */
+    background-position: center; /* Posiciona o plano de fundo no centro */
+    background-size: cover; /* Ajusta o tamanho do plano de fundo para cobrir */
 }
 
 .input input:hover {
-    background-color: #eeeeee75;
+    background-color: #eeeeee75; /* Define a cor de fundo ao pairar sobre ela */
 }
 
 .input label,
 .check-titulo h6 {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #fff;
+    font-size: 0.75rem; /* Define o tamanho da fonte como 0.75rem */
+    font-weight: 600; /* Define o peso da fonte como 600 */
+    color: #fff; /* Define a cor do texto como branco (#fff) */
 }
 
 .input input::placeholder {
-    color: #000000be;
+    color: #000000be; /* Define a cor do espaçador como preto (#000000be) */
 }
 
 /* Fim dos estilos para caixas de entrada de dados */
 
 /* Estilos para grupos de gênero */
-.gender-group {
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 0.62rem;
-    padding: 0 .5rem;
+.genero-grupo {
+    display: flex; /* Exibe como flex */
+    justify-content: space-evenly; /* Distribui o espaço uniformemente */
+    margin-top: 0.62rem; /* Define a margem superior como 0.62rem */
+    padding: 0 .5rem; /* Define o preenchimento como 0 nos lados e 0.5rem no topo e na base */
 }
 
 /* Estilos para entrada de gênero */
-.gender-input {
-    display: flex;
-    align-items: center;
+.input-grupo {
+    display: flex; /* Exibe como flex */
+    align-items: center; /* Alinha os itens ao centro verticalmente */
 }
 
-.gender-input input {
-    margin-right: 0.35rem;
+.input-grupo input {
+    margin-right: 0.35rem; /* Define a margem à direita como 0.35rem */
 }
 
-.gender-input label {
-    font-size: 0.81rem;
-    font-weight: 600;
-    color: #fff;
+.input-grupo label {
+    font-size: 0.81rem; /* Define o tamanho da fonte como 0.81rem */
+    font-weight: 600; /* Define o peso da fonte como 600 */
+    color: #fff; /* Define a cor do texto como branco (#fff) */
 }
 
 /* Fim dos estilos para entrada de gênero */
 
 /* Estilos gerais para botões */
 button {
-    margin-top: 2rem;
-    padding: 0.4rem;
-    width: 100%;
-    background: linear-gradient(to left, #48048c, #060126);
-    cursor: pointer;
-    color: white;
-    font-size: 0.9rem;
-    font-weight: 300;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+    margin-top: 2rem; /* Define a margem superior como 2rem */
+    padding: 0.4rem; /* Define o preenchimento como 0.4rem */
+    width: 100%; /* Define a largura como 100% */
+    background: linear-gradient(to left, #48048c, #060126); /* Define o plano de fundo como um gradiente linear */
+    cursor: pointer; /* Define o cursor como ponteiro */
+    color: white; /* Define a cor do texto como branco */
+    font-size: 0.9rem; /* Define o tamanho da fonte como 0.9rem */
+    font-weight: 300; /* Define o peso da fonte como 300 */
+    border-radius: 4px; /* Define o raio da borda como 4px */
+    transition: all 0.3s ease; /* Define uma transição para todos os elementos em 0.3s com uma transição suave */
 }
 
 
 /* Estilos para a barra de rolagem */
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 15px; /* Define a largura como 15px */
 }
 
 /* Estilos para a parte de fundo da barra de rolagem */
 ::-webkit-scrollbar-track {
-    background: #000;
+    background: #000; /* Define o fundo como preto (#000) */
 }
 
 /* Estilos para o indicador da barra de rolagem */
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(#48048c, #060126);
-    border-radius: 10px;
+    background: linear-gradient(#48048c, #060126); /* Define o plano de fundo como um gradiente linear */
+    border-radius: 10px; /* Define o raio da borda como 10px */
 }

@@ -5,73 +5,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/Cadastro.css">
-    <link rel="icon" href="assets/icon/logo-sem-o-fundo.png">
-    <title>Cadastro</title>
+    <link rel="stylesheet" href="css/Cadastro.css"><!-- Aqui eu estou linkando o css da pagina-->
+    <link rel="icon" href="assets/icon/logo-sem-o-fundo.png"><!-- Aqui eu estou linkando o icon do site -->
+    <title>Cadastro</title><!-- Aqui eu estou colocando o nome da pagina -->
 </head>
 
 <body>
 
-    <div class="mensagem_erro"> <!-- Div ue eu criei para mostrar os erros -->
-
-  
         <div class="pag"> <!-- Div que eu criei para mexer melhor na pagina-->
-            <!-- Barra de navegação -->
-            <nav>
-                <!-- Logotipo da página -->
-                <img src="assets/icon/logo-sem-o-fundo.png" class="logo">
 
-                <!-- Lista de itens de menu -->
-                <ul>
-                    <li>Home</li>
+            <nav><!-- Barra de navegação -->
+                <img src="assets/icon/logo-sem-o-fundo.png" class="logo"><!-- Aqui eu estou colocando a logo do site na barra de navegação -->
+                <ul><!-- Aqui eu estou qriando uma lista para colocar os items da navbar -->
+                 <li><a href="index.html">Home</a></li><!-- Aqui eu estou qriando os items da navbar e colocando links para acessar outras paginas -->
+                </ul><!-- Aqui termina a lista para colocar os items da navbar -->
+            </nav><!--  Aqui termina barra de navegação -->
 
-                </ul>
-            </nav>
+            
+            <div class="formulario"><!-- Div que eu criei para mexer melhor no formulario do cadastro-->
 
-            <!-- Formulário de cadastro -->
-            <div class="formulario">
+            
+                <div class="formulario-nome"><!-- Div que eu criei para mexer melhor no nome desse formulario-->
 
-                <!-- Cabeçalho do formulário -->
-                <div class="formulario-fundo">
+                        <h1>Cadastre-se</h1><!-- Nome do formulario -->
 
-                    <!-- Título do formulário -->
-                    <div>
+                </div><!-- Fim da div para mexer melhor no nome desse formulario-->
 
-                        <h1>Cadastre-se</h1>
+           
+                <div class="grupos"><!-- Div que eu criei para mexer e organizar as inputs-->
 
-                    </div>
+                    <!-- inputs do cadastro -->
 
-                </div>
-
-                <!-- Grupo de entrada de dados -->
-                <div class="grupos">
-
-                    <!-- Caixa de entrada de dados -->
-                    <div class="input">
+                    <div class="input"><!-- Div que eu criei para estilizar as inputs-->
 
                         <!-- Rótulo para o campo "Primeiro Nome" -->
-                        <label for="firstname">Primeiro Nome</label>
-                        <!-- Campo de entrada de texto para o primeiro nome -->
-                        <input id="input_nome" type="text" name="firstname" placeholder="Digite seu primeiro nome"
-                            required>
+                        <label for="firstname">Primeiro Nome</label><!-- Aqui eu uso a tag label para especificar o titulo da primeira input-->
+                        <input id="input_nome" type="text" name="firstname" placeholder="Digite seu primeiro nome" required><!-- Input para inserir o nome da pessoa  -->
 
-                    </div>
+                    </div><!-- Fim da div para estilizar as inputs-->
 
-                    <!-- Outras caixas de entrada de dados para sobrenome, email, data de nascimento, senha, confirmação de senha -->
+                    <!-- Outras inputs para sobrenome, email, data de nascimento, senha, confirmação de senha feitas do mesmo modo que primeira -->
 
                     <div class="input">
 
                         <label for="lastname">Sobrenome</label>
-
-                        <input id="input_sobrenome" type="text" name="lastname" placeholder="Digite seu sobrenome"
-                            required>
+                        <input id="input_sobrenome" type="text" name="lastname" placeholder="Digite seu sobrenome"required>
 
                     </div>
 
                     <div class="input">
 
                         <label for="email">E-mail</label>
-
                         <input id="input_email" type="email" name="email" placeholder="Digite seu e-mail" required>
 
                     </div>
@@ -79,7 +63,6 @@
                     <div class="input">
 
                         <label for="number">Data de nacimento</label>
-
                         <input id="input_nasc" type="date" name="number" required>
 
                     </div>
@@ -87,7 +70,6 @@
                     <div class="input">
 
                         <label for="password">Senha</label>
-
                         <input id="input_password" type="password" name="password" placeholder="Digite sua senha"
                             required>
 
@@ -97,69 +79,58 @@
                     <div class="input">
 
                         <label for="confirmPassword">Confirme sua Senha</label>
-
-                        <input id="input_confirmPassword" type="password" name="confirmPassword"
-                            placeholder="Digite sua senha novamente" required>
+                        <input id="input_confirmPassword" type="password" name="confirmPassword" placeholder="Digite sua senha novamente" required>
 
                     </div>
 
                 </div>
 
-                <!-- Grupo de entrada para gênero -->
-                <div class="check-box">
+                <!-- Check boxs do cadastro -->
 
-                    <!-- Título do grupo de entrada de gênero -->
-                    <div class="check-titulo">
+                <div class="check-box"><!-- Div que eu criei para mexer nas check box -->
 
-                        <h6>Gênero</h6>
+                    <div class="check-titulo"><!-- Div que eu criei para mexer no nome do campo da check box -->
 
-                    </div>
-                    <!-- Grupo de opções de gênero -->
-                    <div class="gender-group">
+                        <h6>Gênero</h6><!-- Nome do campo -->
 
-                        <!-- Opção de gênero "Feminino" -->
-                        <div class="gender-input">
+                    </div><!--Fim da div para mexer no nome do campo da check box -->
 
-                            <!-- Botão de rádio para "Feminino" -->
-                            <input id="input_genero1" type="radio" name="gender" value="f">
+              
+                    <div class="genero-grupo"><!-- Div que eu criei para mexer e organizar as check box -->
 
-                            <!-- Rótulo para "Feminino" -->
-                            <label for="female">Feminino</label>
+                    
+                        <div class="input-grupo"><!-- Div que eu criei para organizar as opções -->
 
-                        </div>
+                            <input id="input_genero1" type="radio" name="gender" value="f"><!-- opção de sexo feminino -->
+                            <label for="female">Feminino</label><!-- Nome da opção -->
 
-                        <!-- Opção de gênero "Masculino" -->
-                        <div class="gender-input">
+                        </div><!-- Fim da div para organizar as opções -->
 
-                            <!-- Botão de rádio para "Masculino" -->
+                         <!-- Check boxs estilizadas e organizadas da mesma maneira só que com as opções de masculino e outros -->
+
+                        <div class="input-grupo">
+
                             <input id="input_genero2" type="radio" name="gender" value="m">
-
-                            <!-- Rótulo para "Masculino" -->
                             <label for="male">Masculino</label>
 
                         </div>
 
                       
-                         <div class="gender-input">
-
+                         <div class="input-grupo">
                         
                             <input id="input_genero3" type="radio" name="gender" value="o">
-
-
                             <label for="other">Outros</label>
 
                         </div>
 
+                    </div><!-- Fim da div para mexer e organizar as check box -->
 
-
-
-                    </div>
-
-                </div>
+                </div><!-- Fim da primeira div para mexer nas check box -->
 
                 <br><br>
 
-                <!-- Pergunta sobre a prática de artes marciais com caixas de seleção condicionais para informações adicionais coso a resposta for sim(s) -->
+             <!-- Check boxs do cadastro organizadas da mesma maneira que a primeira só que dessa vez perguntando se o usuario tem experiencia e capturando a resposta para usar no javascript -->
+
                 <div class="check-box">
 
                     <div class="check-titulo">
@@ -168,25 +139,25 @@
 
                     </div>
 
-                    <div class="gender-group">
+                    <div class="genero-grupo">
 
-                        <div class="gender-input">
+                        <div class="input-grupo">
 
                             <input id="input_experiencia1" type="radio" name="gender1" value="s" onclick="input('s')">
-
                             <label for="sim">Sim</label>
 
                         </div>
 
-                        <div class="gender-input">
+                        <div class="input-grupo">
 
                             <input id="input_experiencia2" type="radio" name="gender1" value="n" onclick="input('n')">
-
                             <label for="nao">Não</label>
 
                         </div>
 
                         <br><br>
+
+                       <!-- Inputs organizadas da mesma forma que as primeira mas essas só aparecem se a chck-box acima for prenchida com sim  -->
 
                         <div class="input">
 
@@ -207,24 +178,23 @@
                             <input id="input_grau" type="text" style="display: none;"
                                 placeholder="Digite qual o seu grau na arte marcial praticada">
 
+
                         </div>
 
                     </div>
 
                 </div>
 
-                <!-- div do Botão "Continuar" -->
-                <div>
+             
+                <div><!-- Div que eu criei para separar o button -->
 
-                    <!-- O botão chama a função "cadastrar()" ao ser clicado -->
-                    <button onclick="cadastrar()">Continuar</button>
+                    <button onclick="cadastrar()">Continuar</button><!-- button que ativa a função cadastrar -->
 
-                </div>
+                </div><!-- Fim da div para separar o button -->
 
-            </div>
-        </div>
+            </div><!-- Fim da div para mexer melhor no formulario do cadastro-->
+        </div><!-- Fim da div para mexer melhor na pagina-->
 
-    </div>
 
 </body>
 
@@ -233,8 +203,6 @@
 <script>
 
     window.onload = atualizarFeed_Artes();// Chama a função atualizarFeed_Artes quando a janela é carregada
-
-
 
     function atualizarFeed_Artes() {// Função para atualizar o feed de Artes
 
@@ -250,7 +218,7 @@
     
             if (resposta.ok) { // Verifica se a resposta está OK
     
-                if (resposta.status == 204) { // Verifica se o status é 204 (Nenhum conteúdo) 
+                if (resposta.status == 204) { // Verifica se o status é 204 (sem conteúdo) 
                         var feed = document.getElementById("input_exp");// Variavel para obter o elemento de feed
                         var mensagem = document.createElement("span"); // Variavel para criar um novo elemento de mensagem
                         mensagem.innerHTML = "Nenhum resultado encontrado." // Define o conteúdo da mensagem
@@ -287,8 +255,10 @@
             } else {// Caso a resposta não esteja ok
                 throw ("Houve um erro ao tentar realizar A pesquisa!"); // avisa que houve um erro durante a pesquisa
             }
+
+        // Lida com erros e exibe mensagens de erro no console
         }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`); // Lida com erros e exibe mensagens de erro no console
+            console.log(`#ERRO: ${resposta}`);
         });
     
         return false; // Retorna falso
@@ -296,30 +266,30 @@
 
     function input(resp) { // Função para manipular as inputs
 
-        if (resp == "s") {// Verifica se o usuario marcou 's' na experiencia
+        if (resp == "s") {// Verifica se o usuario marcou s na experiencia
 
-        nome1.style.display = 'block'; // Define o estilo de exibição para 'nome1' como 'block'
-        nome2.style.display = 'block'; // Define o estilo de exibição para 'nome2' como 'block'
-        nome3.style.display = 'block'; // Define o estilo de exibição para 'nome3' como 'block'
-        input_tempo.style.display = 'block'; // Define o estilo de exibição para 'input_tempo' como 'block'
-        input_exp.style.display = 'block'; // Define o estilo de exibição para 'input_exp' como 'block'
-        input_grau.style.display = 'block'; // Define o estilo de exibição para 'input_grau' como 'block'
+        nome1.style.display = 'block'; // Define o estilo de exibição para nome1 como block
+        nome2.style.display = 'block'; // Define o estilo de exibição para nome2 como block
+        nome3.style.display = 'block'; // Define o estilo de exibição para nome3 como block
+        input_tempo.style.display = 'block'; // Define o estilo de exibição para input_tempo como block
+        input_exp.style.display = 'block'; // Define o estilo de exibição para input_exp como block
+        input_grau.style.display = 'block'; // Define o estilo de exibição para input_grau como block
             
         } else { // Caso contrário
 
-        nome1.style.display = 'none'; // Define o estilo de exibição para 'nome1' como 'none'
-        nome2.style.display = 'none'; // Define o estilo de exibição para 'nome2' como 'none'
-        nome3.style.display = 'none'; // Define o estilo de exibição para 'nome3' como 'none'
-        input_tempo.style.display = 'none'; // Define o estilo de exibição para 'input_tempo' como 'none'
-        input_exp.style.display = 'none'; // Define o estilo de exibição para 'input_exp' como 'none'
-        input_grau.style.display = 'none'; // Define o estilo de exibição para 'input_grau' como 'none'
+        nome1.style.display = 'none'; // Define o estilo de exibição para nome1 como none
+        nome2.style.display = 'none'; // Define o estilo de exibição para nome2 como none
+        nome3.style.display = 'none'; // Define o estilo de exibição para nome3 como none
+        input_tempo.style.display = 'none'; // Define o estilo de exibição para input_tempo como none
+        input_exp.style.display = 'none'; // Define o estilo de exibição para input_exp como none
+        input_grau.style.display = 'none'; // Define o estilo de exibição para input_grau como none
         }
 
     }
 
     function cadastrar() {// Função para lidar com o cadastro
         var generoVar = 'm' //Variavel que define o gênero como masculino por padrão
-        var experienciaVar = 'n'// Variavel que define a experiência como 'n' por padrão
+        var experienciaVar = 'n'// Variavel que define a experiência como n por padrão
 
         if (input_genero1.checked) {  // Verifica o valor do gênero
             generoVar = 'f' // Define o gênero como feminino se o input_genero1 estiver marcado
@@ -348,7 +318,7 @@
         }
         else {// Caso contrário
             if (input_experiencia1.checked) { // Verifica se a opção de experiência 1 está marcada
-                experienciaVar = 's'// Define a experiência como 's'
+                experienciaVar = 's'// Define a experiência como s
 
                 fetch("/usuarios/cadastrarRespostaSim", {// Lida com a resposta da solicitação
                     method: "POST",
@@ -395,7 +365,8 @@
                 return false; // Retorna falso
             } else { //Caso o usuario tenha prenchido com não na área de experiência
 
-                fetch("/usuarios/cadastrarRespostaNao", {  // Lida com a resposta
+                // Lida com a resposta
+                fetch("/usuarios/cadastrarRespostaNao", {  
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -414,7 +385,9 @@
                         generoServer: generoVar,
                         experienciaServer: experienciaVar
                     })
-                }).then(function (resposta) { // Lida com a resposta da solicitação
+
+                // Lida com a resposta da solicitação
+                }).then(function (resposta) { 
 
 
                     console.log("resposta: ", resposta);
@@ -432,8 +405,10 @@
                     } else {// Caso a resposta não for ok
                         throw ("Houve um erro ao tentar realizar o cadastro!");// mostra um erro indicando que houve um erro ao tentar realizar o cadastro
                     }
+
+                // Lida com erros e mostra mensagens de erro no console
                 }).catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);// Lida com erros e mostra mensagens de erro no console
+                    console.log(`#ERRO: ${resposta}`);
                 });
 
                 return false; // Retorna falso

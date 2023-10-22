@@ -11,57 +11,59 @@
 </head>
 
 <body>
-        <nav>
-            <div class="logo">
-                <a href="index.html"><img src="assets/icon/logo-sem-o-fundo.png" alt=""></a>
-                <span>Bem Vindo <span id="Nome"> usuario </span></span>
-            </div>
-        </nav>
+        <nav><!-- Barra de navegação -->
+            <div class="logo"><!--Div que eu criei para mexer na logo e na mensagem de bim vindo -->
+                <a href="index.html"><img src="assets/icon/logo-sem-o-fundo.png" alt="#"></a><!-- Aqui eu estou colocando a logo do site na barra de navegação linkando com a home -->
+                <span>Bem-Vindo <span id="Nome"> usuario </span></span><!--Span com a mensagem de bem-vindo outro com o nome do usuario -->
+            </div><!-- Fim da div para mexer na logo e na mensagem de bim vindo -->
+        </nav><!--  Aqui termina barra de navegação -->
 
 
-    <div class="caixa">
-        <div class="conteudo">
+    <div class="caixa"><!-- Div que eu criei para mexer nas caixas da pagina-->
+        <div class="conteudo"><!-- Div que eu criei para mexer no conteudo das caixas -->
   
-            <h3>Dojos</h3><br>
+            <h3>Dojos</h3><!-- nome da primeira caixa -->
+            <br><!-- espaço do nome com a lista -->
  
-            <ul id="lista_dojos">
+            <ul id="lista_dojos"><!-- Lista feita para listar os dojos apartir do banco de dados(incrementação no javascript)-->
+            </ul><!-- Fim da lista -->
 
-            </ul>
+            <a href="cadastroDojo.html">Quer cadastrar o seu dojo? </a><!-- Link para cadastrar um dojo -->
 
-            <a href="cadastroDojo.html">Quer cadastrar o seu dojo? </a>
-        </div>
-    </div>
+        </div><!-- Fim da div para mexer na caixa1 da pagina-->
+    </div><!-- Fim da div para mexer no conteudo da caixa1 -->
 
+    <div class="caixa"><!-- Div que eu criei para mexer nas caixas da pagina-->
+        <div class="conteudo"><!-- Div que eu criei para mexer no conteudo das caixas -->
 
-    <div class="caixa">
-        <div class="conteudo">
-            <h3>Bonús</h3> <br>
+            <h3>Bonús</h3><!-- nome da segunda caixa -->
+            
+            <br><!-- espaço do nome com os links -->
 
-            <a href="calculadora.html">Calculadora</a>
-            <a href="dashboard/dashboard.html">Dashboard</a>
+            <a href="calculadora.html">Calculadora</a><!-- Link para a  calculadora -->
+            <a href="dashboard/dashboard.html">Dashboard</a><!-- Link para as Dashboard -->
 
-        </div>
-    </div>
+        </div><!-- Fim da div para mexer na caixa2 da pagina-->
+    </div><!-- Fim da div para mexer no conteudo da caixa2 -->
 
-    <!-- Div para exibir erros de login -->
-    <div id="div_erros_login"></div>
-
-    <!-- Div para exibir um indicador de carregamento (loading) -->
-    <div id="div_aguardar" class="loading-div"></div>
-
+  
+    <div id="div_aguardar" class="loading-div"></div> <!-- Div que eu criei para exibir a lista dojo -->
+    
 </body>
 
 </html>
 
 <script>
 
-Nome.innerHTML = sessionStorage.NOME_USUARIO;
+Nome.innerHTML = sessionStorage.NOME_USUARIO;// Define o texto do elemento Nome como o valor do nome no banco
 
-window.onload = atualizarFeed_Dojos();
+window.onload = atualizarFeed_Dojos();// Função para atualizar a função atualizarFeed_Dojos
 
-function atualizarFeed_Dojos() {
+function atualizarFeed_Dojos() {// Função para atualizarFeed_Dojos
+
     aguardar();
 
+    // Lida com a resposta da solicitação fetch
     fetch("/dojo/listar", {
         method: "GET",
         headers: {
@@ -71,42 +73,40 @@ function atualizarFeed_Dojos() {
 
         console.log("resposta: ", resposta);
 
-        if (resposta.ok) {
-
-            if (resposta.status == 204) {
-                    var feed = document.getElementById("lista_dojos");
-                    var mensagem = document.createElement("span");
-                    mensagem.innerHTML = "Nenhum resultado encontrado."
-                    feed.appendChild(mensagem);
-                    throw "Nenhum resultado encontrado!!";
+        if (resposta.ok) {// Verifica se a resposta está OK
+            if (resposta.status == 204) { // Verifica se o status é 204 (sem conteúdo) 
+                    var feed = document.getElementById("lista_dojos");// Variavel para obter o elemento de feed
+                    var mensagem = document.createElement("span"); // Variavel para criar um novo elemento de mensagem
+                    mensagem.innerHTML = "Nenhum resultado encontrado."// Define o conteúdo da mensagem
+                    feed.appendChild(mensagem); // Adiciona a mensagem ao feed
+                    throw "Nenhum resultado encontrado!!";//avisa que nenhum resultado foi encontrado
                 }
 
-                resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
+                // caso tenha um conteúdo
+                resposta.json().then(function (resposta) {// Lida com a resposta JSON
+                console.log("Dados recebidos: ", JSON.stringify(resposta));// Exibe os dados recebidos no console
+                var feed = document.getElementById("lista_dojos");// Variavel que obtém o elemento pelo id lista_dojos
+                feed.innerHTML = "";// Limpa o conteúdo do elemento
 
-                var feed = document.getElementById("lista_dojos");
-                feed.innerHTML = "";
-                for (let Contador_dojos = 0; Contador_dojos < resposta.length; Contador_dojos++) {
-                    var publicacao = resposta[Contador_dojos];
-                    // criando e manipulando elementos do HTML via JavaScript
-                    var usuario = document.createElement("li");
-
-                    usuario.innerHTML = publicacao.NomeDojo + " | " + publicacao.Mestre + " | " + publicacao.Bairro;
-
-                    feed.appendChild(usuario);
+                for (let Contador_dojos = 0; Contador_dojos < resposta.length; Contador_dojos++) {// Loop que itera sobre os resultados obtidos
+                    var publicacao = resposta[Contador_dojos]; // Variavel que obtém a publicação atual
+                    var usuario = document.createElement("li"); // Variavel que cria um elemento de lista
+                    usuario.innerHTML = publicacao.NomeDojo + " | " + publicacao.Mestre + " | " + publicacao.Bairro;// Define os conteúdos do banco d dados que seram exibidos
+                    feed.appendChild(usuario);// Adiciona o elemento à lista
                 }
-
-                finalizarAguardar();
+                finalizarAguardar();// Chama a função finalizarAguardar 
             });
-        } else {
-            throw ("Houve um erro ao tentar realizar A pesquisa!");
+            
+        } else {// Caso a resposta não esteja ok
+            throw ("Houve um erro ao tentar realizar A pesquisa!");// avisa que houve um erro durante a pesquisa
         }
+    // Lida com erros e exibe mensagens de erro no console  
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
         finalizarAguardar();
     });
 
-    return false;
+    return false;// Retorna falso
 }
 
 </script>

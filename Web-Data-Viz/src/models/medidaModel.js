@@ -1,22 +1,23 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas_SN(experiencia) {
+function buscarUltimasMedidas_SN(experiencia) { // Função para buscarUltimasMedidas_SN com base na experiência
 
-    instrucaoSql = ''
+    instrucaoSql = '' // Inicializa a variável instrucaoSql como vazia
 
-    if (process.env.AMBIENTE_PROCESSO == "producao") {
+    if (process.env.AMBIENTE_PROCESSO == "producao") {// Verifica se o ambiente de processo é de produção
         instrucaoSql = `select experiencia, count(experiencia) as Usuarios from Usuario group by experiencia;`;
-    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {// Verifica se o ambiente de processo é de desenvolvimento
         instrucaoSql = `select experiencia, count(experiencia) as Usuarios from Usuario group by experiencia;`;
-    } else {
+    } else {// Se o ambiente de processo não estiver definido
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
-        return
+        return// Retorna
     }
 
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);//Exibe que vai ser executado
+    return database.executar(instrucaoSql);// Retorna o resultado da execução da instrução SQL
 }
 
+// O mesmo processo e feito nas funções a baixo
 function buscarMedidasEmTempoReal_SN(experiencia) {
 
     instrucaoSql = ''
@@ -87,7 +88,7 @@ function contar_usuarios(){
     return database.executar(instrucaoSql);
 }
 
-
+//exportando os modulos
 module.exports = {
     buscarUltimasMedidas_SN,
     buscarMedidasEmTempoReal_SN,

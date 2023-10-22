@@ -3,98 +3,97 @@
 
 /* Define estilos globais para todos os elementos */
 * {
-    margin: 0;
-    border: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif; /* Define a fonte padrão para o documento */
+    margin: 0; /* Define margem como 0 */
+    border: 0; /* Define borda como 0 */
+    padding: 0; /* Define preenchimento como 0 */
+    box-sizing: border-box; /* Define a caixa como modelagem de borda */
+    font-family: "Poppins", sans-serif; /* Define a fonte para todo o documento */
 }
 
 /* Estilos para o corpo (body) da página */
 body {
-    background: url(../assets/imgs/yin-e-yang.jpg);
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    min-width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-position: center;
-    background-size: cover;
+    background: url(../assets/imgs/yin-e-yang.jpg); /* Define o plano de fundo como uma imagem */
+    background-repeat: no-repeat; /* Impede a repetição da imagem de fundo */
+    min-height: 100vh; /* Define a altura mínima como 100% da altura da visualização */
+    min-width: 100vw; /* Define a largura mínima como 100% da largura da visualização */
+    display: flex; /* Define o modelo de exibição como flexível */
+    align-items: center; /* Alinha os itens no centro verticalmente */
+    justify-content: center; /* Alinha os itens no centro horizontalmente */
+    background-position: center; /* Centraliza a posição do plano de fundo */
+    background-size: cover; /* Redimensiona a imagem para cobrir todo o elemento */
 }
 
-/* Estilos para a seção principal (main.container) */
-main.container {
-    background: black;
-    min-width: 320px;
-    min-height: 40vh;
-    padding: 2rem;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    border: #48048c solid 2px;
+/* Estilos para a seção principal (div.container) */
+.container {
+    background: black; /* Define o plano de fundo como preto */
+    min-width: 320px; /* Define a largura mínima como 320 pixels */
+    min-height: 40vh; /* Define a altura mínima como 40% da altura da visualização */
+    padding: 2rem; /* Define o preenchimento interno como 2 unidades */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Define a sombra da caixa */
+    border-radius: 8px; /* Define o raio da borda como 8 pixels */
+    border: #48048c solid 2px; /* Define a borda com cor e largura especificadas */
 }
 
 /* Estilos para o título dentro da seção principal */
-main h2 {
-    color: #8404d9;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    position: relative;
+div h2 {
+    color: #8404d9; /* Define a cor do texto como roxo */
+    font-weight: 600; /* Define a espessura da fonte como 600 */
+    margin-bottom: 2rem; /* Define a margem inferior como 2 unidades */
+    position: relative; /* Define a posição como relativa */
 }
 
 /* Estilos para a linha abaixo do título */
-main h2::before {
-    content: '';
-    position: absolute;
-    height: 4px;
-    width: 25px;
-    bottom: 3px;
-    left: 0;
-    border-radius: 8px;
-    background: linear-gradient(45deg, #48048c, #060126);
+div h2::before {
+    content: ''; /* Define o conteúdo como vazio */
+    position: absolute; /* Define a posição como absoluta */
+    height: 4px; /* Define a altura como 4 unidades */
+    width: 25px; /* Define a largura como 25 unidades */
+    bottom: 3px; /* Define a distância do fundo como 3 unidades */
+    left: 0; /* Alinha à esquerda */
+    border-radius: 8px; /* Define o raio da borda como 8 pixels */
+    background: linear-gradient(45deg, #48048c, #060126); /* Define o plano de fundo como um gradiente linear */
 }
 
 /* Estilos para o formulário */
 form {
-    display: flex;
-    flex-direction: column;
+    display: flex; /* Define o modelo de exibição como flexível */
+    flex-direction: column; /* Define a direção flexível como coluna */
 }
 
 /* Estilos para os campos de entrada de texto */
-.input-field {
-    position: relative;
+.campo {
+    position: relative; /* Define a posição como relativa */
 }
 
 /* Margem inferior para o primeiro campo de entrada */
-form .input-field:first-child {
-    margin-bottom: 1.5rem;
+form .campo:first-child {
+    margin-bottom: 1.5rem; /* Define a margem inferior como 1.5 unidades */
 }
 
 /* Estilos para os campos de entrada de texto */
-.input-field input {
-    outline: none;
-    font-size: 0.9rem;
-    color: rgba(0, 0, 0, 0.7);
-    width: 100%;
-    border-radius: 20px;
+.campo input {
+    outline: none; /* Remove o contorno ao receber foco */
+    font-size: 0.9rem; /* Define o tamanho da fonte como 0.9 unidades */
+    color: rgba(0, 0, 0, 0.7); /* Define a cor do texto como preto com transparência */
+    width: 100%; /* Define a largura como 100% */
+    border-radius: 20px; /* Define o raio da borda como 20 pixels */
 }
 
 /* Estilos para o texto do espaço reservado nos campos de entrada */
-.input-field input::placeholder {
-    color: rgba(10, 10, 10, 0.5);
+.campo input::placeholder {
+    color: rgba(10, 10, 10, 0.5); /* Define a cor do espaço reservado como preto com transparência */
 }
 
 /* Estilos para o botão */
 button {
-    margin-top: 2rem;
-    padding: 0.4rem;
-    width: 100%;
-    background: linear-gradient(to left, #48048c, #060126);
-    cursor: pointer;
-    color: white;
-    font-size: 0.9rem;
-    font-weight: 300;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+    margin-top: 2rem; /* Define a margem superior como 2 unidades */
+    padding: 0.4rem; /* Define o preenchimento como 0.4 unidades */
+    width: 100%; /* Define a largura como 100% */
+    background: linear-gradient(to left, #48048c, #060126); /* Define o plano de fundo como um gradiente linear */
+    cursor: pointer; /* Define o cursor como ponteiro */
+    color: white; /* Define a cor do texto como branco */
+    font-size: 0.9rem; /* Define o tamanho da fonte como 0.9 unidades */
+    font-weight: 300; /* Define a espessura da fonte como 300 */
+    border-radius: 4px; /* Define o raio da borda como 4 pixels */
+    transition: all 0.3s ease; /* Define a transição para todos os estilos em 0.3 segundos */
 }
-

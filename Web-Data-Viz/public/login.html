@@ -14,72 +14,67 @@
   
     <body>
 
-        <!-- Início do conteúdo principal -->
-        <main class="container">
-            
-                <!-- Div para exibir erros de prenchemento do login -->
-            <div class="alerta-erro">
-                <div class="card-erro" id="cardErro">
-                    <span id="mensagem_erro"></span>
-                </div>
-            </div>
+         
+        <div class="card-erro" id="cardErro"><!-- Div que eu criei para exibir a mensagem de erro -->
+         <span id="mensagem_erro"></span><!-- Span para exibir o erro-->
+        </div><!-- Fim da Div para exibir a mensagem de erro -->
+      
 
-             <!-- Início do Login -->
-            <h2>Login</h2>
+        <div class="container"><!-- Div que eu criei para mexer no conteiner do login -->
+            
+            <h2>Login</h2> <!-- Nome do conteiner -->
+
+            
+            <!-- Campos a serem prenchidos para o login -->
     
-            <!-- Campo de entrada para o email -->
-            <div class="input-field">
-                <input type="text"  id="email_input"
-                    placeholder=" Enter Your Email">
+            <div class="campo"> <!-- Div que eu criei para organizar e estilizar as inputs-->
+                <input type="text"  id="email_input" placeholder=" Enter Your Email"><!-- Input para inserir o email do usuario já cadasrado  -->
+            </div><!-- Fim da div para organizar e estilizar as inputs-->
+    
+            <!-- input para senha feita da mesmo forma que o primeiro -->
+            <div class="campo">
+                <input type="password"  id="senha_input" placeholder=" Enter Your Password" required>
             </div>
     
-            <!-- Campo de entrada para a senha -->
-            <div class="input-field">
-                <input type="password"  id="senha_input"
-                    placeholder=" Enter Your Password" required>
-            </div>
+           
+            <div id="div_aguardar" class="loading-div"></div> <!-- Div que eu criei para exibir o carregamento -->
     
-            <!-- Div para exibir um indicador de carregamento (loading) -->
-            <div id="div_aguardar" class="loading-div"></div>
+            <button onclick="entrar()">Continue</button> <!-- Button para executar a função entrar() -->
     
-            <!-- Botão para executar a função "entrar()" -->
-            <button onclick="entrar()">Continue</button>
-    
-            <br><br>
+            <br><br><!-- espaço entre o button e o link -->
     
             <!-- Mensagem para criar uma conta -->
-            <span>Não tem conta</span><br><a href="cadastro(Refeito).html">Click aqui</a>
+            <span>Não tem conta</span><br><a href="cadastro.html">Click aqui</a> <!-- Span para criar conta com um link pro cadastro -->
     
-            <!-- Div para exibir erros de login -->
-            <div id="div_erros_login"></div>
-        </main>
-        <!-- Fim do conteúdo principal -->
-    
+        </div>
+  
     </body>
     
 </html>
 <script>
     
-    // Função chamada quando o botão "Continue" é clicado
-    function entrar() {
-        // Chama a função "aguardar" para exibir algum tipo de indicador de carregamento
+  // Função chamada quando o button Continue é clicado
+    function entrar() {  
 
-        aguardar();
+        aguardar(); // Chama a função aguardar 
 
         // Obtém os valores dos campos de entrada de email e senha
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
-        // Verifica se algum dos campos está em branco
-        if (emailVar == "" || senhaVar == "") {
-            // Se um dos campos estiver em branco, exibe uma mensagem de erro
+     
+        if (emailVar == "" || senhaVar == "") {   // Verifica se algum dos campos está em branco
+     
             cardErro.style.display = "block";
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            alert("todos os campos em branco"); // Mostra um alerta de erro
+
             finalizarAguardar();
+
             return false;
+
         } else {
-            // Define um intervalo para ocultar a mensagem de erro após 5 segundos
-            setInterval(sumirMensagem, 5000);
+         
+            setInterval(sumirMensagem, 5000);  // Define um intervalo para ocultar a mensagem de erro
         }
 
         // Exibe no console os valores do email e senha digitados
@@ -99,8 +94,8 @@
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
 
-            if (resposta.ok) {
-                // Se a resposta da requisição for bem-sucedida, trata os dados
+            if (resposta.ok) {  // Se a resposta for ok ele trata os dados
+              
                 console.log(resposta);
 
                 resposta.json().then(json => {
@@ -113,31 +108,33 @@
                     sessionStorage.ID_USUARIO = json.idUsuario;
                     sessionStorage.GENERO = json.Sexo;
 
-                    // Redireciona para a página "User.html" após 1 segundo 
+                    // Redireciona para a página User.html 
                     setTimeout(function () {
                         window.location = "User.html";
-                    }, 1000);// apenas para exibir o login
+                    }, 1000);
                 });
 
             } else {
-                // Se houver um erro na resposta da requisição, exibe uma mensagem de erro
-                console.log("Houve um erro ao tentar realizar o login!");
+                
+                console.log("Houve um erro ao tentar realizar o login!");// Se houver um erro na resposta da requisição, mostra uma mensagem de erro
 
                 resposta.text().then(texto => {
                     console.error(texto);
                     finalizarAguardar(texto);
                 });
             }
+
+        // Trata erros que ocorrerem durante a requisição
         }).catch(function (erro) {
-            // Trata erros que ocorrerem durante a requisição
             console.log(erro);
         })
 
         return false;
     }
 
-    // Função para ocultar a mensagem de erro
-    function sumirMensagem() {
+    
+    function sumirMensagem() {// Função para ocultar a mensagem de erro
         cardErro.style.display = "none";
     }
+
 </script>
