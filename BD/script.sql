@@ -124,11 +124,9 @@ insert into artemarcial values
 
 --  Criação dos updates
 
--- Atualização de registros na tabela "Usuario" e "Dojo"
+-- Atualização de registros na tabela "Usuario"
 
 update Usuario set Email = 'Thomas23@gmail.com' where idUsuario = 3;
-update dojo set Nome = 'Cobra Kai' where idDojo = 4;
-update dojo set fkUsuario = 3 where idDojo = 3;
 
 --  Criação das views 
 
