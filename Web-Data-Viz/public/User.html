@@ -72,7 +72,6 @@ function atualizarFeed_Dojos() {// Função para atualizarFeed_Dojos
     }).then(function (resposta) {
 
         console.log("resposta: ", resposta);
-
         if (resposta.ok) {// Verifica se a resposta está OK
             if (resposta.status == 204) { // Verifica se o status é 204 (sem conteúdo) 
                     var feed = document.getElementById("lista_dojos");// Variavel para obter o elemento de feed
@@ -83,8 +82,9 @@ function atualizarFeed_Dojos() {// Função para atualizarFeed_Dojos
                 }
 
                 // caso tenha um conteúdo
-                resposta.json().then(function (resposta) {// Lida com a resposta JSON
+                resposta.json().then(function (resposta) {// Lida com a resposta JSON            
                 console.log("Dados recebidos: ", JSON.stringify(resposta));// Exibe os dados recebidos no console
+                
                 var feed = document.getElementById("lista_dojos");// Variavel que obtém o elemento pelo id lista_dojos
                 feed.innerHTML = "";// Limpa o conteúdo do elemento
 
@@ -94,14 +94,16 @@ function atualizarFeed_Dojos() {// Função para atualizarFeed_Dojos
                     usuario.innerHTML = publicacao.NomeDojo + " | " + publicacao.Mestre + " | " + publicacao.Bairro;// Define os conteúdos do banco d dados que seram exibidos
                     feed.appendChild(usuario);// Adiciona o elemento à lista
                 }
+
                 finalizarAguardar();// Chama a função finalizarAguardar 
-            });
-            
+            }); 
+
         } else {// Caso a resposta não esteja ok
             throw ("Houve um erro ao tentar realizar A pesquisa!");// avisa que houve um erro durante a pesquisa
         }
-    // Lida com erros e exibe mensagens de erro no console  
-    }).catch(function (resposta) {
+
+    }).catch(function (resposta) {// Lida com erros e exibe mensagens de erro no console  
+
         console.log(`#ERRO: ${resposta}`);
         finalizarAguardar();
     });

@@ -343,16 +343,12 @@
                         grauServer: grauVar
                     })
                 }).then(function (resposta) { // Lida com a resposta
-
                     console.log("resposta: ", resposta); // Mostra a resposta no console
-
                     if (resposta.ok) {// verifica se a resposta esta ok
                         alert("Cadastro realizado com sucesso!");// mostra um alerta de que o cadastro foi realizado com sucesso
-
                         setTimeout(() => { // Redireciona para a página de login
                             window.location = "login.html";
                         }, "2000")
-
                         limparFormulario(); // Limpa o formulário
 
                     } else {// Caso a resposta não for ok
